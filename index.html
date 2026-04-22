@@ -3,1316 +3,589 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BandMaster IELTS — Achieve Band 8+</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>IELTS Preparation — TerraTern Live Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0a0a0f;
-    --paper: #f5f2eb;
-    --gold: #c8973a;
-    --gold-light: #e8be6a;
-    --teal: #1a6b6b;
-    --teal-light: #2a9090;
-    --cream: #faf8f3;
-    --muted: #6b6860;
-    --border: #ddd8cc;
-    --success: #2e7d5e;
-    --danger: #b94040;
-  }
+:root {
+  --navy: #0a1628;
+  --navy-mid: #132240;
+  --navy-light: #1e3a5f;
+  --blue: #1a56db;
+  --blue-bright: #2563eb;
+  --blue-light: #3b82f6;
+  --yellow: #f5c518;
+  --yellow-hover: #fbbf24;
+  --cyan: #06b6d4;
+  --white: #ffffff;
+  --off-white: #f8fafd;
+  --gray-50: #f1f5f9;
+  --gray-100: #e2e8f0;
+  --gray-300: #94a3b8;
+  --gray-500: #64748b;
+  --gray-700: #334155;
+  --text: #0f172a;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(10,22,40,0.10);
+  --shadow-md: 0 8px 40px rgba(10,22,40,0.15);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+.screen { display:none; min-height:100vh; }
+.screen.active { display:block; }
+#form-screen.active { display:flex; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* ── NAV ── */
+.nav { background:var(--navy); padding:0 5vw; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:200; }
+.nav-brand { display:flex; align-items:center; gap:8px; }
+.nav-logo-mark { width:32px; height:32px; background:var(--blue-bright); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-weight:800; font-size:0.72rem; color:white; }
+.nav-brand-name { font-family:'Sora',sans-serif; font-weight:700; font-size:1rem; color:white; }
+.nav-brand-name span { color:var(--yellow); }
+.nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
+.nav-links a { color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.875rem; font-weight:500; transition:color 0.2s; }
+.nav-links a:hover { color:white; }
+.nav-cta { background:var(--yellow); color:var(--navy); border:none; padding:0.5rem 1.25rem; border-radius:8px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.875rem; cursor:pointer; transition:all 0.2s; }
+.nav-cta:hover { background:var(--yellow-hover); transform:translateY(-1px); }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
+/* ── HERO ── */
+.hero { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, #0d1e3a 100%); padding:5rem 5vw 0; overflow:hidden; position:relative; }
+.hero::before { content:''; position:absolute; top:-100px; right:-100px; width:600px; height:600px; background:radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%); pointer-events:none; }
+.hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 420px; gap:4rem; align-items:end; position:relative; z-index:1; }
+.hero-badges { display:flex; gap:0.75rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+.badge { display:inline-flex; align-items:center; gap:0.4rem; padding:0.3rem 0.9rem; border-radius:20px; font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
+.badge-blue { background:rgba(59,130,246,0.18); color:#93c5fd; border:1px solid rgba(59,130,246,0.3); }
+.badge-yellow { background:rgba(245,197,24,0.15); color:var(--yellow); border:1px solid rgba(245,197,24,0.3); }
+.badge-cyan { background:rgba(6,182,212,0.15); color:#67e8f9; border:1px solid rgba(6,182,212,0.3); }
+.hero-title { font-family:'Sora',sans-serif; font-size:clamp(2.2rem,3.5vw,3.2rem); font-weight:800; color:white; line-height:1.12; letter-spacing:-0.03em; margin-bottom:1.25rem; }
+.hero-title .hl { color:var(--yellow); }
+.hero-sub { font-size:1rem; color:rgba(255,255,255,0.62); line-height:1.7; max-width:500px; margin-bottom:2.25rem; }
+.hero-actions { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+.btn-primary { background:var(--yellow); color:var(--navy); border:none; padding:0.85rem 1.75rem; border-radius:10px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.95rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; transition:all 0.2s; }
+.btn-primary:hover { background:var(--yellow-hover); transform:translateY(-2px); box-shadow:0 8px 24px rgba(245,197,24,0.35); }
+.btn-ghost { background:rgba(255,255,255,0.08); color:white; border:1.5px solid rgba(255,255,255,0.2); padding:0.85rem 1.5rem; border-radius:10px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:0.95rem; cursor:pointer; transition:all 0.2s; }
+.btn-ghost:hover { background:rgba(255,255,255,0.14); }
+.hero-trust { display:flex; align-items:center; gap:1.5rem; padding-bottom:2rem; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:0.5rem; font-size:0.78rem; color:rgba(255,255,255,0.48); }
+.trust-dot { width:6px; height:6px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
+.trust-sep { width:1px; height:18px; background:rgba(255,255,255,0.12); }
 
-  /* ── SCREENS ────────────────────────── */
-  .screen { display: none; min-height: 100vh; }
-  .screen.active { display: block; }
+/* Hero visual */
+.hero-visual { padding-bottom:2.5rem; position:relative; }
+.score-card { background:white; border-radius:16px; padding:1.5rem; box-shadow:var(--shadow-md); animation:floatCard 4s ease-in-out infinite; position:relative; }
+.card-label { font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray-500); margin-bottom:0.75rem; }
+.score-bars { display:flex; flex-direction:column; gap:0.6rem; }
+.sbar { display:flex; align-items:center; gap:0.75rem; }
+.sbar-label { font-size:0.75rem; font-weight:600; color:var(--gray-700); width:80px; }
+.sbar-track { flex:1; height:8px; background:var(--gray-100); border-radius:4px; overflow:hidden; }
+.sbar-fill { height:100%; border-radius:4px; background:var(--blue-bright); }
+.sbar-fill.gold { background:linear-gradient(90deg,var(--yellow),var(--yellow-hover)); }
+.sbar-fill.cyan { background:var(--cyan); }
+.sbar-val { font-size:0.75rem; font-weight:700; color:var(--navy); width:24px; text-align:right; }
+.float-badge { position:absolute; background:var(--navy); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:0.55rem 1rem; display:flex; align-items:center; gap:0.45rem; font-size:0.74rem; color:white; font-weight:600; box-shadow:0 8px 24px rgba(0,0,0,0.3); white-space:nowrap; }
+.fb-top { top:-14px; right:-18px; animation:fb1 3s ease-in-out infinite; }
+.fb-bot { bottom:50px; left:-28px; animation:fb2 3.5s ease-in-out infinite 0.5s; }
+@keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes fb1 { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-6px) rotate(1deg)} }
+@keyframes fb2 { 0%,100%{transform:translateY(0) rotate(2deg)} 50%{transform:translateY(-5px) rotate(-1deg)} }
 
-  /* ══════════════════════════════════════
-     LANDING PAGE
-  ══════════════════════════════════════ */
-  #landing {
-    background: var(--cream);
-  }
+/* ── STATS STRIP ── */
+.stats-strip { background:var(--off-white); border-bottom:1px solid var(--gray-100); padding:1.75rem 5vw; }
+.stats-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center; }
+.stat-num { font-family:'Sora',sans-serif; font-size:2rem; font-weight:800; color:var(--navy); letter-spacing:-0.03em; line-height:1; margin-bottom:0.3rem; }
+.stat-num .ac { color:var(--blue-bright); }
+.stat-desc { font-size:0.78rem; color:var(--gray-500); font-weight:500; }
 
-  /* NAV */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 5vw;
-    border-bottom: 1px solid var(--border);
-    background: var(--cream);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-  }
-  .logo span { color: var(--gold); }
-  .nav-cta {
-    background: var(--ink);
-    color: var(--cream);
-    border: none;
-    padding: 0.6rem 1.4rem;
-    border-radius: 3px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 0.02em;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--teal); }
+/* ── SECTIONS ── */
+.section { padding:5rem 5vw; }
+.section-center { text-align:center; }
+.section-tag { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(37,99,235,0.08); color:var(--blue-bright); padding:0.3rem 0.9rem; border-radius:20px; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem; border:1px solid rgba(37,99,235,0.15); }
+.section-title { font-family:'Sora',sans-serif; font-size:clamp(1.75rem,2.5vw,2.4rem); font-weight:800; letter-spacing:-0.03em; color:var(--navy); margin-bottom:0.75rem; }
+.section-title .hl { color:var(--blue-bright); }
+.section-sub { font-size:0.95rem; color:var(--gray-500); line-height:1.7; max-width:560px; margin:0 auto 3rem; }
 
-  /* HERO */
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    min-height: calc(100vh - 65px);
-  }
-  .hero-left {
-    padding: 5rem 5vw 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid var(--border);
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--gold);
-    color: var(--ink);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.9rem;
-    border-radius: 2px;
-    margin-bottom: 1.75rem;
-    width: fit-content;
-  }
-  .hero-badge::before { content: '◆'; font-size: 0.6rem; }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
-    font-weight: 900;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-  }
-  h1 em { font-style: italic; color: var(--teal); }
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 440px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-  .hero-stats {
-    display: flex;
-    gap: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
-  .stat-val {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--teal);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-top: 0.25rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .hero-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: var(--teal);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s;
-    width: fit-content;
-  }
-  .hero-btn:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,107,107,0.25); }
-  .hero-btn .arrow { font-size: 1.1rem; transition: transform 0.2s; }
-  .hero-btn:hover .arrow { transform: translateX(4px); }
+/* Features */
+.features-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; }
+.feature-card { background:white; border:1.5px solid var(--gray-100); border-radius:var(--radius); padding:1.75rem; transition:all 0.2s; }
+.feature-card:hover { border-color:rgba(37,99,235,0.3); box-shadow:var(--shadow); transform:translateY(-2px); }
+.fc-icon { width:48px; height:48px; border-radius:12px; background:rgba(37,99,235,0.08); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1rem; }
+.fc-icon.y { background:rgba(245,197,24,0.12); }
+.fc-icon.c { background:rgba(6,182,212,0.1); }
+.fc-icon.g { background:rgba(16,185,129,0.1); }
+.fc-title { font-weight:700; font-size:1rem; color:var(--navy); margin-bottom:0.5rem; }
+.fc-desc { font-size:0.85rem; color:var(--gray-500); line-height:1.65; }
+.fc-pill { display:inline-block; margin-top:0.75rem; background:var(--gray-50); color:var(--blue-bright); padding:0.2rem 0.7rem; border-radius:20px; font-size:0.7rem; font-weight:700; }
 
-  .hero-right {
-    background: var(--ink);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5rem 5vw;
-    position: relative;
-    overflow: hidden;
-    animation: fadeIn 1s ease both 0.2s;
-  }
-  .hero-right::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 70% 30%, rgba(200,151,58,0.15) 0%, transparent 65%),
-                radial-gradient(ellipse at 20% 80%, rgba(26,107,107,0.2) 0%, transparent 55%);
-  }
-  .band-display {
-    position: relative;
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  .band-ring {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 3px solid var(--gold);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
-    position: relative;
-  }
-  .band-ring::before {
-    content: '';
-    position: absolute;
-    inset: 6px;
-    border-radius: 50%;
-    border: 1px solid rgba(200,151,58,0.3);
-  }
-  .band-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .band-label { color: rgba(255,255,255,0.5); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem; }
-  .band-caption { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+/* Steps */
+.steps-wrap { max-width:880px; margin:0 auto; }
+.step-row { display:grid; grid-template-columns:60px 1fr; gap:1.5rem; position:relative; padding-bottom:2.5rem; }
+.step-row:not(:last-child)::before { content:''; position:absolute; left:29px; top:60px; width:2px; height:calc(100% - 40px); background:linear-gradient(to bottom, var(--blue-bright), rgba(37,99,235,0.08)); }
+.step-circle { width:60px; height:60px; border-radius:50%; background:var(--navy); border:2px solid var(--blue-bright); display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-weight:800; font-size:1.1rem; color:var(--blue-light); flex-shrink:0; position:relative; z-index:1; }
+.step-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--blue-bright); margin-bottom:0.35rem; }
+.step-name { font-family:'Sora',sans-serif; font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem; }
+.step-desc { font-size:0.87rem; color:var(--gray-500); line-height:1.6; }
+.step-content { padding-top:0.7rem; }
 
-  .features-list { position: relative; display: flex; flex-direction: column; gap: 1rem; }
-  .feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 6px;
-    transition: border-color 0.2s;
-  }
-  .feature-item:hover { border-color: rgba(200,151,58,0.4); }
-  .feature-icon {
-    width: 36px; height: 36px;
-    background: rgba(200,151,58,0.12);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-  .feature-title { color: white; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
-  .feature-desc { color: rgba(255,255,255,0.5); font-size: 0.78rem; line-height: 1.4; }
+/* Testimonials */
+.testi-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+.testi-card { background:white; border:1.5px solid var(--gray-100); border-radius:var(--radius); padding:1.5rem; transition:box-shadow 0.2s; }
+.testi-card:hover { box-shadow:var(--shadow); }
+.testi-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
+.testi-stars { color:var(--yellow); font-size:0.85rem; letter-spacing:2px; }
+.testi-chip { background:rgba(37,99,235,0.08); color:var(--blue-bright); border:1px solid rgba(37,99,235,0.15); padding:0.2rem 0.65rem; border-radius:20px; font-size:0.7rem; font-weight:700; }
+.testi-text { font-size:0.875rem; color:var(--gray-700); line-height:1.65; margin-bottom:1.25rem; }
+.testi-author { display:flex; align-items:center; gap:0.75rem; }
+.testi-av { width:36px; height:36px; border-radius:50%; background:var(--navy); color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.78rem; }
+.testi-name { font-weight:700; font-size:0.85rem; color:var(--navy); }
+.testi-meta { font-size:0.75rem; color:var(--gray-500); }
 
-  /* SECTION: HOW IT WORKS */
-  .section {
-    padding: 5rem 5vw;
-    border-top: 1px solid var(--border);
-  }
-  .section-tag {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-    font-family: 'DM Mono', monospace;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3vw, 2.8rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    margin-bottom: 3rem;
-  }
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .step {
-    background: var(--cream);
-    padding: 2.5rem 2rem;
-    position: relative;
-  }
-  .step-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 1rem;
-    letter-spacing: 0.08em;
-  }
-  .step-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-  .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-  .step p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+/* CTA section */
+.cta-section { background:var(--navy); padding:5rem 5vw; text-align:center; position:relative; overflow:hidden; }
+.cta-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:800px; height:400px; background:radial-gradient(ellipse, rgba(37,99,235,0.2) 0%, transparent 65%); pointer-events:none; }
+.cta-section .section-title { color:white; position:relative; z-index:1; }
+.cta-section .section-title .hl { color:var(--yellow); }
+.cta-section .section-sub { color:rgba(255,255,255,0.58); position:relative; z-index:1; }
+.cta-btn-wrap { position:relative; z-index:1; display:flex; justify-content:center; }
 
-  /* TESTIMONIALS */
-  .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  .testi-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.75rem;
-    position: relative;
-  }
-  .testi-card::before {
-    content: '"';
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    color: var(--gold);
-    opacity: 0.3;
-    position: absolute;
-    top: 0.5rem;
-    right: 1.25rem;
-    line-height: 1;
-  }
-  .testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 2px; }
-  .testi-text { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
-  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
-  .testi-avatar {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    background: var(--teal);
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-weight: 700; font-size: 0.85rem;
-  }
-  .testi-name { font-weight: 600; font-size: 0.85rem; }
-  .testi-band { font-size: 0.75rem; color: var(--teal); font-weight: 500; }
+/* Footer */
+.footer-strip { background:#060d1a; padding:1.25rem 5vw; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.footer-brand { font-family:'Sora',sans-serif; font-size:0.85rem; font-weight:700; color:white; }
+.footer-brand span { color:var(--yellow); }
+.footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.3); }
 
-  /* CTA BANNER */
-  .cta-banner {
-    background: var(--ink);
-    padding: 5rem 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-  .cta-banner h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
-    color: white;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    max-width: 520px;
-  }
-  .cta-banner h2 em { color: var(--gold); font-style: italic; }
-  .cta-btn {
-    background: var(--gold);
-    color: var(--ink);
-    border: none;
-    padding: 1rem 2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 4px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-  .cta-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+/* ── FORM SCREEN ── */
+#form-screen { background:var(--off-white); align-items:center; justify-content:center; padding:2rem 1rem; min-height:100vh; position:relative; }
+#form-screen::before { content:''; position:fixed; inset:0; background:linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 40%, var(--off-white) 100%); z-index:0; }
+.form-wrap { position:relative; z-index:1; background:white; border-radius:20px; box-shadow:0 24px 80px rgba(10,22,40,0.28); width:100%; max-width:500px; overflow:hidden; animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+.form-header { background:var(--navy); padding:1.5rem 2rem; display:flex; align-items:center; justify-content:space-between; }
+.form-header-brand { font-family:'Sora',sans-serif; font-weight:800; font-size:1rem; color:white; }
+.form-header-brand span { color:var(--yellow); }
+.form-back-btn { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.7); padding:0.35rem 0.9rem; border-radius:6px; font-size:0.78rem; font-family:'Plus Jakarta Sans',sans-serif; cursor:pointer; transition:all 0.2s; }
+.form-back-btn:hover { background:rgba(255,255,255,0.18); color:white; }
+.form-body { padding:2rem; }
+.form-eyebrow { font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:0.5rem; }
+.form-title { font-family:'Sora',sans-serif; font-size:1.5rem; font-weight:800; color:var(--navy); letter-spacing:-0.02em; margin-bottom:0.4rem; }
+.form-subtitle { font-size:0.85rem; color:var(--gray-500); margin-bottom:1.75rem; line-height:1.55; }
+.form-group { margin-bottom:0.9rem; }
+.form-label { display:block; font-size:0.78rem; font-weight:700; color:var(--gray-700); margin-bottom:0.4rem; }
+.form-input { width:100%; padding:0.72rem 1rem; border:1.5px solid var(--gray-100); border-radius:8px; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; color:var(--text); background:var(--off-white); outline:none; transition:all 0.2s; }
+.form-input:focus { border-color:var(--blue-bright); background:white; box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
+.form-input::placeholder { color:#b0bac6; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
+.form-submit { width:100%; padding:0.9rem; background:var(--navy); color:white; border:none; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem; cursor:pointer; margin-top:0.5rem; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:0.6rem; letter-spacing:-0.01em; }
+.form-submit:hover { background:var(--navy-light); transform:translateY(-1px); box-shadow:0 8px 24px rgba(10,22,40,0.25); }
+.form-note { text-align:center; font-size:0.72rem; color:var(--gray-300); margin-top:1rem; }
 
-  /* ══════════════════════════════════════
-     LEAD FORM SCREEN
-  ══════════════════════════════════════ */
-  #form-screen {
-    background: var(--ink);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    position: relative;
-    padding: 2rem;
-  }
-  #form-screen.active { display: flex; }
-  #form-screen::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 80% 20%, rgba(200,151,58,0.1) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, rgba(26,107,107,0.15) 0%, transparent 55%);
-    pointer-events: none;
-  }
-  .form-card {
-    background: var(--cream);
-    border-radius: 12px;
-    padding: 3rem;
-    width: 100%;
-    max-width: 520px;
-    position: relative;
-    animation: scaleIn 0.4s ease both;
-  }
-  .form-back {
-    position: absolute;
-    top: 1.25rem;
-    left: 1.25rem;
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 0.85rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'DM Sans', sans-serif;
-    padding: 0.3rem 0;
-    transition: color 0.2s;
-  }
-  .form-back:hover { color: var(--ink); }
-  .form-logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  .form-logo span { color: var(--gold); }
-  .form-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.9rem;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-  }
-  .form-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.5; }
-  .form-group { margin-bottom: 1.25rem; }
-  .form-label { display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--ink); }
-  .form-input {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    background: white;
-    color: var(--ink);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-  }
-  .form-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(26,107,107,0.1); }
-  .form-input::placeholder { color: #bbb; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-submit {
-    width: 100%;
-    padding: 1rem;
-    background: var(--teal);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 0.75rem;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-  }
-  .form-submit:hover { background: var(--teal-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,107,107,0.3); }
-  .form-note { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 1rem; }
-  .form-note span { color: var(--teal); }
+/* ── QUIZ SCREEN ── */
+#quiz-screen { background:var(--off-white); }
+.quiz-topbar { background:var(--navy); height:64px; display:flex; align-items:center; padding:0 5vw; gap:1.5rem; position:sticky; top:0; z-index:100; }
+.quiz-topbar-brand { font-family:'Sora',sans-serif; font-weight:800; color:white; font-size:0.95rem; white-space:nowrap; }
+.quiz-topbar-brand span { color:var(--yellow); }
+.quiz-prog-wrap { flex:1; display:flex; align-items:center; gap:1rem; }
+.quiz-prog-track { flex:1; height:6px; background:rgba(255,255,255,0.12); border-radius:3px; overflow:hidden; }
+.quiz-prog-fill { height:100%; background:linear-gradient(90deg, var(--blue-bright), var(--cyan)); border-radius:3px; transition:width 0.4s cubic-bezier(0.4,0,0.2,1); width:0%; }
+.quiz-counter { font-family:'Sora',sans-serif; font-size:0.8rem; font-weight:700; color:rgba(255,255,255,0.5); white-space:nowrap; }
+.quiz-dots { display:flex; gap:6px; align-items:center; }
+.q-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.15); transition:all 0.2s; }
+.q-dot.done { background:var(--cyan); }
+.q-dot.active { background:var(--yellow); transform:scale(1.2); }
+.quiz-container { max-width:720px; margin:0 auto; padding:3rem 5vw 4rem; }
+.quiz-cat-tag { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(37,99,235,0.08); color:var(--blue-bright); border:1px solid rgba(37,99,235,0.15); padding:0.25rem 0.8rem; border-radius:20px; font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1.25rem; }
+.quiz-q { font-family:'Sora',sans-serif; font-size:clamp(1.2rem,2vw,1.55rem); font-weight:700; color:var(--navy); line-height:1.35; letter-spacing:-0.02em; margin-bottom:0.5rem; }
+.quiz-hint { font-size:0.83rem; color:var(--gray-500); margin-bottom:1.5rem; }
+.quiz-passage { background:white; border:1.5px solid var(--gray-100); border-left:4px solid var(--blue-bright); border-radius:10px; padding:1.25rem 1.5rem; font-size:0.9rem; line-height:1.75; color:var(--gray-700); margin-bottom:1.5rem; font-style:italic; position:relative; }
+.quiz-passage::before { content:'"'; font-size:3rem; color:rgba(37,99,235,0.12); position:absolute; top:0.2rem; left:1rem; font-family:Georgia,serif; line-height:1; }
+.opts-list { display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.5rem; }
+.opt { display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:white; border:1.5px solid var(--gray-100); border-radius:10px; cursor:pointer; font-size:0.9rem; color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; text-align:left; transition:all 0.15s; line-height:1.4; }
+.opt:hover:not(:disabled) { border-color:var(--blue-bright); background:rgba(37,99,235,0.04); }
+.opt-key { width:32px; height:32px; border-radius:8px; background:var(--gray-50); border:1.5px solid var(--gray-100); display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-size:0.78rem; font-weight:700; color:var(--gray-500); flex-shrink:0; transition:all 0.15s; }
+.opt:hover:not(:disabled) .opt-key { background:var(--blue-bright); border-color:var(--blue-bright); color:white; }
+.opt.selected { border-color:var(--blue-bright); background:rgba(37,99,235,0.06); }
+.opt.selected .opt-key { background:var(--blue-bright); border-color:var(--blue-bright); color:white; }
+.opt.correct { border-color:#10b981; background:rgba(16,185,129,0.06); }
+.opt.correct .opt-key { background:#10b981; border-color:#10b981; color:white; }
+.opt.wrong { border-color:#ef4444; background:rgba(239,68,68,0.06); }
+.opt.wrong .opt-key { background:#ef4444; border-color:#ef4444; color:white; }
+.opt:disabled { cursor:default; }
+.quiz-fb { padding:0.9rem 1.25rem; border-radius:8px; font-size:0.855rem; font-weight:500; line-height:1.55; display:none; }
+.quiz-fb.show { display:block; animation:slideUp 0.25s ease both; }
+.quiz-fb.correct { background:rgba(16,185,129,0.08); color:#065f46; border:1px solid rgba(16,185,129,0.2); }
+.quiz-fb.wrong { background:rgba(239,68,68,0.07); color:#7f1d1d; border:1px solid rgba(239,68,68,0.18); }
+.quiz-nav { display:flex; justify-content:flex-end; margin-top:1.25rem; }
+.quiz-next { background:var(--navy); color:white; border:none; padding:0.8rem 1.75rem; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:0.6rem; transition:all 0.25s; opacity:0; pointer-events:none; transform:translateY(6px); }
+.quiz-next.show { opacity:1; pointer-events:all; transform:translateY(0); }
+.quiz-next:hover { background:var(--navy-light); }
 
-  /* ══════════════════════════════════════
-     QUIZ SCREEN
-  ══════════════════════════════════════ */
-  #quiz-screen {
-    background: var(--cream);
-    min-height: 100vh;
-  }
-  .quiz-header {
-    background: var(--ink);
-    padding: 1.25rem 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .quiz-logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    color: white;
-    font-size: 1.1rem;
-  }
-  .quiz-logo span { color: var(--gold); }
-  .quiz-progress-wrap {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .quiz-progress-bar {
-    width: 160px;
-    height: 4px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .quiz-progress-fill {
-    height: 100%;
-    background: var(--gold);
-    border-radius: 2px;
-    transition: width 0.4s ease;
-    width: 0%;
-  }
-  .quiz-counter {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.6);
-    white-space: nowrap;
-  }
+/* ── RESULTS ── */
+#results-screen { background:var(--off-white); }
+.res-topbar { background:var(--navy); height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 5vw; }
+.res-topbar-brand { font-family:'Sora',sans-serif; font-weight:800; color:white; font-size:0.95rem; }
+.res-topbar-brand span { color:var(--yellow); }
+.res-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+.res-body { max-width:800px; margin:0 auto; padding:3rem 5vw 4rem; }
+.score-hero { background:var(--navy); border-radius:20px; padding:2.5rem; margin-bottom:1.5rem; display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:center; position:relative; overflow:hidden; animation:slideUp 0.4s ease both; }
+.score-hero::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; background:radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%); pointer-events:none; }
+.donut-wrap { position:relative; width:140px; height:140px; flex-shrink:0; }
+.donut-svg { width:140px; height:140px; transform:rotate(-90deg); }
+.donut-bg { fill:none; stroke:rgba(255,255,255,0.08); stroke-width:12; }
+.donut-fill { fill:none; stroke-width:12; stroke-linecap:round; transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
+.donut-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.donut-score { font-family:'Sora',sans-serif; font-size:2.4rem; font-weight:800; color:white; line-height:1; }
+.donut-total { font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:2px; }
+.score-right { position:relative; z-index:1; }
+.score-hi { font-size:0.8rem; color:rgba(255,255,255,0.55); margin-bottom:0.4rem; }
+.score-headline { font-family:'Sora',sans-serif; font-size:clamp(1.3rem,2.5vw,1.7rem); font-weight:800; color:white; letter-spacing:-0.02em; margin-bottom:0.5rem; }
+.score-desc { font-size:0.85rem; color:rgba(255,255,255,0.6); line-height:1.55; margin-bottom:1.25rem; }
+.band-chip { display:inline-flex; align-items:center; gap:0.75rem; background:rgba(245,197,24,0.12); border:1px solid rgba(245,197,24,0.3); border-radius:8px; padding:0.6rem 1.1rem; font-size:0.85rem; color:var(--yellow); font-weight:600; }
+.band-chip strong { font-family:'Sora',sans-serif; font-size:1.05rem; }
+.breakdown-card { background:white; border:1.5px solid var(--gray-100); border-radius:16px; overflow:hidden; margin-bottom:1.5rem; animation:slideUp 0.4s ease both 0.15s; }
+.breakdown-head { padding:1.25rem 1.5rem; border-bottom:1.5px solid var(--gray-100); font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem; color:var(--navy); display:flex; align-items:center; justify-content:space-between; }
+.score-chip { background:var(--gray-50); border:1.5px solid var(--gray-100); border-radius:6px; padding:0.25rem 0.75rem; font-size:0.78rem; font-weight:700; color:var(--navy); font-family:'Sora',sans-serif; }
+.b-row { display:flex; align-items:center; gap:1rem; padding:1rem 1.5rem; border-bottom:1px solid var(--gray-50); transition:background 0.15s; }
+.b-row:last-child { border-bottom:none; }
+.b-row:hover { background:var(--off-white); }
+.b-num { width:28px; height:28px; border-radius:6px; background:var(--gray-50); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--gray-500); font-family:'Sora',sans-serif; flex-shrink:0; }
+.b-info { flex:1; min-width:0; }
+.b-cat { font-size:0.7rem; font-weight:700; color:var(--blue-bright); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.2rem; }
+.b-q { font-size:0.83rem; color:var(--gray-700); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.b-badge { flex-shrink:0; padding:0.25rem 0.75rem; border-radius:6px; font-size:0.7rem; font-weight:700; display:flex; align-items:center; gap:0.3rem; }
+.b-badge.ok { background:rgba(16,185,129,0.1); color:#059669; }
+.b-badge.no { background:rgba(239,68,68,0.08); color:#dc2626; }
+.res-cta { background:linear-gradient(135deg, var(--blue-bright) 0%, var(--navy-mid) 100%); border-radius:16px; padding:2.5rem; text-align:center; position:relative; overflow:hidden; animation:slideUp 0.4s ease both 0.3s; }
+.res-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 80% 20%, rgba(245,197,24,0.12) 0%, transparent 55%); }
+.res-cta h3 { font-family:'Sora',sans-serif; font-size:1.4rem; font-weight:800; color:white; margin-bottom:0.6rem; position:relative; z-index:1; letter-spacing:-0.02em; }
+.res-cta p { font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:1.75rem; position:relative; z-index:1; line-height:1.6; max-width:440px; margin-left:auto; margin-right:auto; }
+.res-btns { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
+.btn-wa { background:#25d366; color:white; border:none; padding:0.85rem 1.5rem; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.9rem; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:0.5rem; }
+.btn-wa:hover { background:#1fb855; transform:translateY(-1px); }
+.btn-retake { background:rgba(255,255,255,0.12); color:white; border:1.5px solid rgba(255,255,255,0.25); padding:0.85rem 1.5rem; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.9rem; cursor:pointer; transition:all 0.2s; }
+.btn-retake:hover { background:rgba(255,255,255,0.2); }
 
-  .quiz-body {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 3rem 5vw;
-  }
-  .quiz-category {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--gold);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  .quiz-question {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
-    font-weight: 700;
-    line-height: 1.35;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.5rem;
-  }
-  .quiz-instruction {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    line-height: 1.5;
-  }
-  .quiz-passage {
-    background: white;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--teal);
-    border-radius: 6px;
-    padding: 1.25rem 1.5rem;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: #333;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-  .options-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 2rem;
-  }
-  .option-btn {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: white;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-align: left;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.92rem;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-  .option-btn:hover:not(.selected):not(.correct):not(.wrong) {
-    border-color: var(--teal);
-    background: rgba(26,107,107,0.04);
-    transform: translateX(3px);
-  }
-  .option-letter {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 700;
-    flex-shrink: 0;
-    transition: all 0.15s;
-    font-family: 'DM Mono', monospace;
-  }
-  .option-btn.selected { border-color: var(--teal); background: rgba(26,107,107,0.06); }
-  .option-btn.selected .option-letter { background: var(--teal); color: white; }
-  .option-btn.correct { border-color: var(--success); background: rgba(46,125,94,0.08); }
-  .option-btn.correct .option-letter { background: var(--success); color: white; }
-  .option-btn.wrong { border-color: var(--danger); background: rgba(185,64,64,0.07); }
-  .option-btn.wrong .option-letter { background: var(--danger); color: white; }
-  .option-btn:disabled { cursor: default; }
+/* Animations */
+@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
-  .answer-feedback {
-    padding: 0.9rem 1.25rem;
-    border-radius: 6px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    display: none;
-    line-height: 1.5;
-  }
-  .answer-feedback.show { display: block; animation: fadeUp 0.3s ease both; }
-  .answer-feedback.correct { background: rgba(46,125,94,0.1); color: var(--success); border: 1px solid rgba(46,125,94,0.25); }
-  .answer-feedback.wrong { background: rgba(185,64,64,0.08); color: var(--danger); border: 1px solid rgba(185,64,64,0.2); }
-
-  .quiz-nav {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .quiz-next-btn {
-    background: var(--teal);
-    color: white;
-    border: none;
-    padding: 0.85rem 2rem;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    transition: all 0.2s;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .quiz-next-btn.show { opacity: 1; pointer-events: all; animation: fadeUp 0.3s ease both; }
-  .quiz-next-btn:hover { background: var(--teal-light); transform: translateY(-1px); }
-
-  /* ══════════════════════════════════════
-     RESULTS SCREEN
-  ══════════════════════════════════════ */
-  #results-screen {
-    background: var(--ink);
-    min-height: 100vh;
-    display: none;
-  }
-  #results-screen.active { display: block; }
-  .results-header {
-    background: rgba(255,255,255,0.03);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 1.25rem 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .results-logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    color: white;
-    font-size: 1.1rem;
-  }
-  .results-logo span { color: var(--gold); }
-  .results-body {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 4rem 5vw;
-  }
-
-  .score-hero {
-    text-align: center;
-    margin-bottom: 4rem;
-    animation: scaleIn 0.5s ease both;
-  }
-  .score-ring-wrap {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 2rem;
-  }
-  .score-ring-svg {
-    width: 200px;
-    height: 200px;
-    transform: rotate(-90deg);
-  }
-  .score-ring-bg { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 10; }
-  .score-ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
-  .score-ring-center {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .score-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1;
-  }
-  .score-denom { font-size: 1rem; color: rgba(255,255,255,0.4); margin-top: 0.25rem; }
-  .score-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 900;
-    color: white;
-    margin-bottom: 0.5rem;
-  }
-  .score-subtitle { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
-
-  .band-estimate {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: rgba(200,151,58,0.12);
-    border: 1px solid rgba(200,151,58,0.3);
-    border-radius: 40px;
-    padding: 0.6rem 1.5rem;
-    margin-top: 1.25rem;
-    font-size: 0.9rem;
-    color: var(--gold-light);
-    font-weight: 500;
-  }
-  .band-estimate strong { font-size: 1.1rem; font-family: 'Playfair Display', serif; }
-
-  .results-breakdown {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.5s ease both 0.2s;
-  }
-  .breakdown-title {
-    padding: 1.25rem 1.75rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    color: white;
-    font-size: 1.1rem;
-  }
-  .breakdown-item {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    padding: 1rem 1.75rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-  .breakdown-item:last-child { border-bottom: none; }
-  .breakdown-q { font-size: 0.8rem; color: rgba(255,255,255,0.5); width: 20px; font-family: 'DM Mono', monospace; flex-shrink: 0; }
-  .breakdown-text { flex: 1; font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.4; }
-  .breakdown-badge {
-    flex-shrink: 0;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
-  .breakdown-badge.correct { background: rgba(46,125,94,0.2); color: #5ecfa0; }
-  .breakdown-badge.wrong { background: rgba(185,64,64,0.2); color: #f08080; }
-
-  .results-cta {
-    background: linear-gradient(135deg, var(--teal) 0%, #1a5555 100%);
-    border-radius: 10px;
-    padding: 2.5rem;
-    text-align: center;
-    animation: fadeUp 0.5s ease both 0.4s;
-  }
-  .results-cta h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: white;
-    font-weight: 900;
-    margin-bottom: 0.75rem;
-  }
-  .results-cta p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.75rem; }
-  .results-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .cta-primary {
-    background: var(--gold);
-    color: var(--ink);
-    border: none;
-    padding: 0.9rem 1.75rem;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .cta-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .cta-secondary {
-    background: rgba(255,255,255,0.1);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 0.9rem 1.75rem;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .cta-secondary:hover { background: rgba(255,255,255,0.15); }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { border-top: 1px solid var(--border); min-height: auto; padding: 3rem 5vw; }
-    .steps-grid { grid-template-columns: 1fr; }
-    .testi-grid { grid-template-columns: 1fr; }
-    .cta-banner { flex-direction: column; text-align: center; }
-    .form-row { grid-template-columns: 1fr; }
-    .form-card { padding: 2rem 1.5rem; }
-    .hero-stats { gap: 1.5rem; }
-    .results-cta-btns { flex-direction: column; align-items: stretch; }
-    .cta-primary, .cta-secondary { text-align: center; }
-    .quiz-progress-bar { width: 100px; }
-  }
+/* Responsive */
+@media (max-width:768px) {
+  .nav-links { display:none; }
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-visual { display:none; }
+  .stats-inner { grid-template-columns:repeat(2,1fr); }
+  .features-grid { grid-template-columns:1fr; }
+  .testi-grid { grid-template-columns:1fr; }
+  .score-hero { grid-template-columns:1fr; text-align:center; }
+  .donut-wrap { margin:0 auto; }
+  .band-chip { justify-content:center; }
+  .form-row { grid-template-columns:1fr; }
+  .quiz-dots { display:none; }
+  .res-btns { flex-direction:column; }
+  .btn-wa,.btn-retake { justify-content:center; }
+}
 </style>
 </head>
 <body>
 
-<!-- ══════════════ LANDING PAGE ══════════════ -->
+<!-- ════════════ LANDING ════════════ -->
 <div id="landing" class="screen active">
-  <nav>
-    <div class="logo">Band<span>Master</span> IELTS</div>
-    <button class="nav-cta" onclick="goToForm()">Take Free Quiz →</button>
+  <nav class="nav">
+    <div class="nav-brand">
+      <div class="nav-logo-mark">TT</div>
+      <div class="nav-brand-name">Terra<span>Tern</span> Live</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">IELTS</a></li>
+      <li><a href="#">German</a></li>
+      <li><a href="#">Test Prep</a></li>
+      <li><a href="#">Success Stories</a></li>
+    </ul>
+    <button class="nav-cta" onclick="goToForm()">Take Free Quiz</button>
   </nav>
 
   <section class="hero">
-    <div class="hero-left">
-      <div class="hero-badge">India's #1 IELTS Prep Platform</div>
-      <h1>Score<br><em>Band 8+</em><br>With Confidence</h1>
-      <p class="hero-sub">Expert-designed IELTS training with live mock tests, AI-powered feedback, and personalised study plans. Join 12,000+ students who cracked Band 7.5 and above.</p>
-      <div class="hero-stats">
-        <div><div class="stat-val">94%</div><div class="stat-label">Band 7+ Rate</div></div>
-        <div><div class="stat-val">12K+</div><div class="stat-label">Students</div></div>
-        <div><div class="stat-val">4.9★</div><div class="stat-label">Google Rating</div></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badges">
+          <span class="badge badge-yellow">⭐ 4.9 Rated</span>
+          <span class="badge badge-blue">🎓 12,000+ Students</span>
+          <span class="badge badge-cyan">✓ Expert Trainers</span>
+        </div>
+        <h1 class="hero-title">Master IELTS.<br>Unlock Your<br><span class="hl">Global Migration.</span></h1>
+        <p class="hero-sub">India's most trusted IELTS preparation platform. Live classes, AI-powered mock tests, and expert feedback designed to get you to Band 7.5 and above.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="goToForm()">Take Free Diagnostic Quiz →</button>
+          <button class="btn-ghost">Explore Program</button>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><div class="trust-dot"></div>No credit card needed</div>
+          <div class="trust-sep"></div>
+          <div class="trust-item"><div class="trust-dot"></div>Results in 5 minutes</div>
+          <div class="trust-sep"></div>
+          <div class="trust-item"><div class="trust-dot"></div>Free study plan included</div>
+        </div>
       </div>
-      <button class="hero-btn" onclick="goToForm()">
-        Take Free Diagnostic Quiz
-        <span class="arrow">→</span>
-      </button>
-    </div>
-    <div class="hero-right">
-      <div class="band-display">
-        <div class="band-ring">
-          <div class="band-num">8.5</div>
-          <div class="band-label">Band Score</div>
-        </div>
-        <div class="band-caption">Average improvement after 6 weeks</div>
-      </div>
-      <div class="features-list">
-        <div class="feature-item">
-          <div class="feature-icon">📖</div>
-          <div>
-            <div class="feature-title">Reading & Listening Mastery</div>
-            <div class="feature-desc">500+ practice questions with detailed answer explanations</div>
+      <div class="hero-visual">
+        <div class="score-card">
+          <div class="float-badge fb-top">🎉 Band 8.0 Achieved!</div>
+          <div class="card-label">Live Score Progress</div>
+          <div class="score-bars">
+            <div class="sbar"><div class="sbar-label">Listening</div><div class="sbar-track"><div class="sbar-fill" style="width:85%"></div></div><div class="sbar-val">8.5</div></div>
+            <div class="sbar"><div class="sbar-label">Reading</div><div class="sbar-track"><div class="sbar-fill gold" style="width:80%"></div></div><div class="sbar-val">8.0</div></div>
+            <div class="sbar"><div class="sbar-label">Writing</div><div class="sbar-track"><div class="sbar-fill cyan" style="width:70%"></div></div><div class="sbar-val">7.0</div></div>
+            <div class="sbar"><div class="sbar-label">Speaking</div><div class="sbar-track"><div class="sbar-fill" style="width:75%"></div></div><div class="sbar-val">7.5</div></div>
           </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">✍️</div>
-          <div>
-            <div class="feature-title">Writing Task 1 & 2 Feedback</div>
-            <div class="feature-desc">AI + expert review within 24 hours</div>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🎙️</div>
-          <div>
-            <div class="feature-title">Speaking Mock Sessions</div>
-            <div class="feature-desc">Live 1-on-1 practice with certified IELTS trainers</div>
-          </div>
+          <div class="float-badge fb-bot">📈 +1.5 Band improvement</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-tag">// How It Works</div>
-    <div class="section-title">Three steps to your target band</div>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-num">01 — ASSESS</div>
-        <span class="step-icon">🎯</span>
-        <h3>Take the Free Diagnostic</h3>
-        <p>A 5-question quiz covering Reading, Grammar, and Vocabulary to identify your strengths and weak areas instantly.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02 — TRAIN</div>
-        <span class="step-icon">🚀</span>
-        <h3>Get Your Study Plan</h3>
-        <p>Personalised module-wise roadmap built around your current band score, target, and exam date.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03 — ACHIEVE</div>
-        <span class="step-icon">🏆</span>
-        <h3>Score Your Target Band</h3>
-        <p>Weekly full-length mock tests, expert feedback loops, and live doubt sessions until you hit your goal.</p>
-      </div>
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div><div class="stat-num">12<span class="ac">K+</span></div><div class="stat-desc">Students Trained</div></div>
+      <div><div class="stat-num">94<span class="ac">%</span></div><div class="stat-desc">Band 7+ Success Rate</div></div>
+      <div><div class="stat-num">4.<span class="ac">9★</span></div><div class="stat-desc">Average Rating</div></div>
+      <div><div class="stat-num">500<span class="ac">+</span></div><div class="stat-desc">Practice Questions</div></div>
+    </div>
+  </div>
+
+  <section class="section section-center" style="background:var(--off-white)">
+    <div class="section-tag">What You Get</div>
+    <h2 class="section-title">Everything to score <span class="hl">Band 7.5+</span></h2>
+    <p class="section-sub">Structured learning paths, expert guidance, and real exam practice — all in one place.</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="fc-icon">📖</div><div class="fc-title">Reading & Listening Mastery</div><div class="fc-desc">500+ IELTS-style questions with detailed walkthroughs. Learn skimming, scanning, and prediction strategies that work under exam conditions.</div><div class="fc-pill">500+ Questions</div></div>
+      <div class="feature-card"><div class="fc-icon y">✍️</div><div class="fc-title">Writing Task 1 & 2 Feedback</div><div class="fc-desc">Submit essays and receive band-score feedback from certified IELTS trainers within 24 hours — plus AI-powered instant analysis.</div><div class="fc-pill">24hr Turnaround</div></div>
+      <div class="feature-card"><div class="fc-icon c">🎙️</div><div class="fc-title">Live Speaking Mock Sessions</div><div class="fc-desc">1-on-1 practice with expert trainers who've helped 12,000+ students. Real exam conditions with live pronunciation correction.</div><div class="fc-pill">Live 1-on-1</div></div>
+      <div class="feature-card"><div class="fc-icon g">📊</div><div class="fc-title">Full-Length Mock Tests</div><div class="fc-desc">Timed, real exam-format mocks with instant AI scoring, detailed performance reports, and a personalised improvement roadmap after every attempt.</div><div class="fc-pill">Instant Reports</div></div>
     </div>
   </section>
 
   <section class="section">
-    <div class="section-tag">// Student Results</div>
-    <div class="section-title">Real scores. Real stories.</div>
+    <div style="max-width:880px;margin:0 auto">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title">Your path to <span class="hl">target band</span></h2>
+      <p class="section-sub" style="margin:0.5rem 0 3rem;text-align:left;">Three focused steps — no fluff, just a clear roadmap to your visa-qualifying IELTS score.</p>
+      <div class="steps-wrap">
+        <div class="step-row"><div class="step-circle">01</div><div class="step-content"><div class="step-label">Assess</div><div class="step-name">Take the Free Diagnostic Quiz</div><div class="step-desc">5 targeted questions across Reading, Grammar, and Vocabulary. Instantly see your estimated band score and where you need to focus.</div></div></div>
+        <div class="step-row"><div class="step-circle">02</div><div class="step-content"><div class="step-label">Plan</div><div class="step-name">Get Your Personalised Study Plan</div><div class="step-desc">Based on your diagnostic result, our expert team builds a module-wise roadmap tailored to your current level, target score, and exam date.</div></div></div>
+        <div class="step-row"><div class="step-circle">03</div><div class="step-content"><div class="step-label">Achieve</div><div class="step-name">Score Your Target Band</div><div class="step-desc">Weekly full-length mock tests, live doubt sessions, and expert feedback loops until you hit your goal. 94% of our students do.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-center" style="background:var(--off-white)">
+    <div class="section-tag">Student Results</div>
+    <h2 class="section-title">Real scores. <span class="hl">Real migration stories.</span></h2>
+    <p class="section-sub">Join thousands who reached their target band and are now living abroad.</p>
     <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">Went from Band 6.0 to 7.5 in just 8 weeks. The reading strategies were game-changing — I finally understood skimming and scanning properly.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">PR</div>
-          <div>
-            <div class="testi-name">Priya Raghavan</div>
-            <div class="testi-band">Band 7.5 → Canada PR ✓</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">The writing templates and mock speaking sessions gave me so much confidence. Scored 8.0 overall on my first attempt — couldn't believe it!</p>
-        <div class="testi-author">
-          <div class="testi-avatar">AK</div>
-          <div>
-            <div class="testi-name">Arjun Krishnan</div>
-            <div class="testi-band">Band 8.0 → Australia PR ✓</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">Best investment I made for my overseas journey. The diagnostic quiz alone showed me exactly what I needed to work on. Highly recommend!</p>
-        <div class="testi-author">
-          <div class="testi-avatar">SM</div>
-          <div>
-            <div class="testi-name">Sneha Murthy</div>
-            <div class="testi-band">Band 7.0 → UK Study Visa ✓</div>
-          </div>
-        </div>
-      </div>
+      <div class="testi-card"><div class="testi-top"><div class="testi-stars">★★★★★</div><div class="testi-chip">Band 7.5</div></div><p class="testi-text">Went from 6.0 to 7.5 in just 8 weeks. The reading strategies were game-changing — I finally understood skimming and scanning properly. Canada PR approved!</p><div class="testi-author"><div class="testi-av">PR</div><div><div class="testi-name">Priya Raghavan</div><div class="testi-meta">Canada PR ✓ · Bangalore</div></div></div></div>
+      <div class="testi-card"><div class="testi-top"><div class="testi-stars">★★★★★</div><div class="testi-chip">Band 8.0</div></div><p class="testi-text">The writing templates and mock speaking sessions gave me tremendous confidence. Scored 8.0 on my first attempt. TerraTern's trainers are world-class.</p><div class="testi-author"><div class="testi-av">AK</div><div><div class="testi-name">Arjun Krishnan</div><div class="testi-meta">Australia PR ✓ · Chennai</div></div></div></div>
+      <div class="testi-card"><div class="testi-top"><div class="testi-stars">★★★★★</div><div class="testi-chip">Band 7.0</div></div><p class="testi-text">The free diagnostic quiz showed me exactly what I needed to work on. Within 6 weeks I'd cleared my target score. Now studying at a UK university!</p><div class="testi-author"><div class="testi-av">SM</div><div><div class="testi-name">Sneha Murthy</div><div class="testi-meta">UK Student Visa ✓ · Hyderabad</div></div></div></div>
     </div>
   </section>
 
-  <div class="cta-banner">
-    <h2>Know your IELTS level in<br><em>5 minutes, for free.</em></h2>
-    <button class="cta-btn" onclick="goToForm()">Start Free Diagnostic →</button>
+  <section class="cta-section">
+    <div class="section-tag" style="background:rgba(245,197,24,0.12);color:var(--yellow);border-color:rgba(245,197,24,0.25)">Free · Limited Time</div>
+    <h2 class="section-title" style="margin-top:0.5rem">Know your band in <span class="hl">5 minutes — free.</span></h2>
+    <p class="section-sub">Take the diagnostic, get your estimated score, and receive a personalised study plan from our experts.</p>
+    <div class="cta-btn-wrap"><button class="btn-primary" onclick="goToForm()">Start Free Diagnostic →</button></div>
+  </section>
+
+  <div class="footer-strip">
+    <div class="footer-brand">Terra<span>Tern</span> Live Learning</div>
+    <div class="footer-copy">© 2025 TerraTern Pvt Ltd · Bangalore, India</div>
   </div>
 </div>
 
-<!-- ══════════════ FORM SCREEN ══════════════ -->
+<!-- ════════════ FORM ════════════ -->
 <div id="form-screen" class="screen">
-  <div class="form-card">
-    <button class="form-back" onclick="goBack('landing')">← Back</button>
-    <div class="form-logo">Band<span>Master</span> IELTS</div>
-    <div class="form-title">Your free quiz awaits</div>
-    <p class="form-sub">Fill in your details and we'll send your personalised result report after the quiz.</p>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">First Name</label>
-        <input class="form-input" id="f-fname" type="text" placeholder="Arjun" />
+  <div class="form-wrap">
+    <div class="form-header">
+      <div class="form-header-brand">Terra<span>Tern</span> Live</div>
+      <button class="form-back-btn" onclick="switchScreen('landing')">← Back</button>
+    </div>
+    <div class="form-body">
+      <div class="form-eyebrow">Free Diagnostic</div>
+      <div class="form-title">Ready to find your band?</div>
+      <div class="form-subtitle">Your details let us send a personalised score report and study plan right after the quiz.</div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="f-fname" type="text" placeholder="Arjun"/></div>
+        <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="f-lname" type="text" placeholder="Krishnan"/></div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Last Name</label>
-        <input class="form-input" id="f-lname" type="text" placeholder="Krishnan" />
+      <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="f-email" type="email" placeholder="arjun@gmail.com"/></div>
+      <div class="form-group"><label class="form-label">WhatsApp Number</label><input class="form-input" id="f-phone" type="tel" placeholder="+91 98765 43210"/></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Target Country</label><select class="form-input" id="f-country"><option value="">Select destination</option><option>Canada</option><option>Australia</option><option>United Kingdom</option><option>Germany</option><option>New Zealand</option><option>Other</option></select></div>
+        <div class="form-group"><label class="form-label">IELTS Experience</label><select class="form-input" id="f-exp"><option value="">Select one</option><option>First attempt — no prep</option><option>Preparing 1–3 months</option><option>Appeared before</option><option>Need to improve score</option></select></div>
       </div>
+      <button class="form-submit" onclick="submitForm()">Begin Quiz →</button>
+      <div class="form-note">🔒 Free · No spam · Unsubscribe anytime</div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Email Address</label>
-      <input class="form-input" id="f-email" type="email" placeholder="arjun@gmail.com" />
-    </div>
-    <div class="form-group">
-      <label class="form-label">WhatsApp Number</label>
-      <input class="form-input" id="f-phone" type="tel" placeholder="+91 98765 43210" />
-    </div>
-    <div class="form-group">
-      <label class="form-label">Target Country</label>
-      <select class="form-input" id="f-country">
-        <option value="">Select destination</option>
-        <option>Canada</option>
-        <option>Australia</option>
-        <option>United Kingdom</option>
-        <option>Germany</option>
-        <option>New Zealand</option>
-        <option>Other</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Current IELTS Experience</label>
-      <select class="form-input" id="f-exp">
-        <option value="">Select one</option>
-        <option>First attempt — no prep yet</option>
-        <option>Preparing for 1–3 months</option>
-        <option>Appeared before, want to improve</option>
-        <option>Scored below target, need help</option>
-      </select>
-    </div>
-    <button class="form-submit" onclick="submitForm()">
-      Begin Quiz Now →
-    </button>
-    <div class="form-note">🔒 No spam. Your data is safe. <span>Unsubscribe anytime.</span></div>
   </div>
 </div>
 
-<!-- ══════════════ QUIZ SCREEN ══════════════ -->
+<!-- ════════════ QUIZ ════════════ -->
 <div id="quiz-screen" class="screen">
-  <div class="quiz-header">
-    <div class="quiz-logo">Band<span>Master</span> IELTS</div>
-    <div class="quiz-progress-wrap">
-      <div class="quiz-progress-bar">
-        <div class="quiz-progress-fill" id="progress-fill"></div>
-      </div>
+  <div class="quiz-topbar">
+    <div class="quiz-topbar-brand">Terra<span>Tern</span> Live</div>
+    <div class="quiz-prog-wrap">
+      <div class="quiz-dots" id="quiz-dots"></div>
+      <div class="quiz-prog-track"><div class="quiz-prog-fill" id="quiz-prog-fill"></div></div>
       <div class="quiz-counter" id="quiz-counter">1 / 5</div>
     </div>
   </div>
-  <div class="quiz-body" id="quiz-body">
-    <!-- Injected by JS -->
-  </div>
+  <div class="quiz-container" id="quiz-container"></div>
 </div>
 
-<!-- ══════════════ RESULTS SCREEN ══════════════ -->
+<!-- ════════════ RESULTS ════════════ -->
 <div id="results-screen" class="screen">
-  <div class="results-header">
-    <div class="results-logo">Band<span>Master</span> IELTS</div>
-    <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);font-family:'DM Mono',monospace;">DIAGNOSTIC REPORT</div>
+  <div class="res-topbar">
+    <div class="res-topbar-brand">Terra<span>Tern</span> Live</div>
+    <div class="res-tag">Diagnostic Report</div>
   </div>
-  <div class="results-body">
-    <div class="score-hero" id="score-hero">
-      <!-- Injected by JS -->
-    </div>
-    <div class="results-breakdown" id="results-breakdown">
-      <!-- Injected by JS -->
-    </div>
-    <div class="results-cta">
-      <h3>Ready to reach Band 8?</h3>
-      <p>Get a personalised study plan based on your diagnostic results — free consultation with our expert trainers.</p>
-      <div class="results-cta-btns">
-        <button class="cta-primary" onclick="window.open('https://wa.me/917094956963','_blank')">📲 WhatsApp Us Now</button>
-        <button class="cta-secondary" onclick="retakeQuiz()">↺ Retake Quiz</button>
-      </div>
-    </div>
+  <div class="res-body">
+    <div id="r-score"></div>
+    <div id="r-breakdown"></div>
+    <div id="r-cta"></div>
   </div>
 </div>
 
 <script>
-// ── DATA ─────────────────────────────────────────────────────────────────────
-const questions = [
-  {
-    id: 1,
-    category: "Reading Comprehension",
-    question: "Read the passage and answer: What is the author's primary argument?",
-    passage: "Despite widespread belief that multitasking enhances productivity, research consistently shows that the human brain is fundamentally incapable of performing two cognitively demanding tasks simultaneously. What we call 'multitasking' is, in reality, rapid task-switching — a process that carries a significant cognitive cost and ultimately reduces overall efficiency.",
-    instruction: "Based on the passage above, select the best answer.",
-    options: [
-      "Multitasking is an effective way to increase productivity",
-      "The brain switches between tasks rapidly rather than doing them simultaneously",
-      "Cognitive tasks are impossible to complete under time pressure",
-      "Research on multitasking is inconclusive and contradictory"
-    ],
-    correct: 1,
-    explanation: "Correct! The author argues that true multitasking is a myth — the brain rapidly switches between tasks (task-switching), which has a cognitive cost."
-  },
-  {
-    id: 2,
-    category: "Grammar & Sentence Structure",
-    question: "Choose the grammatically correct sentence.",
-    passage: null,
-    instruction: "Select the option that is grammatically correct and appropriate for formal academic writing.",
-    options: [
-      "Neither the students nor the teacher were prepared for the exam.",
-      "Neither the students nor the teacher was prepared for the exam.",
-      "Neither the students nor the teacher are prepared for the exam.",
-      "Neither the students nor the teacher have been prepared for the exam."
-    ],
-    correct: 1,
-    explanation: "Correct! With 'neither...nor', the verb agrees with the subject closest to it — 'teacher' (singular), so 'was' is correct."
-  },
-  {
-    id: 3,
-    category: "Vocabulary in Context",
-    question: "Which word best fills the blank?",
-    passage: "The scientist's findings were ________, contradicting decades of established research and forcing the academic community to reassess long-held assumptions about climate patterns.",
-    instruction: "Choose the most appropriate word for the blank in the passage above.",
-    options: [
-      "mundane",
-      "ambiguous",
-      "groundbreaking",
-      "superfluous"
-    ],
-    correct: 2,
-    explanation: "Correct! 'Groundbreaking' means pioneering or revolutionary — fitting a discovery that contradicts decades of research and forces reassessment."
-  },
-  {
-    id: 4,
-    category: "Inference & Critical Reading",
-    question: "What can be inferred from the following statement?",
-    passage: "The new policy, while well-intentioned, has had the paradoxical effect of increasing the very inequality it was designed to reduce.",
-    instruction: "Select the statement that can be reasonably inferred from this sentence.",
-    options: [
-      "The policy was implemented without any research or planning",
-      "The policy achieved all of its intended goals successfully",
-      "The policy's outcomes are opposite to its stated objectives",
-      "The policymakers were aware of the unintended consequences"
-    ],
-    correct: 2,
-    explanation: "Correct! 'Paradoxical effect' directly means an outcome opposite to the intended one — the policy meant to reduce inequality actually increased it."
-  },
-  {
-    id: 5,
-    category: "Academic Word Usage",
-    question: "Which sentence uses the word 'constitute' correctly?",
-    passage: null,
-    instruction: "Select the sentence where 'constitute' is used accurately in an academic context.",
-    options: [
-      "The heavy rain constituted us to stay indoors all evening.",
-      "These three components constitute the core framework of the theory.",
-      "She constituted her opinion after reading the report carefully.",
-      "The government constituted its budget plans last quarter."
-    ],
-    correct: 1,
-    explanation: "Correct! 'Constitute' means 'to make up or form'. 'These components constitute the framework' is accurate — they form/make up the framework."
-  }
+const QS = [
+  { cat:"Reading Comprehension", q:"Read the passage and identify the author's primary argument.", passage:"Despite widespread belief that multitasking enhances productivity, research consistently shows that the human brain is fundamentally incapable of performing two cognitively demanding tasks simultaneously. What we call 'multitasking' is, in reality, rapid task-switching — a process that carries a significant cognitive cost and ultimately reduces overall efficiency.", hint:"Choose the answer that best captures the central claim made in the passage.", opts:["Multitasking effectively increases productivity","The brain switches rapidly between tasks rather than doing them simultaneously","Cognitive tasks are impossible under time pressure","Research on multitasking is inconclusive"], ans:1, ex:"The author argues that 'multitasking' is actually rapid task-switching with a cognitive cost — not genuine parallel processing." },
+  { cat:"Grammar & Sentence Structure", q:"Choose the grammatically correct sentence.", passage:null, hint:"Focus on subject-verb agreement, especially with 'neither...nor' constructions.", opts:["Neither the students nor the teacher were prepared.","Neither the students nor the teacher was prepared.","Neither the students nor the teacher are prepared.","Neither the students nor the teacher have been prepared."], ans:1, ex:"With 'neither...nor', the verb agrees with the nearest subject — 'teacher' (singular), so 'was' is correct." },
+  { cat:"Vocabulary in Context", q:"Which word best completes the sentence?", passage:"The scientist's findings were ________, contradicting decades of established research and forcing the academic community to reassess long-held assumptions about climate patterns.", hint:"Think about what word fits a discovery that upends decades of existing knowledge.", opts:["mundane","ambiguous","groundbreaking","superfluous"], ans:2, ex:"'Groundbreaking' means pioneering or revolutionary — perfectly fitting a finding that contradicts decades of research and forces reassessment." },
+  { cat:"Inference & Critical Reading", q:"What can be inferred from the passage below?", passage:"The new policy, while well-intentioned, has had the paradoxical effect of increasing the very inequality it was designed to reduce.", hint:"The word 'paradoxical' is the key clue.", opts:["The policy was implemented without research","The policy achieved all its intended goals","The policy's outcomes are opposite to its stated objectives","Policymakers were aware of the unintended consequences"], ans:2, ex:"'Paradoxical' means an outcome contrary to expectation — the policy designed to reduce inequality actually increased it." },
+  { cat:"Academic Word Usage", q:"Which sentence uses the word 'constitute' correctly?", passage:null, hint:"'Constitute' means 'to make up or form'. Identify where it functions accurately.", opts:["The heavy rain constituted us to stay indoors.","These three components constitute the core framework of the theory.","She constituted her opinion after reading the report.","The government constituted its budget plans last quarter."], ans:1, ex:"'Constitute' means to form or make up. 'These components constitute the framework' — they form/make up the framework." }
 ];
 
-// ── STATE ─────────────────────────────────────────────────────────────────────
-let currentQ = 0;
-let userAnswers = [];
-let answered = false;
-let userData = {};
+let cQ=0, answered=false, answers=[], user={};
 
-// ── NAVIGATION ────────────────────────────────────────────────────────────────
-function goToForm() {
-  switchScreen('form-screen');
-}
-function goBack(id) {
-  switchScreen(id);
-}
-function switchScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+function switchScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  window.scrollTo(0, 0);
+  window.scrollTo(0,0);
+}
+function goToForm(){ switchScreen('form-screen'); }
+
+function submitForm(){
+  const fn=document.getElementById('f-fname').value.trim();
+  const em=document.getElementById('f-email').value.trim();
+  const ph=document.getElementById('f-phone').value.trim();
+  const co=document.getElementById('f-country').value;
+  const ex=document.getElementById('f-exp').value;
+  if(!fn||!em||!ph||!co||!ex){alert('Please fill in all fields to continue.');return;}
+  if(!em.includes('@')){alert('Please enter a valid email address.');return;}
+  user={fn,em,ph,co,ex};
+  cQ=0; answers=[]; answered=false;
+  buildDots(); switchScreen('quiz-screen'); renderQ();
 }
 
-// ── FORM SUBMIT ───────────────────────────────────────────────────────────────
-function submitForm() {
-  const fname = document.getElementById('f-fname').value.trim();
-  const lname = document.getElementById('f-lname').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const country = document.getElementById('f-country').value;
-  const exp = document.getElementById('f-exp').value;
-
-  if (!fname || !email || !phone || !country || !exp) {
-    alert('Please fill in all fields to continue.');
-    return;
-  }
-  if (!email.includes('@')) {
-    alert('Please enter a valid email address.');
-    return;
-  }
-
-  userData = { fname, lname, email, phone, country, exp };
-  currentQ = 0;
-  userAnswers = [];
-  answered = false;
-  startQuiz();
+function buildDots(){
+  document.getElementById('quiz-dots').innerHTML=QS.map((_,i)=>`<div class="q-dot" id="d-${i}"></div>`).join('');
+}
+function updateDots(){
+  QS.forEach((_,i)=>{
+    const d=document.getElementById('d-'+i);
+    if(!d)return;
+    d.className='q-dot';
+    if(i<cQ)d.classList.add('done');
+    else if(i===cQ)d.classList.add('active');
+  });
 }
 
-// ── QUIZ ──────────────────────────────────────────────────────────────────────
-function startQuiz() {
-  switchScreen('quiz-screen');
-  renderQuestion();
-}
-
-function renderQuestion() {
-  const q = questions[currentQ];
-  answered = false;
-
-  // Progress
-  const pct = (currentQ / questions.length) * 100;
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('quiz-counter').textContent = `${currentQ + 1} / ${questions.length}`;
-
-  const letters = ['A','B','C','D'];
-  const passageHTML = q.passage
-    ? `<div class="quiz-passage">${q.passage}</div>`
-    : '';
-
-  const optionsHTML = q.options.map((opt, i) => `
-    <button class="option-btn" id="opt-${i}" onclick="selectAnswer(${i})">
-      <span class="option-letter">${letters[i]}</span>
-      <span>${opt}</span>
-    </button>
-  `).join('');
-
-  document.getElementById('quiz-body').innerHTML = `
-    <div class="quiz-category">${q.category}</div>
-    <div class="quiz-question">${q.question}</div>
-    <p class="quiz-instruction">${q.instruction}</p>
-    ${passageHTML}
-    <div class="options-grid">${optionsHTML}</div>
-    <div class="answer-feedback" id="feedback"></div>
-    <div class="quiz-nav">
-      <button class="quiz-next-btn" id="next-btn" onclick="nextQuestion()">
-        ${currentQ < questions.length - 1 ? 'Next Question →' : 'See My Results →'}
-      </button>
-    </div>
+function renderQ(){
+  answered=false;
+  const q=QS[cQ];
+  document.getElementById('quiz-prog-fill').style.width=((cQ/QS.length)*100)+'%';
+  document.getElementById('quiz-counter').textContent=`${cQ+1} / ${QS.length}`;
+  updateDots();
+  const L=['A','B','C','D'];
+  const pass=q.passage?`<div class="quiz-passage">${q.passage}</div>`:'';
+  document.getElementById('quiz-container').innerHTML=`
+    <div class="quiz-cat-tag">${q.cat}</div>
+    <div class="quiz-q">${q.q}</div>
+    <p class="quiz-hint">${q.hint}</p>
+    ${pass}
+    <div class="opts-list">${q.opts.map((o,i)=>`<button class="opt" id="o-${i}" onclick="pick(${i})"><span class="opt-key">${L[i]}</span><span>${o}</span></button>`).join('')}</div>
+    <div class="quiz-fb" id="fb"></div>
+    <div class="quiz-nav"><button class="quiz-next" id="nxt" onclick="nextQ()">${cQ<QS.length-1?'Next Question →':'See My Results →'}</button></div>
   `;
 }
 
-function selectAnswer(idx) {
-  if (answered) return;
-  answered = true;
-
-  const q = questions[currentQ];
-  const isCorrect = idx === q.correct;
-
-  userAnswers.push({ questionIdx: currentQ, selected: idx, correct: isCorrect });
-
-  // Style options
-  document.querySelectorAll('.option-btn').forEach((btn, i) => {
-    btn.disabled = true;
-    if (i === q.correct) btn.classList.add('correct');
-    else if (i === idx && !isCorrect) btn.classList.add('wrong');
+function pick(idx){
+  if(answered)return;
+  answered=true;
+  const q=QS[cQ];
+  const ok=idx===q.ans;
+  answers.push({qi:cQ,sel:idx,ok});
+  document.querySelectorAll('.opt').forEach((el,i)=>{
+    el.disabled=true;
+    if(i===q.ans)el.classList.add('correct');
+    else if(i===idx&&!ok)el.classList.add('wrong');
   });
-
-  // Feedback
-  const fb = document.getElementById('feedback');
-  fb.className = `answer-feedback show ${isCorrect ? 'correct' : 'wrong'}`;
-  fb.textContent = isCorrect
-    ? `✓ ${q.explanation}`
-    : `✗ Incorrect. The correct answer is ${['A','B','C','D'][q.correct]}. ${q.explanation}`;
-
-  // Show next
-  document.getElementById('next-btn').classList.add('show');
+  const fb=document.getElementById('fb');
+  fb.className=`quiz-fb show ${ok?'correct':'wrong'}`;
+  fb.textContent=ok?`✓ Correct! ${q.ex}`:`✗ Incorrect — correct answer is ${['A','B','C','D'][q.ans]}. ${q.ex}`;
+  document.getElementById('nxt').classList.add('show');
 }
 
-function nextQuestion() {
-  if (currentQ < questions.length - 1) {
-    currentQ++;
-    renderQuestion();
-  } else {
-    showResults();
-  }
+function nextQ(){
+  if(cQ<QS.length-1){cQ++;renderQ();}
+  else{buildResults();}
 }
 
-// ── RESULTS ───────────────────────────────────────────────────────────────────
-function showResults() {
+function buildResults(){
   switchScreen('results-screen');
-  const score = userAnswers.filter(a => a.correct).length;
-  const total = questions.length;
-  const pct = Math.round((score / total) * 100);
+  const score=answers.filter(a=>a.ok).length;
+  const total=QS.length;
+  const pct=Math.round((score/total)*100);
+  let band,label,color,emoji;
+  if(score===5){band='8.0–9.0';label='Excellent Performance';color='#10b981';emoji='🏆';}
+  else if(score===4){band='7.0–7.5';label='Proficient';color='#f5c518';emoji='🎯';}
+  else if(score===3){band='6.0–6.5';label='Good Foundation';color='#f59e0b';emoji='📈';}
+  else if(score===2){band='5.0–5.5';label='Developing';color='#f97316';emoji='💪';}
+  else{band='Below 5.0';label='Needs Focused Work';color='#ef4444';emoji='🔄';}
 
-  // Band estimate
-  let band, label, color;
-  if (score === 5)      { band = '8.0 – 9.0'; label = 'Excellent'; color = '#5ecfa0'; }
-  else if (score === 4) { band = '7.0 – 7.5'; label = 'Proficient'; color = var_gold(); }
-  else if (score === 3) { band = '6.0 – 6.5'; label = 'Good';      color = '#f0c060'; }
-  else if (score === 2) { band = '5.0 – 5.5'; label = 'Developing'; color = '#f08060'; }
-  else                  { band = 'Below 5.0'; label = 'Needs Work'; color = '#f08080'; }
-
-  // Ring
-  const radius = 80;
-  const circ = 2 * Math.PI * radius;
-  const offset = circ - (pct / 100) * circ;
-
-  document.getElementById('score-hero').innerHTML = `
-    <div class="score-ring-wrap">
-      <svg class="score-ring-svg" viewBox="0 0 200 200">
-        <circle class="score-ring-bg" cx="100" cy="100" r="${radius}"/>
-        <circle class="score-ring-fill" cx="100" cy="100" r="${radius}"
-          stroke="${color}"
-          stroke-dasharray="${circ}"
-          stroke-dashoffset="${circ}"
-          id="ring-fill"/>
-      </svg>
-      <div class="score-ring-center">
-        <div class="score-num" style="color:${color}">${score}</div>
-        <div class="score-denom">out of ${total}</div>
+  const R=60,C=2*Math.PI*R,off=C-(pct/100)*C;
+  document.getElementById('r-score').innerHTML=`
+    <div class="score-hero">
+      <div class="donut-wrap">
+        <svg class="donut-svg" viewBox="0 0 140 140">
+          <circle class="donut-bg" cx="70" cy="70" r="${R}"/>
+          <circle class="donut-fill" cx="70" cy="70" r="${R}" stroke="${color}" stroke-dasharray="${C}" stroke-dashoffset="${C}" id="donut-fill"/>
+        </svg>
+        <div class="donut-center"><div class="donut-score">${score}</div><div class="donut-total">out of ${total}</div></div>
+      </div>
+      <div class="score-right">
+        <div class="score-hi">Hi ${user.fn} ${emoji}</div>
+        <div class="score-headline">${label}</div>
+        <div class="score-desc">You scored ${pct}% on the TerraTern IELTS Diagnostic. Your estimated current band is:</div>
+        <div class="band-chip">Estimated Band &nbsp;<strong>${band}</strong></div>
       </div>
     </div>
-    <div class="score-title">Hello, ${userData.fname}! ${score >= 4 ? '🎉' : '💪'}</div>
-    <div class="score-subtitle">${label} — you scored ${pct}% on the diagnostic</div>
-    <div class="band-estimate">
-      Estimated IELTS Band: <strong>${band}</strong>
+  `;
+  requestAnimationFrame(()=>setTimeout(()=>{document.getElementById('donut-fill').style.strokeDashoffset=off;},100));
+
+  document.getElementById('r-breakdown').innerHTML=`
+    <div class="breakdown-card">
+      <div class="breakdown-head">Question Breakdown<div class="score-chip">${score} / ${total} Correct</div></div>
+      ${answers.map((a,i)=>{const q=QS[a.qi];return`<div class="b-row"><div class="b-num">Q${i+1}</div><div class="b-info"><div class="b-cat">${q.cat}</div><div class="b-q">${q.q}</div></div><div class="b-badge ${a.ok?'ok':'no'}">${a.ok?'✓ Correct':'✗ Wrong'}</div></div>`;}).join('')}
     </div>
   `;
 
-  // Animate ring
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      document.getElementById('ring-fill').style.strokeDashoffset = offset;
-    }, 100);
-  });
-
-  // Breakdown
-  const rows = userAnswers.map((a, i) => {
-    const q = questions[a.questionIdx];
-    return `
-      <div class="breakdown-item">
-        <div class="breakdown-q">Q${i+1}</div>
-        <div class="breakdown-text">${q.category} — ${q.question.substring(0, 55)}…</div>
-        <div class="breakdown-badge ${a.correct ? 'correct' : 'wrong'}">${a.correct ? '✓ Correct' : '✗ Wrong'}</div>
+  document.getElementById('r-cta').innerHTML=`
+    <div class="res-cta">
+      <h3>Ready to reach Band ${score>=4?'8.0+':'7.5'}?</h3>
+      <p>Get a personalised IELTS study plan built from your diagnostic results — free 15-minute expert consultation included.</p>
+      <div class="res-btns">
+        <button class="btn-wa" onclick="window.open('https://wa.me/917094956963','_blank')">📲 WhatsApp Us Now</button>
+        <button class="btn-retake" onclick="retake()">↺ Retake Quiz</button>
       </div>
-    `;
-  }).join('');
-
-  document.getElementById('results-breakdown').innerHTML = `
-    <div class="breakdown-title">Question Breakdown</div>
-    ${rows}
+    </div>
   `;
 }
 
-function var_gold() { return '#c8973a'; }
-
-function retakeQuiz() {
-  currentQ = 0;
-  userAnswers = [];
-  answered = false;
-  startQuiz();
+function retake(){
+  cQ=0;answers=[];answered=false;
+  buildDots();renderQ();switchScreen('quiz-screen');
 }
 </script>
 </body>
