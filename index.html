@@ -3,590 +3,722 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IELTS Preparation — TerraTern Live Learning</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Get Band 8+ in 30 Days — TerraTern Learn IELTS</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy: #0a1628;
-  --navy-mid: #132240;
-  --navy-light: #1e3a5f;
-  --blue: #1a56db;
-  --blue-bright: #2563eb;
-  --blue-light: #3b82f6;
-  --yellow: #f5c518;
-  --yellow-hover: #fbbf24;
-  --cyan: #06b6d4;
-  --white: #ffffff;
-  --off-white: #f8fafd;
-  --gray-50: #f1f5f9;
-  --gray-100: #e2e8f0;
-  --gray-300: #94a3b8;
-  --gray-500: #64748b;
-  --gray-700: #334155;
-  --text: #0f172a;
-  --radius: 12px;
-  --shadow: 0 4px 24px rgba(10,22,40,0.10);
-  --shadow-md: 0 8px 40px rgba(10,22,40,0.15);
+:root{
+  --navy:#0c1e3c;
+  --navy2:#1a3560;
+  --blue:#1d4ed8;
+  --blue2:#2563eb;
+  --blue-lt:#eff6ff;
+  --blue-mid:#dbeafe;
+  --yellow:#f59e0b;
+  --yellow-lt:#fffbeb;
+  --yellow-mid:#fef3c7;
+  --white:#ffffff;
+  --bg:#f8fafc;
+  --bg2:#f1f5f9;
+  --border:#e2e8f0;
+  --border2:#cbd5e1;
+  --text:#0f172a;
+  --text2:#334155;
+  --text3:#64748b;
+  --text4:#94a3b8;
+  --green:#059669;
+  --green-lt:#ecfdf5;
+  --green-mid:#d1fae5;
+  --red:#dc2626;
+  --red-lt:#fef2f2;
+  --red-mid:#fee2e2;
+  --r:10px;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.08);
+  --shadow-md:0 4px 12px rgba(0,0,0,0.08),0 16px 40px rgba(0,0,0,0.1);
+  --shadow-lg:0 8px 24px rgba(0,0,0,0.1),0 32px 64px rgba(0,0,0,0.12);
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--white); color:var(--text); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
-.screen { display:none; min-height:100vh; }
-.screen.active { display:block; }
-#form-screen.active { display:flex; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
 /* ── NAV ── */
-.nav { background:var(--navy); padding:0 5vw; height:64px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:200; }
-.nav-brand { display:flex; align-items:center; gap:8px; }
-.nav-logo-mark { width:32px; height:32px; background:var(--blue-bright); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-weight:800; font-size:0.72rem; color:white; }
-.nav-brand-name { font-family:'Sora',sans-serif; font-weight:700; font-size:1rem; color:white; }
-.nav-brand-name span { color:var(--yellow); }
-.nav-links { display:flex; align-items:center; gap:2rem; list-style:none; }
-.nav-links a { color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.875rem; font-weight:500; transition:color 0.2s; }
-.nav-links a:hover { color:white; }
-.nav-cta { background:var(--yellow); color:var(--navy); border:none; padding:0.5rem 1.25rem; border-radius:8px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.875rem; cursor:pointer; transition:all 0.2s; }
-.nav-cta:hover { background:var(--yellow-hover); transform:translateY(-1px); }
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  height:62px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;
+  box-shadow:0 1px 8px rgba(0,0,0,0.06);
+}
+.nav-logo{font-family:'Sora',sans-serif;font-weight:900;font-size:1.1rem;color:var(--navy);letter-spacing:-0.03em;}
+.nav-logo span{color:var(--blue2);}
+.nav-right{display:flex;align-items:center;gap:1.25rem;}
+.nav-phone{font-family:'Sora',sans-serif;font-weight:700;font-size:0.82rem;color:var(--text2);display:flex;align-items:center;gap:0.35rem;}
+.nav-cta{background:var(--blue2);color:#fff;border:none;padding:0.5rem 1.25rem;border-radius:7px;font-family:'Sora',sans-serif;font-weight:800;font-size:0.82rem;cursor:pointer;transition:all 0.2s;letter-spacing:0.01em;}
+.nav-cta:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,0.35);}
 
 /* ── HERO ── */
-.hero { background:linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, #0d1e3a 100%); padding:5rem 5vw 0; overflow:hidden; position:relative; }
-.hero::before { content:''; position:absolute; top:-100px; right:-100px; width:600px; height:600px; background:radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%); pointer-events:none; }
-.hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 420px; gap:4rem; align-items:end; position:relative; z-index:1; }
-.hero-badges { display:flex; gap:0.75rem; margin-bottom:1.5rem; flex-wrap:wrap; }
-.badge { display:inline-flex; align-items:center; gap:0.4rem; padding:0.3rem 0.9rem; border-radius:20px; font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
-.badge-blue { background:rgba(59,130,246,0.18); color:#93c5fd; border:1px solid rgba(59,130,246,0.3); }
-.badge-yellow { background:rgba(245,197,24,0.15); color:var(--yellow); border:1px solid rgba(245,197,24,0.3); }
-.badge-cyan { background:rgba(6,182,212,0.15); color:#67e8f9; border:1px solid rgba(6,182,212,0.3); }
-.hero-title { font-family:'Sora',sans-serif; font-size:clamp(2.2rem,3.5vw,3.2rem); font-weight:800; color:white; line-height:1.12; letter-spacing:-0.03em; margin-bottom:1.25rem; }
-.hero-title .hl { color:var(--yellow); }
-.hero-sub { font-size:1rem; color:rgba(255,255,255,0.62); line-height:1.7; max-width:500px; margin-bottom:2.25rem; }
-.hero-actions { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:2.5rem; }
-.btn-primary { background:var(--yellow); color:var(--navy); border:none; padding:0.85rem 1.75rem; border-radius:10px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.95rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; transition:all 0.2s; }
-.btn-primary:hover { background:var(--yellow-hover); transform:translateY(-2px); box-shadow:0 8px 24px rgba(245,197,24,0.35); }
-.btn-ghost { background:rgba(255,255,255,0.08); color:white; border:1.5px solid rgba(255,255,255,0.2); padding:0.85rem 1.5rem; border-radius:10px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:0.95rem; cursor:pointer; transition:all 0.2s; }
-.btn-ghost:hover { background:rgba(255,255,255,0.14); }
-.hero-trust { display:flex; align-items:center; gap:1.5rem; padding-bottom:2rem; flex-wrap:wrap; }
-.trust-item { display:flex; align-items:center; gap:0.5rem; font-size:0.78rem; color:rgba(255,255,255,0.48); }
-.trust-dot { width:6px; height:6px; border-radius:50%; background:var(--cyan); flex-shrink:0; }
-.trust-sep { width:1px; height:18px; background:rgba(255,255,255,0.12); }
+.hero{
+  background:white;
+  padding:100px 5vw 70px;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:4rem;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg, var(--blue2) 0%, #06b6d4 50%, var(--yellow) 100%);
+}
+/* subtle grid bg */
+.hero-bg-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:48px 48px;
+  opacity:0.35;pointer-events:none;
+}
+.hero-left{position:relative;z-index:1;animation:fadeUp 0.65s ease both;}
 
-/* Hero visual */
-.hero-visual { padding-bottom:2.5rem; position:relative; }
-.score-card { background:white; border-radius:16px; padding:1.5rem; box-shadow:var(--shadow-md); animation:floatCard 4s ease-in-out infinite; position:relative; }
-.card-label { font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray-500); margin-bottom:0.75rem; }
-.score-bars { display:flex; flex-direction:column; gap:0.6rem; }
-.sbar { display:flex; align-items:center; gap:0.75rem; }
-.sbar-label { font-size:0.75rem; font-weight:600; color:var(--gray-700); width:80px; }
-.sbar-track { flex:1; height:8px; background:var(--gray-100); border-radius:4px; overflow:hidden; }
-.sbar-fill { height:100%; border-radius:4px; background:var(--blue-bright); }
-.sbar-fill.gold { background:linear-gradient(90deg,var(--yellow),var(--yellow-hover)); }
-.sbar-fill.cyan { background:var(--cyan); }
-.sbar-val { font-size:0.75rem; font-weight:700; color:var(--navy); width:24px; text-align:right; }
-.float-badge { position:absolute; background:var(--navy); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:0.55rem 1rem; display:flex; align-items:center; gap:0.45rem; font-size:0.74rem; color:white; font-weight:600; box-shadow:0 8px 24px rgba(0,0,0,0.3); white-space:nowrap; }
-.fb-top { top:-14px; right:-18px; animation:fb1 3s ease-in-out infinite; }
-.fb-bot { bottom:50px; left:-28px; animation:fb2 3.5s ease-in-out infinite 0.5s; }
-@keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-@keyframes fb1 { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-6px) rotate(1deg)} }
-@keyframes fb2 { 0%,100%{transform:translateY(0) rotate(2deg)} 50%{transform:translateY(-5px) rotate(-1deg)} }
+.urgency-bar{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--yellow-mid);border:1px solid #fcd34d;
+  padding:0.38rem 1rem;border-radius:20px;
+  font-size:0.74rem;font-weight:800;color:#92400e;
+  letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1.5rem;
+}
+.u-dot{width:7px;height:7px;border-radius:50%;background:var(--yellow);animation:pulse 1.5s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
 
-/* ── STATS STRIP ── */
-.stats-strip { background:var(--off-white); border-bottom:1px solid var(--gray-100); padding:1.75rem 5vw; }
-.stats-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; text-align:center; }
-.stat-num { font-family:'Sora',sans-serif; font-size:2rem; font-weight:800; color:var(--navy); letter-spacing:-0.03em; line-height:1; margin-bottom:0.3rem; }
-.stat-num .ac { color:var(--blue-bright); }
-.stat-desc { font-size:0.78rem; color:var(--gray-500); font-weight:500; }
+h1{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(2.3rem,3.8vw,3.4rem);
+  font-weight:900;line-height:1.08;letter-spacing:-0.04em;
+  color:var(--navy);margin-bottom:1rem;
+}
+h1 .yl{color:var(--yellow);}
+h1 .bl{color:var(--blue2);}
+.hero-sub{font-size:1rem;color:var(--text3);line-height:1.72;max-width:500px;margin-bottom:2rem;}
 
-/* ── SECTIONS ── */
-.section { padding:5rem 5vw; }
-.section-center { text-align:center; }
-.section-tag { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(37,99,235,0.08); color:var(--blue-bright); padding:0.3rem 0.9rem; border-radius:20px; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem; border:1px solid rgba(37,99,235,0.15); }
-.section-title { font-family:'Sora',sans-serif; font-size:clamp(1.75rem,2.5vw,2.4rem); font-weight:800; letter-spacing:-0.03em; color:var(--navy); margin-bottom:0.75rem; }
-.section-title .hl { color:var(--blue-bright); }
-.section-sub { font-size:0.95rem; color:var(--gray-500); line-height:1.7; max-width:560px; margin:0 auto 3rem; }
+/* Pain-solution grid */
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:2rem;}
+.ps-box{border-radius:10px;padding:1.1rem 1.2rem;}
+.ps-box.pain{background:var(--red-lt);border:1.5px solid #fecaca;}
+.ps-box.sol{background:var(--green-lt);border:1.5px solid #a7f3d0;}
+.ps-head{font-family:'Sora',sans-serif;font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.55rem;}
+.ps-box.pain .ps-head{color:var(--red);}
+.ps-box.sol .ps-head{color:var(--green);}
+.ps-item{display:flex;align-items:flex-start;gap:0.45rem;font-size:0.81rem;line-height:1.4;color:var(--text2);margin-bottom:0.4rem;}
+.ps-item:last-child{margin-bottom:0;}
 
-/* Features */
-.features-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; }
-.feature-card { background:white; border:1.5px solid var(--gray-100); border-radius:var(--radius); padding:1.75rem; transition:all 0.2s; }
-.feature-card:hover { border-color:rgba(37,99,235,0.3); box-shadow:var(--shadow); transform:translateY(-2px); }
-.fc-icon { width:48px; height:48px; border-radius:12px; background:rgba(37,99,235,0.08); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1rem; }
-.fc-icon.y { background:rgba(245,197,24,0.12); }
-.fc-icon.c { background:rgba(6,182,212,0.1); }
-.fc-icon.g { background:rgba(16,185,129,0.1); }
-.fc-title { font-weight:700; font-size:1rem; color:var(--navy); margin-bottom:0.5rem; }
-.fc-desc { font-size:0.85rem; color:var(--gray-500); line-height:1.65; }
-.fc-pill { display:inline-block; margin-top:0.75rem; background:var(--gray-50); color:var(--blue-bright); padding:0.2rem 0.7rem; border-radius:20px; font-size:0.7rem; font-weight:700; }
+.hero-trust{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.trust-pill{display:flex;align-items:center;gap:0.35rem;font-size:0.77rem;font-weight:600;color:var(--text3);}
+.trust-div{width:1px;height:16px;background:var(--border2);}
 
-/* Steps */
-.steps-wrap { max-width:880px; margin:0 auto; }
-.step-row { display:grid; grid-template-columns:60px 1fr; gap:1.5rem; position:relative; padding-bottom:2.5rem; }
-.step-row:not(:last-child)::before { content:''; position:absolute; left:29px; top:60px; width:2px; height:calc(100% - 40px); background:linear-gradient(to bottom, var(--blue-bright), rgba(37,99,235,0.08)); }
-.step-circle { width:60px; height:60px; border-radius:50%; background:var(--navy); border:2px solid var(--blue-bright); display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-weight:800; font-size:1.1rem; color:var(--blue-light); flex-shrink:0; position:relative; z-index:1; }
-.step-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--blue-bright); margin-bottom:0.35rem; }
-.step-name { font-family:'Sora',sans-serif; font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:0.4rem; }
-.step-desc { font-size:0.87rem; color:var(--gray-500); line-height:1.6; }
-.step-content { padding-top:0.7rem; }
+/* ── HERO FORM ── */
+.hero-form{
+  position:relative;z-index:1;
+  background:white;
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:2rem;
+  box-shadow:var(--shadow-lg);
+  animation:fadeUp 0.65s ease both 0.15s;
+}
+/* accent top bar */
+.hero-form::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--blue2),#06b6d4);
+  border-radius:3px 3px 0 0;
+}
+.form-tag{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:var(--blue-lt);border:1px solid var(--blue-mid);
+  padding:0.28rem 0.8rem;border-radius:20px;
+  font-size:0.68rem;font-weight:800;color:var(--blue2);
+  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.85rem;
+}
+.form-title{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:900;color:var(--navy);letter-spacing:-0.02em;margin-bottom:0.3rem;}
+.form-sub{font-size:0.8rem;color:var(--text3);margin-bottom:1.2rem;line-height:1.5;}
 
-/* Testimonials */
-.testi-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
-.testi-card { background:white; border:1.5px solid var(--gray-100); border-radius:var(--radius); padding:1.5rem; transition:box-shadow 0.2s; }
-.testi-card:hover { box-shadow:var(--shadow); }
-.testi-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
-.testi-stars { color:var(--yellow); font-size:0.85rem; letter-spacing:2px; }
-.testi-chip { background:rgba(37,99,235,0.08); color:var(--blue-bright); border:1px solid rgba(37,99,235,0.15); padding:0.2rem 0.65rem; border-radius:20px; font-size:0.7rem; font-weight:700; }
-.testi-text { font-size:0.875rem; color:var(--gray-700); line-height:1.65; margin-bottom:1.25rem; }
-.testi-author { display:flex; align-items:center; gap:0.75rem; }
-.testi-av { width:36px; height:36px; border-radius:50%; background:var(--navy); color:white; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.78rem; }
-.testi-name { font-weight:700; font-size:0.85rem; color:var(--navy); }
-.testi-meta { font-size:0.75rem; color:var(--gray-500); }
+.fg{margin-bottom:0.8rem;}
+.fl{display:block;font-size:0.7rem;font-weight:700;color:var(--text2);margin-bottom:0.35rem;letter-spacing:0.04em;text-transform:uppercase;}
+.fi{
+  width:100%;padding:0.68rem 0.95rem;
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:8px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.875rem;
+  color:var(--text);outline:none;transition:all 0.2s;
+}
+.fi::placeholder{color:var(--text4);}
+.fi:focus{border-color:var(--blue2);background:white;box-shadow:0 0 0 3px rgba(37,99,235,0.1);}
+.fi option{background:white;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
+.form-btn{
+  width:100%;padding:0.9rem;
+  background:var(--blue2);color:white;
+  border:none;border-radius:9px;
+  font-family:'Sora',sans-serif;font-weight:900;font-size:0.97rem;
+  cursor:pointer;letter-spacing:-0.01em;
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  transition:all 0.2s;margin-top:0.2rem;
+}
+.form-btn:hover{background:var(--navy);transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,78,216,0.35);}
+.form-privacy{text-align:center;font-size:0.68rem;color:var(--text4);margin-top:0.7rem;}
+.sp-strip{
+  display:flex;align-items:center;gap:0.6rem;
+  margin-top:0.9rem;padding-top:0.9rem;
+  border-top:1px solid var(--border);
+}
+.avatars{display:flex;}
+.av{width:26px;height:26px;border-radius:50%;border:2px solid white;font-size:0.58rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin-left:-7px;color:white;}
+.av:first-child{margin-left:0;background:#1d4ed8;}
+.av:nth-child(2){background:#0891b2;}
+.av:nth-child(3){background:#7c3aed;}
+.av:nth-child(4){background:var(--green);font-size:0.7rem;}
+.sp-text{font-size:0.71rem;color:var(--text3);line-height:1.4;}
+.sp-text strong{color:var(--text);}
+.form-success{display:none;text-align:center;padding:1.5rem 0;}
+.suc-icon{font-size:3rem;margin-bottom:0.75rem;}
+.suc-title{font-family:'Sora',sans-serif;font-weight:900;font-size:1.2rem;color:var(--navy);margin-bottom:0.5rem;}
+.suc-sub{font-size:0.84rem;color:var(--text3);line-height:1.6;margin-bottom:1.25rem;}
+.suc-call{display:flex;align-items:center;justify-content:center;gap:0.6rem;background:var(--green-lt);border:1px solid var(--green-mid);border-radius:9px;padding:0.85rem;font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;color:var(--green);}
 
-/* CTA section */
-.cta-section { background:var(--navy); padding:5rem 5vw; text-align:center; position:relative; overflow:hidden; }
-.cta-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:800px; height:400px; background:radial-gradient(ellipse, rgba(37,99,235,0.2) 0%, transparent 65%); pointer-events:none; }
-.cta-section .section-title { color:white; position:relative; z-index:1; }
-.cta-section .section-title .hl { color:var(--yellow); }
-.cta-section .section-sub { color:rgba(255,255,255,0.58); position:relative; z-index:1; }
-.cta-btn-wrap { position:relative; z-index:1; display:flex; justify-content:center; }
+/* ── SECTION BASE ── */
+section{padding:5rem 5vw;position:relative;}
+.section-inner{max-width:1040px;margin:0 auto;}
+.section-label{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  background:var(--blue-lt);border:1px solid var(--blue-mid);
+  color:var(--blue2);padding:0.25rem 0.8rem;border-radius:20px;
+  font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:0.85rem;
+}
+.sh{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,2.5vw,2.4rem);font-weight:900;letter-spacing:-0.035em;line-height:1.15;color:var(--navy);margin-bottom:0.6rem;}
+.sh .yl{color:var(--yellow);}
+.sh .bl{color:var(--blue2);}
+.ss{font-size:0.93rem;color:var(--text3);line-height:1.72;max-width:560px;}
+.centered{text-align:center;}.centered .ss{margin-left:auto;margin-right:auto;}
 
-/* Footer */
-.footer-strip { background:#060d1a; padding:1.25rem 5vw; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
-.footer-brand { font-family:'Sora',sans-serif; font-size:0.85rem; font-weight:700; color:white; }
-.footer-brand span { color:var(--yellow); }
-.footer-copy { font-size:0.75rem; color:rgba(255,255,255,0.3); }
+/* ── PAIN ── */
+#pain{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stuck-card{background:var(--red-lt);border:1.5px solid #fecaca;border-radius:14px;padding:2rem;margin-bottom:1.5rem;}
+.stuck-title{font-family:'Sora',sans-serif;font-weight:900;font-size:1.2rem;color:var(--red);margin-bottom:0.4rem;}
+.stuck-sub{font-size:0.88rem;color:var(--text2);line-height:1.65;margin-bottom:1.5rem;}
+.pain-items{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.pain-item{background:white;border:1.5px solid #fecaca;border-radius:10px;padding:1.25rem;}
+.pain-icon{font-size:1.5rem;margin-bottom:0.6rem;}
+.pain-title{font-family:'Sora',sans-serif;font-weight:700;font-size:0.88rem;color:var(--red);margin-bottom:0.3rem;}
+.pain-desc{font-size:0.78rem;color:var(--text3);line-height:1.55;}
 
-/* ── FORM SCREEN ── */
-#form-screen { background:var(--off-white); align-items:center; justify-content:center; padding:2rem 1rem; min-height:100vh; position:relative; }
-#form-screen::before { content:''; position:fixed; inset:0; background:linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 40%, var(--off-white) 100%); z-index:0; }
-.form-wrap { position:relative; z-index:1; background:white; border-radius:20px; box-shadow:0 24px 80px rgba(10,22,40,0.28); width:100%; max-width:500px; overflow:hidden; animation:slideUp 0.4s cubic-bezier(0.16,1,0.3,1) both; }
-.form-header { background:var(--navy); padding:1.5rem 2rem; display:flex; align-items:center; justify-content:space-between; }
-.form-header-brand { font-family:'Sora',sans-serif; font-weight:800; font-size:1rem; color:white; }
-.form-header-brand span { color:var(--yellow); }
-.form-back-btn { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.7); padding:0.35rem 0.9rem; border-radius:6px; font-size:0.78rem; font-family:'Plus Jakarta Sans',sans-serif; cursor:pointer; transition:all 0.2s; }
-.form-back-btn:hover { background:rgba(255,255,255,0.18); color:white; }
-.form-body { padding:2rem; }
-.form-eyebrow { font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue-bright); margin-bottom:0.5rem; }
-.form-title { font-family:'Sora',sans-serif; font-size:1.5rem; font-weight:800; color:var(--navy); letter-spacing:-0.02em; margin-bottom:0.4rem; }
-.form-subtitle { font-size:0.85rem; color:var(--gray-500); margin-bottom:1.75rem; line-height:1.55; }
-.form-group { margin-bottom:0.9rem; }
-.form-label { display:block; font-size:0.78rem; font-weight:700; color:var(--gray-700); margin-bottom:0.4rem; }
-.form-input { width:100%; padding:0.72rem 1rem; border:1.5px solid var(--gray-100); border-radius:8px; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; color:var(--text); background:var(--off-white); outline:none; transition:all 0.2s; }
-.form-input:focus { border-color:var(--blue-bright); background:white; box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
-.form-input::placeholder { color:#b0bac6; }
-.form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
-.form-submit { width:100%; padding:0.9rem; background:var(--navy); color:white; border:none; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem; cursor:pointer; margin-top:0.5rem; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:0.6rem; letter-spacing:-0.01em; }
-.form-submit:hover { background:var(--navy-light); transform:translateY(-1px); box-shadow:0 8px 24px rgba(10,22,40,0.25); }
-.form-note { text-align:center; font-size:0.72rem; color:var(--gray-300); margin-top:1rem; }
+/* ── SOLUTION ── */
+#solution{background:var(--bg);}
+.sol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin-top:2.5rem;}
+.sol-card{
+  background:white;border:1.5px solid var(--border);
+  border-radius:14px;padding:1.75rem;
+  transition:all 0.2s;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.sol-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0;}
+.sol-card.c1::after{background:linear-gradient(90deg,var(--blue2),#06b6d4);}
+.sol-card.c2::after{background:linear-gradient(90deg,var(--yellow),#fb923c);}
+.sol-card.c3::after{background:linear-gradient(90deg,var(--green),#10b981);}
+.sol-card.c4::after{background:linear-gradient(90deg,#8b5cf6,#ec4899);}
+.sol-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.sol-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem;}
+.sol-card.c1 .sol-icon{background:var(--blue-lt);}
+.sol-card.c2 .sol-icon{background:var(--yellow-lt);}
+.sol-card.c3 .sol-icon{background:var(--green-lt);}
+.sol-card.c4 .sol-icon{background:#f5f3ff;}
+.sol-title{font-family:'Sora',sans-serif;font-weight:800;font-size:0.98rem;color:var(--navy);margin-bottom:0.45rem;}
+.sol-desc{font-size:0.83rem;color:var(--text3);line-height:1.65;}
+.sol-pill{display:inline-block;margin-top:0.7rem;padding:0.18rem 0.65rem;border-radius:20px;font-size:0.68rem;font-weight:800;}
+.sol-card.c1 .sol-pill{background:var(--blue-lt);color:var(--blue2);}
+.sol-card.c2 .sol-pill{background:var(--yellow-lt);color:#92400e;}
+.sol-card.c3 .sol-pill{background:var(--green-lt);color:var(--green);}
+.sol-card.c4 .sol-pill{background:#f5f3ff;color:#6d28d9;}
 
-/* ── QUIZ SCREEN ── */
-#quiz-screen { background:var(--off-white); }
-.quiz-topbar { background:var(--navy); height:64px; display:flex; align-items:center; padding:0 5vw; gap:1.5rem; position:sticky; top:0; z-index:100; }
-.quiz-topbar-brand { font-family:'Sora',sans-serif; font-weight:800; color:white; font-size:0.95rem; white-space:nowrap; }
-.quiz-topbar-brand span { color:var(--yellow); }
-.quiz-prog-wrap { flex:1; display:flex; align-items:center; gap:1rem; }
-.quiz-prog-track { flex:1; height:6px; background:rgba(255,255,255,0.12); border-radius:3px; overflow:hidden; }
-.quiz-prog-fill { height:100%; background:linear-gradient(90deg, var(--blue-bright), var(--cyan)); border-radius:3px; transition:width 0.4s cubic-bezier(0.4,0,0.2,1); width:0%; }
-.quiz-counter { font-family:'Sora',sans-serif; font-size:0.8rem; font-weight:700; color:rgba(255,255,255,0.5); white-space:nowrap; }
-.quiz-dots { display:flex; gap:6px; align-items:center; }
-.q-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.15); transition:all 0.2s; }
-.q-dot.done { background:var(--cyan); }
-.q-dot.active { background:var(--yellow); transform:scale(1.2); }
-.quiz-container { max-width:720px; margin:0 auto; padding:3rem 5vw 4rem; }
-.quiz-cat-tag { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(37,99,235,0.08); color:var(--blue-bright); border:1px solid rgba(37,99,235,0.15); padding:0.25rem 0.8rem; border-radius:20px; font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1.25rem; }
-.quiz-q { font-family:'Sora',sans-serif; font-size:clamp(1.2rem,2vw,1.55rem); font-weight:700; color:var(--navy); line-height:1.35; letter-spacing:-0.02em; margin-bottom:0.5rem; }
-.quiz-hint { font-size:0.83rem; color:var(--gray-500); margin-bottom:1.5rem; }
-.quiz-passage { background:white; border:1.5px solid var(--gray-100); border-left:4px solid var(--blue-bright); border-radius:10px; padding:1.25rem 1.5rem; font-size:0.9rem; line-height:1.75; color:var(--gray-700); margin-bottom:1.5rem; font-style:italic; position:relative; }
-.quiz-passage::before { content:'"'; font-size:3rem; color:rgba(37,99,235,0.12); position:absolute; top:0.2rem; left:1rem; font-family:Georgia,serif; line-height:1; }
-.opts-list { display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.5rem; }
-.opt { display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:white; border:1.5px solid var(--gray-100); border-radius:10px; cursor:pointer; font-size:0.9rem; color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; text-align:left; transition:all 0.15s; line-height:1.4; }
-.opt:hover:not(:disabled) { border-color:var(--blue-bright); background:rgba(37,99,235,0.04); }
-.opt-key { width:32px; height:32px; border-radius:8px; background:var(--gray-50); border:1.5px solid var(--gray-100); display:flex; align-items:center; justify-content:center; font-family:'Sora',sans-serif; font-size:0.78rem; font-weight:700; color:var(--gray-500); flex-shrink:0; transition:all 0.15s; }
-.opt:hover:not(:disabled) .opt-key { background:var(--blue-bright); border-color:var(--blue-bright); color:white; }
-.opt.selected { border-color:var(--blue-bright); background:rgba(37,99,235,0.06); }
-.opt.selected .opt-key { background:var(--blue-bright); border-color:var(--blue-bright); color:white; }
-.opt.correct { border-color:#10b981; background:rgba(16,185,129,0.06); }
-.opt.correct .opt-key { background:#10b981; border-color:#10b981; color:white; }
-.opt.wrong { border-color:#ef4444; background:rgba(239,68,68,0.06); }
-.opt.wrong .opt-key { background:#ef4444; border-color:#ef4444; color:white; }
-.opt:disabled { cursor:default; }
-.quiz-fb { padding:0.9rem 1.25rem; border-radius:8px; font-size:0.855rem; font-weight:500; line-height:1.55; display:none; }
-.quiz-fb.show { display:block; animation:slideUp 0.25s ease both; }
-.quiz-fb.correct { background:rgba(16,185,129,0.08); color:#065f46; border:1px solid rgba(16,185,129,0.2); }
-.quiz-fb.wrong { background:rgba(239,68,68,0.07); color:#7f1d1d; border:1px solid rgba(239,68,68,0.18); }
-.quiz-nav { display:flex; justify-content:flex-end; margin-top:1.25rem; }
-.quiz-next { background:var(--navy); color:white; border:none; padding:0.8rem 1.75rem; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:0.6rem; transition:all 0.25s; opacity:0; pointer-events:none; transform:translateY(6px); }
-.quiz-next.show { opacity:1; pointer-events:all; transform:translateY(0); }
-.quiz-next:hover { background:var(--navy-light); }
+/* ── OFFER ── */
+#offer{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.offer-list{display:flex;flex-direction:column;gap:0.65rem;margin-top:2rem;}
+.offer-row{
+  display:flex;align-items:center;gap:1.1rem;
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:11px;padding:1rem 1.4rem;
+  transition:all 0.2s;
+}
+.offer-row:hover{border-color:var(--blue-mid);background:var(--blue-lt);box-shadow:var(--shadow);}
+.offer-chk{width:36px;height:36px;flex-shrink:0;background:var(--green-lt);border:1.5px solid var(--green-mid);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--green);font-size:1rem;font-weight:900;}
+.offer-text{flex:1;}
+.offer-title{font-family:'Sora',sans-serif;font-weight:700;font-size:0.92rem;color:var(--navy);margin-bottom:0.15rem;}
+.offer-desc{font-size:0.78rem;color:var(--text3);line-height:1.4;}
+.offer-badge{flex-shrink:0;background:var(--yellow-mid);border:1px solid #fcd34d;color:#92400e;padding:0.22rem 0.65rem;border-radius:6px;font-size:0.68rem;font-weight:800;white-space:nowrap;}
 
-/* ── RESULTS ── */
-#results-screen { background:var(--off-white); }
-.res-topbar { background:var(--navy); height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 5vw; }
-.res-topbar-brand { font-family:'Sora',sans-serif; font-weight:800; color:white; font-size:0.95rem; }
-.res-topbar-brand span { color:var(--yellow); }
-.res-tag { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); }
-.res-body { max-width:800px; margin:0 auto; padding:3rem 5vw 4rem; }
-.score-hero { background:var(--navy); border-radius:20px; padding:2.5rem; margin-bottom:1.5rem; display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:center; position:relative; overflow:hidden; animation:slideUp 0.4s ease both; }
-.score-hero::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; background:radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%); pointer-events:none; }
-.donut-wrap { position:relative; width:140px; height:140px; flex-shrink:0; }
-.donut-svg { width:140px; height:140px; transform:rotate(-90deg); }
-.donut-bg { fill:none; stroke:rgba(255,255,255,0.08); stroke-width:12; }
-.donut-fill { fill:none; stroke-width:12; stroke-linecap:round; transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
-.donut-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-.donut-score { font-family:'Sora',sans-serif; font-size:2.4rem; font-weight:800; color:white; line-height:1; }
-.donut-total { font-size:0.75rem; color:rgba(255,255,255,0.4); margin-top:2px; }
-.score-right { position:relative; z-index:1; }
-.score-hi { font-size:0.8rem; color:rgba(255,255,255,0.55); margin-bottom:0.4rem; }
-.score-headline { font-family:'Sora',sans-serif; font-size:clamp(1.3rem,2.5vw,1.7rem); font-weight:800; color:white; letter-spacing:-0.02em; margin-bottom:0.5rem; }
-.score-desc { font-size:0.85rem; color:rgba(255,255,255,0.6); line-height:1.55; margin-bottom:1.25rem; }
-.band-chip { display:inline-flex; align-items:center; gap:0.75rem; background:rgba(245,197,24,0.12); border:1px solid rgba(245,197,24,0.3); border-radius:8px; padding:0.6rem 1.1rem; font-size:0.85rem; color:var(--yellow); font-weight:600; }
-.band-chip strong { font-family:'Sora',sans-serif; font-size:1.05rem; }
-.breakdown-card { background:white; border:1.5px solid var(--gray-100); border-radius:16px; overflow:hidden; margin-bottom:1.5rem; animation:slideUp 0.4s ease both 0.15s; }
-.breakdown-head { padding:1.25rem 1.5rem; border-bottom:1.5px solid var(--gray-100); font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem; color:var(--navy); display:flex; align-items:center; justify-content:space-between; }
-.score-chip { background:var(--gray-50); border:1.5px solid var(--gray-100); border-radius:6px; padding:0.25rem 0.75rem; font-size:0.78rem; font-weight:700; color:var(--navy); font-family:'Sora',sans-serif; }
-.b-row { display:flex; align-items:center; gap:1rem; padding:1rem 1.5rem; border-bottom:1px solid var(--gray-50); transition:background 0.15s; }
-.b-row:last-child { border-bottom:none; }
-.b-row:hover { background:var(--off-white); }
-.b-num { width:28px; height:28px; border-radius:6px; background:var(--gray-50); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:var(--gray-500); font-family:'Sora',sans-serif; flex-shrink:0; }
-.b-info { flex:1; min-width:0; }
-.b-cat { font-size:0.7rem; font-weight:700; color:var(--blue-bright); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.2rem; }
-.b-q { font-size:0.83rem; color:var(--gray-700); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.b-badge { flex-shrink:0; padding:0.25rem 0.75rem; border-radius:6px; font-size:0.7rem; font-weight:700; display:flex; align-items:center; gap:0.3rem; }
-.b-badge.ok { background:rgba(16,185,129,0.1); color:#059669; }
-.b-badge.no { background:rgba(239,68,68,0.08); color:#dc2626; }
-.res-cta { background:linear-gradient(135deg, var(--blue-bright) 0%, var(--navy-mid) 100%); border-radius:16px; padding:2.5rem; text-align:center; position:relative; overflow:hidden; animation:slideUp 0.4s ease both 0.3s; }
-.res-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 80% 20%, rgba(245,197,24,0.12) 0%, transparent 55%); }
-.res-cta h3 { font-family:'Sora',sans-serif; font-size:1.4rem; font-weight:800; color:white; margin-bottom:0.6rem; position:relative; z-index:1; letter-spacing:-0.02em; }
-.res-cta p { font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:1.75rem; position:relative; z-index:1; line-height:1.6; max-width:440px; margin-left:auto; margin-right:auto; }
-.res-btns { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
-.btn-wa { background:#25d366; color:white; border:none; padding:0.85rem 1.5rem; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.9rem; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; gap:0.5rem; }
-.btn-wa:hover { background:#1fb855; transform:translateY(-1px); }
-.btn-retake { background:rgba(255,255,255,0.12); color:white; border:1.5px solid rgba(255,255,255,0.25); padding:0.85rem 1.5rem; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.9rem; cursor:pointer; transition:all 0.2s; }
-.btn-retake:hover { background:rgba(255,255,255,0.2); }
+/* ── PROOF ── */
+#proof{background:var(--bg);}
+.results-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;}
+.result-box{background:white;border:1.5px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;box-shadow:var(--shadow);}
+.result-num{font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:900;color:var(--blue2);letter-spacing:-0.04em;line-height:1;}
+.result-label{font-size:0.73rem;color:var(--text3);margin-top:0.3rem;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.testi{background:white;border:1.5px solid var(--border);border-radius:14px;padding:1.5rem;box-shadow:var(--shadow);transition:all 0.2s;}
+.testi:hover{border-color:var(--border2);box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.testi-stars{color:var(--yellow);font-size:0.85rem;letter-spacing:2px;margin-bottom:0.6rem;}
+.testi-band{display:inline-block;margin-bottom:0.7rem;background:var(--blue-lt);border:1px solid var(--blue-mid);color:var(--blue2);padding:0.15rem 0.65rem;border-radius:20px;font-size:0.68rem;font-weight:800;}
+.testi-text{font-size:0.82rem;color:var(--text2);line-height:1.65;margin-bottom:1rem;}
+.testi-author{display:flex;align-items:center;gap:0.6rem;}
+.tav{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;color:white;flex-shrink:0;}
+.tav.b{background:var(--blue2);}
+.tav.g{background:var(--green);}
+.tav.p{background:#7c3aed;}
+.tname{font-family:'Sora',sans-serif;font-weight:700;font-size:0.82rem;color:var(--navy);}
+.tmeta{font-size:0.71rem;color:var(--text3);}
 
-/* Animations */
-@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+/* ── TRAINER TRUST ── */
+#trainers{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.cert-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
+.cert-card{background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;gap:0.5rem;transition:all 0.2s;}
+.cert-card:hover{border-color:var(--border2);box-shadow:var(--shadow);}
+.cert-icon{font-size:1.8rem;}
+.cert-title{font-family:'Sora',sans-serif;font-weight:700;font-size:0.88rem;color:var(--navy);}
+.cert-desc{font-size:0.75rem;color:var(--text3);line-height:1.45;}
 
-/* Responsive */
-@media (max-width:768px) {
-  .nav-links { display:none; }
-  .hero-inner { grid-template-columns:1fr; }
-  .hero-visual { display:none; }
-  .stats-inner { grid-template-columns:repeat(2,1fr); }
-  .features-grid { grid-template-columns:1fr; }
-  .testi-grid { grid-template-columns:1fr; }
-  .score-hero { grid-template-columns:1fr; text-align:center; }
-  .donut-wrap { margin:0 auto; }
-  .band-chip { justify-content:center; }
-  .form-row { grid-template-columns:1fr; }
-  .quiz-dots { display:none; }
-  .res-btns { flex-direction:column; }
-  .btn-wa,.btn-retake { justify-content:center; }
+/* ── FINAL CTA ── */
+#final-cta{background:var(--navy);position:relative;overflow:hidden;}
+#final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 500px at 70% 50%,rgba(37,99,235,0.25) 0%,transparent 65%);pointer-events:none;}
+.final-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.urg-chip{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.35);color:#fcd34d;padding:0.38rem 1rem;border-radius:20px;font-size:0.73rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem;}
+.final-h{font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3vw,2.7rem);font-weight:900;letter-spacing:-0.04em;color:white;margin-bottom:1rem;line-height:1.1;}
+.final-h .yl{color:var(--yellow);}
+.final-sub{font-size:0.93rem;color:rgba(255,255,255,0.65);line-height:1.72;margin-bottom:2.5rem;max-width:480px;margin-left:auto;margin-right:auto;}
+.final-form-card{background:white;border-radius:16px;padding:2rem;box-shadow:var(--shadow-lg);}
+.call-link{display:flex;align-items:center;justify-content:center;gap:0.6rem;margin-top:1rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:9px;padding:0.9rem;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;color:white;text-decoration:none;transition:all 0.2s;}
+.call-link:hover{background:rgba(255,255,255,0.12);}
+
+/* ── FAQ ── */
+#faq{background:var(--bg);}
+.faq-wrap{max-width:680px;margin:0 auto;}
+.faq-item{background:white;border:1.5px solid var(--border);border-radius:10px;margin-bottom:0.65rem;overflow:hidden;transition:all 0.2s;}
+.faq-item.open{border-color:var(--blue-mid);box-shadow:var(--shadow);}
+.faq-q{font-family:'Sora',sans-serif;font-weight:700;font-size:0.92rem;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 1.35rem;}
+.faq-chev{font-size:0.75rem;color:var(--text4);transition:transform 0.2s;flex-shrink:0;}
+.faq-item.open .faq-chev{transform:rotate(180deg);color:var(--blue2);}
+.faq-a{font-size:0.83rem;color:var(--text3);line-height:1.72;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.2s;padding:0 1.35rem;}
+.faq-item.open .faq-a{max-height:220px;padding:0 1.35rem 1.25rem;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);padding:1.5rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,0.08);}
+.foot-logo{font-family:'Sora',sans-serif;font-weight:900;font-size:0.9rem;color:white;}
+.foot-logo span{color:var(--yellow);}
+.foot-phone{font-family:'Sora',sans-serif;font-weight:700;font-size:0.85rem;color:var(--yellow);}
+.foot-copy{font-size:0.72rem;color:rgba(255,255,255,0.35);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.animate{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.animate.visible{opacity:1;transform:translateY(0);}
+.animate.d1{transition-delay:0.08s;}
+.animate.d2{transition-delay:0.16s;}
+.animate.d3{transition-delay:0.24s;}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:2.5rem;padding-top:82px;}
+  .ps-grid{grid-template-columns:1fr;}
+  .pain-items{grid-template-columns:1fr;}
+  .sol-grid{grid-template-columns:1fr;}
+  .results-strip{grid-template-columns:repeat(2,1fr);}
+  .testi-grid{grid-template-columns:1fr;}
+  .cert-strip{grid-template-columns:repeat(2,1fr);}
+  .frow{grid-template-columns:1fr!important;}
+  .final-form-card .frow{grid-template-columns:1fr!important;}
+  .nav-phone{display:none;}
+}
+@media(max-width:480px){
+  .cert-strip{grid-template-columns:1fr;}
+  .results-strip{grid-template-columns:1fr 1fr;}
+  h1{font-size:2rem;}
 }
 </style>
 </head>
 <body>
 
-<!-- ════════════ LANDING ════════════ -->
-<div id="landing" class="screen active">
-  <nav class="nav">
-    <div class="nav-brand">
-      <div class="nav-logo-mark">TT</div>
-      <div class="nav-brand-name">Terra<span>Tern</span> Live</div>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#">IELTS</a></li>
-      <li><a href="#">German</a></li>
-      <li><a href="#">Test Prep</a></li>
-      <li><a href="#">Success Stories</a></li>
-    </ul>
-    <button class="nav-cta" onclick="goToForm()">Take Free Quiz</button>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Terra<span>Tern</span> Learn</div>
+  <div class="nav-right">
+    <div class="nav-phone">📞 0806 235 8632</div>
+    <button class="nav-cta" onclick="document.getElementById('hero-form').scrollIntoView({behavior:'smooth'})">Get Free Session</button>
+  </div>
+</nav>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-badges">
-          <span class="badge badge-yellow">⭐ 4.9 Rated</span>
-          <span class="badge badge-blue">🎓 12,000+ Students</span>
-          <span class="badge badge-cyan">✓ Expert Trainers</span>
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+
+  <div class="hero-left">
+    <div class="urgency-bar"><span class="u-dot"></span>🔥 Limited Seats — Batch Starts Soon</div>
+    <h1>Get <span class="yl">Band 8+</span><br>in Just <span class="bl">30 Days.</span><br>Guaranteed.</h1>
+    <p class="hero-sub">Join 12,000+ students who cracked their target IELTS score with IDP-certified trainers, 100+ AI-powered mock tests, and dedicated 1-on-1 mentoring.</p>
+
+    <div class="ps-grid">
+      <div class="ps-box pain">
+        <div class="ps-head">❌ Why you're stuck</div>
+        <div class="ps-item">❌ &nbsp;No structured prep plan</div>
+        <div class="ps-item">❌ &nbsp;No expert feedback on writing</div>
+        <div class="ps-item">❌ &nbsp;No real exam strategy</div>
+      </div>
+      <div class="ps-box sol">
+        <div class="ps-head">✅ What you get</div>
+        <div class="ps-item">✅ &nbsp;IDP-certified trainers</div>
+        <div class="ps-item">✅ &nbsp;100+ AI-powered mock tests</div>
+        <div class="ps-item">✅ &nbsp;1:1 live training sessions</div>
+      </div>
+    </div>
+
+    <div class="hero-trust">
+      <div class="trust-pill">🏅 IDP Certified</div>
+      <div class="trust-div"></div>
+      <div class="trust-pill">👥 12,000+ Students</div>
+      <div class="trust-div"></div>
+      <div class="trust-pill">⭐ 4.9 Google Rating</div>
+      <div class="trust-div"></div>
+      <div class="trust-pill">📞 0806 235 8632</div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="hero-form" id="hero-form">
+    <div class="form-tag">🎯 Free Expert Consultation</div>
+    <div class="form-title">Book Your Free Session Today</div>
+    <div class="form-sub">Our IELTS expert will call you within 2 hours with your personalised Band 8+ plan.</div>
+
+    <div id="form-fields">
+      <div class="frow">
+        <div class="fg"><label class="fl">First Name</label><input class="fi" id="h-fname" placeholder="Arjun" type="text"/></div>
+        <div class="fg"><label class="fl">Last Name</label><input class="fi" id="h-lname" placeholder="Krishnan" type="text"/></div>
+      </div>
+      <div class="fg"><label class="fl">Email Address</label><input class="fi" id="h-email" placeholder="arjun@email.com" type="email"/></div>
+      <div class="fg"><label class="fl">Mobile Number</label><input class="fi" id="h-phone" placeholder="+91 98765 43210" type="tel"/></div>
+      <div class="frow">
+        <div class="fg">
+          <label class="fl">Current Band</label>
+          <select class="fi" id="h-band">
+            <option value="">Select</option>
+            <option>Below 5.0</option><option>5.0 – 5.5</option><option>6.0 – 6.5</option><option>7.0 – 7.5</option><option>First Attempt</option>
+          </select>
         </div>
-        <h1 class="hero-title">Master IELTS.<br>Unlock Your<br><span class="hl">Global Migration.</span></h1>
-        <p class="hero-sub">India's most trusted IELTS preparation platform. Live classes, AI-powered mock tests, and expert feedback designed to get you to Band 7.5 and above.</p>
-        <div class="hero-actions">
-          <button class="btn-primary" onclick="goToForm()">Take Free Diagnostic Quiz →</button>
-          <button class="btn-ghost">Explore Program</button>
-        </div>
-        <div class="hero-trust">
-          <div class="trust-item"><div class="trust-dot"></div>No credit card needed</div>
-          <div class="trust-sep"></div>
-          <div class="trust-item"><div class="trust-dot"></div>Results in 5 minutes</div>
-          <div class="trust-sep"></div>
-          <div class="trust-item"><div class="trust-dot"></div>Free study plan included</div>
+        <div class="fg">
+          <label class="fl">Target Country</label>
+          <select class="fi" id="h-country">
+            <option value="">Select</option>
+            <option>Canada</option><option>Australia</option><option>UK</option><option>Germany</option><option>New Zealand</option><option>Other</option>
+          </select>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="score-card">
-          <div class="float-badge fb-top">🎉 Band 8.0 Achieved!</div>
-          <div class="card-label">Live Score Progress</div>
-          <div class="score-bars">
-            <div class="sbar"><div class="sbar-label">Listening</div><div class="sbar-track"><div class="sbar-fill" style="width:85%"></div></div><div class="sbar-val">8.5</div></div>
-            <div class="sbar"><div class="sbar-label">Reading</div><div class="sbar-track"><div class="sbar-fill gold" style="width:80%"></div></div><div class="sbar-val">8.0</div></div>
-            <div class="sbar"><div class="sbar-label">Writing</div><div class="sbar-track"><div class="sbar-fill cyan" style="width:70%"></div></div><div class="sbar-val">7.0</div></div>
-            <div class="sbar"><div class="sbar-label">Speaking</div><div class="sbar-track"><div class="sbar-fill" style="width:75%"></div></div><div class="sbar-val">7.5</div></div>
+      <button class="form-btn" onclick="submitHero()">🚀 Book My Free Session →</button>
+      <div class="form-privacy">🔒 No spam. 100% free. No commitment required.</div>
+      <div class="sp-strip">
+        <div class="avatars">
+          <div class="av">AR</div><div class="av">PK</div><div class="av">SM</div><div class="av">+</div>
+        </div>
+        <div class="sp-text"><strong>47 students</strong> booked a free session this week</div>
+      </div>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <div class="suc-icon">🎉</div>
+      <div class="suc-title">You're booked in!</div>
+      <div class="suc-sub">Our expert will call you within 2 hours with your personalised Band 8+ roadmap. Check your email for confirmation.</div>
+      <div class="suc-call">📞 Or call us now: <strong>0806 235 8632</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAIN ══ -->
+<section id="pain">
+  <div class="section-inner">
+    <div class="animate" style="margin-bottom:2rem">
+      <div class="section-label">The Real Problem</div>
+      <h2 class="sh">Struggling to cross <span class="yl">Band 6.5 or 7?</span><br>You're not alone.</h2>
+      <p class="ss" style="margin-top:0.4rem">Most candidates stay stuck in the same band for months — not because they lack ability, but because they're missing the right system.</p>
+    </div>
+    <div class="stuck-card animate">
+      <div class="stuck-title">The IELTS Trap Most Candidates Fall Into</div>
+      <div class="stuck-sub">You've taken the test once, maybe twice. You study hard, watch YouTube videos, do practice questions — but your score barely moves. Here's exactly why:</div>
+      <div class="pain-items">
+        <div class="pain-item">
+          <div class="pain-icon">📚</div>
+          <div class="pain-title">No Structured Prep Plan</div>
+          <div class="pain-desc">Random videos and scattered materials don't build the systematic approach the IELTS examiner looks for. You need a day-by-day roadmap.</div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">🚫</div>
+          <div class="pain-title">No Expert Eye on Your Writing</div>
+          <div class="pain-desc">Without certified feedback on Task 1 & 2, you repeat the same band-costing mistakes every single attempt.</div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-icon">🎯</div>
+          <div class="pain-title">No Real Exam Strategy</div>
+          <div class="pain-desc">IELTS isn't just about English — it's a test-taking game. Without the right strategies, even fluent speakers score Band 6.5.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOLUTION ══ -->
+<section id="solution">
+  <div class="section-inner">
+    <div class="animate">
+      <div class="section-label">The TerraTern System</div>
+      <h2 class="sh">With TerraTern Learn,<br>you get a <span class="bl">proven system.</span></h2>
+      <p class="ss" style="margin-top:0.4rem">Every element is designed around one goal: getting you to Band 8+ in 30 days.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card c1 animate d1">
+        <div class="sol-icon">🏅</div>
+        <div class="sol-title">IDP-Certified Trainers</div>
+        <div class="sol-desc">Learn directly from IDP-certified IELTS professionals who know exactly what examiners are looking for — and how to deliver it consistently.</div>
+        <div class="sol-pill">Official Certification</div>
+      </div>
+      <div class="sol-card c2 animate d2">
+        <div class="sol-icon">🤖</div>
+        <div class="sol-title">100+ AI-Powered Mock Tests</div>
+        <div class="sol-desc">Unlimited full-length, exam-format mocks with instant AI band scores, section-wise analysis, and improvement recommendations after every attempt.</div>
+        <div class="sol-pill">Instant Band Score</div>
+      </div>
+      <div class="sol-card c3 animate d1">
+        <div class="sol-icon">🎙️</div>
+        <div class="sol-title">1:1 Live Training Sessions</div>
+        <div class="sol-desc">Private live sessions with your dedicated trainer — Speaking simulation, real-time Writing feedback, and focused module coaching on your weakest areas.</div>
+        <div class="sol-pill">Personal Trainer</div>
+      </div>
+      <div class="sol-card c4 animate d2">
+        <div class="sol-icon">🧭</div>
+        <div class="sol-title">Dedicated Mentor — Start to Score</div>
+        <div class="sol-desc">Your mentor builds your 30-day roadmap, tracks weekly progress, holds you accountable, and doesn't stop until you hit your target band.</div>
+        <div class="sol-pill">End-to-End Support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OFFER ══ -->
+<section id="offer">
+  <div class="section-inner">
+    <div class="animate centered">
+      <div class="section-label">What's Included</div>
+      <h2 class="sh">Everything in your <span class="yl">Band 8+ Program</span></h2>
+    </div>
+    <div class="offer-list animate">
+      <div class="offer-row">
+        <div class="offer-chk">✓</div>
+        <div class="offer-text"><div class="offer-title">IDP-Certified Trainer — Full 30-Day Access</div><div class="offer-desc">Your dedicated certified trainer guides every module, reviews every submission, gives real-time corrections throughout your entire program</div></div>
+        <div class="offer-badge">Core Feature</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-chk">✓</div>
+        <div class="offer-text"><div class="offer-title">100+ Full-Length AI Mock Tests</div><div class="offer-desc">Real exam format, timed. Instant band scores. Section analysis. Specific improvement tips. Retake as many times as needed.</div></div>
+        <div class="offer-badge">Unlimited</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-chk">✓</div>
+        <div class="offer-text"><div class="offer-title">Weekly 1-on-1 Live Sessions</div><div class="offer-desc">Private Zoom sessions with your trainer — live Speaking mock, real-time Writing feedback, focused strategy coaching</div></div>
+        <div class="offer-badge">Live</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-chk">✓</div>
+        <div class="offer-text"><div class="offer-title">Dedicated Mentor & 30-Day Personalised Roadmap</div><div class="offer-desc">Day-by-day prep plan built around your current band, target score, and exam date</div></div>
+        <div class="offer-badge">Personalised</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-chk">✓</div>
+        <div class="offer-text"><div class="offer-title">Writing Task 1 & 2 — Unlimited Submissions</div><div class="offer-desc">Submit as many essays as you want. Band-score grading + line-by-line corrections + proven template frameworks</div></div>
+        <div class="offer-badge">Unlimited</div>
+      </div>
+      <div class="offer-row">
+        <div class="offer-chk">✓</div>
+        <div class="offer-text"><div class="offer-title">Band 8 Speaking Simulation & Scoring</div><div class="offer-desc">Recorded mock Speaking tests with examiner-style feedback on fluency, vocabulary, pronunciation, and coherence</div></div>
+        <div class="offer-badge">Expert Graded</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROOF ══ -->
+<section id="proof">
+  <div class="section-inner">
+    <div class="animate centered" style="margin-bottom:2.5rem">
+      <div class="section-label">Proven Results</div>
+      <h2 class="sh">Numbers that <span class="bl">speak for themselves</span></h2>
+    </div>
+    <div class="results-strip animate">
+      <div class="result-box"><div class="result-num">12K+</div><div class="result-label">Students trained</div></div>
+      <div class="result-box"><div class="result-num">94%</div><div class="result-label">Achieve Band 7+ target</div></div>
+      <div class="result-box"><div class="result-num">30</div><div class="result-label">Days avg. to target</div></div>
+      <div class="result-box"><div class="result-num">4.9★</div><div class="result-label">Google rating</div></div>
+    </div>
+    <div class="testi-grid animate">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-band">Band 7.0 → 8.5</div>
+        <p class="testi-text">Stuck at 7.0 for two attempts. My TerraTern mentor spotted my writing and speaking gaps in the first session. 30 days later — Band 8.5. Canada PR approved!</p>
+        <div class="testi-author"><div class="tav b">PR</div><div><div class="tname">Priya Raghavan</div><div class="tmeta">Canada PR ✓ · Bangalore</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-band">Band 6.5 → 8.0</div>
+        <p class="testi-text">AI mocks + 1-on-1 Writing feedback changed everything. My trainer told me exactly what the examiner wants. Scored 8.0 on my first attempt with TerraTern.</p>
+        <div class="testi-author"><div class="tav g">AK</div><div><div class="tname">Arjun Krishnan</div><div class="tmeta">Australia PR ✓ · Chennai</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-band">Band 6.0 → 7.5</div>
+        <p class="testi-text">Three attempts before TerraTern. One attempt after. The structured 30-day plan and IDP-certified trainer made all the difference. Now studying in the UK.</p>
+        <div class="testi-author"><div class="tav p">SM</div><div><div class="tname">Sneha Murthy</div><div class="tmeta">UK Student Visa ✓ · Hyderabad</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRAINERS ══ -->
+<section id="trainers">
+  <div class="section-inner">
+    <div class="animate">
+      <div class="section-label">Our Trainers</div>
+      <h2 class="sh">Not just teachers —<br><span class="yl">IDP-certified IELTS experts.</span></h2>
+      <p class="ss" style="margin-top:0.4rem">Every trainer is IDP-certified, has scored Band 8.5+ themselves, and has helped a minimum of 500 students cross their target band before joining TerraTern.</p>
+    </div>
+    <div class="cert-strip animate">
+      <div class="cert-card"><div class="cert-icon">🏅</div><div class="cert-title">IDP Certified</div><div class="cert-desc">Officially certified by IDP Education — the world's largest IELTS test administrator</div></div>
+      <div class="cert-card"><div class="cert-icon">🎓</div><div class="cert-title">Band 8.5+ Personal Scores</div><div class="cert-desc">All trainers have achieved Band 8.5 or higher — they teach from experience, not textbooks</div></div>
+      <div class="cert-card"><div class="cert-icon">📈</div><div class="cert-title">500+ Students Each</div><div class="cert-desc">Minimum 500 successful students coached before joining the TerraTern trainer roster</div></div>
+      <div class="cert-card"><div class="cert-icon">⚡</div><div class="cert-title">24hr Feedback SLA</div><div class="cert-desc">All writing submissions reviewed and scored within 24 hours — guaranteed, every time</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section id="final-cta">
+  <div class="final-inner animate">
+    <div class="urg-chip">⏳ Limited Seats — Batch Filling Fast</div>
+    <h2 class="final-h">Stop guessing. Start scoring.<br><span class="yl">Band 8+ in 30 Days.</span></h2>
+    <p class="final-sub">Book your free expert consultation now. Our trainer will call you within 2 hours with your personalised Band 8+ game plan — zero cost, zero commitment.</p>
+    <div class="final-form-card">
+      <div id="ff-fields">
+        <div class="frow" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+          <div class="fg"><label class="fl">First Name</label><input class="fi" id="f2-fname" placeholder="Arjun" type="text"/></div>
+          <div class="fg"><label class="fl">Mobile Number</label><input class="fi" id="f2-phone" placeholder="+91 98765 43210" type="tel"/></div>
+        </div>
+        <div class="fg"><label class="fl">Email Address</label><input class="fi" id="f2-email" placeholder="arjun@email.com" type="email"/></div>
+        <div class="frow" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+          <div class="fg">
+            <label class="fl">Current Band</label>
+            <select class="fi" id="f2-band">
+              <option value="">Select</option>
+              <option>Below 5.0</option><option>5.0–5.5</option><option>6.0–6.5</option><option>7.0–7.5</option><option>First Attempt</option>
+            </select>
           </div>
-          <div class="float-badge fb-bot">📈 +1.5 Band improvement</div>
+          <div class="fg">
+            <label class="fl">Target Country</label>
+            <select class="fi" id="f2-country">
+              <option value="">Select</option>
+              <option>Canada</option><option>Australia</option><option>UK</option><option>Germany</option><option>New Zealand</option><option>Other</option>
+            </select>
+          </div>
         </div>
+        <button class="form-btn" onclick="submitFinal()">🎯 Book Free Expert Session →</button>
+        <div class="form-privacy" style="margin-top:0.75rem">🔒 Free · No spam · No commitment</div>
+      </div>
+      <div id="ff-success" style="display:none;text-align:center;padding:1.5rem 0">
+        <div style="font-size:3rem;margin-bottom:0.75rem">🎉</div>
+        <div style="font-family:'Sora',sans-serif;font-weight:900;font-size:1.2rem;color:var(--navy);margin-bottom:0.5rem">You're booked in!</div>
+        <div style="font-size:0.84rem;color:var(--text3);line-height:1.6;margin-bottom:1.25rem">Our expert calls you within 2 hours. Get ready for your Band 8+ journey!</div>
+        <div class="suc-call">📞 Or call now: <strong>0806 235 8632</strong></div>
       </div>
     </div>
-  </section>
-
-  <div class="stats-strip">
-    <div class="stats-inner">
-      <div><div class="stat-num">12<span class="ac">K+</span></div><div class="stat-desc">Students Trained</div></div>
-      <div><div class="stat-num">94<span class="ac">%</span></div><div class="stat-desc">Band 7+ Success Rate</div></div>
-      <div><div class="stat-num">4.<span class="ac">9★</span></div><div class="stat-desc">Average Rating</div></div>
-      <div><div class="stat-num">500<span class="ac">+</span></div><div class="stat-desc">Practice Questions</div></div>
-    </div>
+    <a href="tel:08062358632" class="call-link">📞 Prefer to call? &nbsp;<strong>0806 235 8632</strong></a>
   </div>
+</section>
 
-  <section class="section section-center" style="background:var(--off-white)">
-    <div class="section-tag">What You Get</div>
-    <h2 class="section-title">Everything to score <span class="hl">Band 7.5+</span></h2>
-    <p class="section-sub">Structured learning paths, expert guidance, and real exam practice — all in one place.</p>
-    <div class="features-grid">
-      <div class="feature-card"><div class="fc-icon">📖</div><div class="fc-title">Reading & Listening Mastery</div><div class="fc-desc">500+ IELTS-style questions with detailed walkthroughs. Learn skimming, scanning, and prediction strategies that work under exam conditions.</div><div class="fc-pill">500+ Questions</div></div>
-      <div class="feature-card"><div class="fc-icon y">✍️</div><div class="fc-title">Writing Task 1 & 2 Feedback</div><div class="fc-desc">Submit essays and receive band-score feedback from certified IELTS trainers within 24 hours — plus AI-powered instant analysis.</div><div class="fc-pill">24hr Turnaround</div></div>
-      <div class="feature-card"><div class="fc-icon c">🎙️</div><div class="fc-title">Live Speaking Mock Sessions</div><div class="fc-desc">1-on-1 practice with expert trainers who've helped 12,000+ students. Real exam conditions with live pronunciation correction.</div><div class="fc-pill">Live 1-on-1</div></div>
-      <div class="feature-card"><div class="fc-icon g">📊</div><div class="fc-title">Full-Length Mock Tests</div><div class="fc-desc">Timed, real exam-format mocks with instant AI scoring, detailed performance reports, and a personalised improvement roadmap after every attempt.</div><div class="fc-pill">Instant Reports</div></div>
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="animate centered" style="margin-bottom:2rem">
+      <div class="section-label">FAQs</div>
+      <h2 class="sh">Common <span class="bl">questions</span></h2>
     </div>
-  </section>
-
-  <section class="section">
-    <div style="max-width:880px;margin:0 auto">
-      <div class="section-tag">How It Works</div>
-      <h2 class="section-title">Your path to <span class="hl">target band</span></h2>
-      <p class="section-sub" style="margin:0.5rem 0 3rem;text-align:left;">Three focused steps — no fluff, just a clear roadmap to your visa-qualifying IELTS score.</p>
-      <div class="steps-wrap">
-        <div class="step-row"><div class="step-circle">01</div><div class="step-content"><div class="step-label">Assess</div><div class="step-name">Take the Free Diagnostic Quiz</div><div class="step-desc">5 targeted questions across Reading, Grammar, and Vocabulary. Instantly see your estimated band score and where you need to focus.</div></div></div>
-        <div class="step-row"><div class="step-circle">02</div><div class="step-content"><div class="step-label">Plan</div><div class="step-name">Get Your Personalised Study Plan</div><div class="step-desc">Based on your diagnostic result, our expert team builds a module-wise roadmap tailored to your current level, target score, and exam date.</div></div></div>
-        <div class="step-row"><div class="step-circle">03</div><div class="step-content"><div class="step-label">Achieve</div><div class="step-name">Score Your Target Band</div><div class="step-desc">Weekly full-length mock tests, live doubt sessions, and expert feedback loops until you hit your goal. 94% of our students do.</div></div></div>
+    <div class="faq-wrap animate">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is Band 8+ in 30 days really possible? <span class="faq-chev">▼</span></div>
+        <div class="faq-a">Yes — with structured guidance, targeted practice, and the right exam strategies. Our 94% Band 7+ success rate proves this. Students at Band 6.0 regularly reach 7.5–8.0 within a month using our 30-day plan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What does IDP-certified actually mean? <span class="faq-chev">▼</span></div>
+        <div class="faq-a">IDP Education is one of the two official IELTS co-owners worldwide. An IDP-certified trainer has completed official examiner training, knows the exact marking criteria, and is qualified to grade Writing and Speaking to official IELTS standards.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How are the AI mock tests different from free ones online? <span class="faq-chev">▼</span></div>
+        <div class="faq-a">Our 100+ mocks replicate actual IELTS conditions — same timing, format, and question types. After each test you get instant band scores with a section breakdown and specific improvement actions. Most free tests give you a score. We give you a roadmap.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I don't reach my target band in 30 days? <span class="faq-chev">▼</span></div>
+        <div class="faq-a">We stand behind our program. If you complete all sessions and assignments and still don't reach your target, we extend your mentorship at no extra cost until you do. Our success is measured by your score.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How is 1-on-1 training conducted? <span class="faq-chev">▼</span></div>
+        <div class="faq-a">All sessions are via Zoom at times that suit your schedule. Sessions are recorded for review. Your trainer is also available on WhatsApp for quick questions between sessions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is the free consultation really free? <span class="faq-chev">▼</span></div>
+        <div class="faq-a">Completely free, no strings attached. Our expert will call you, assess your current level and target, and share a personalised improvement plan. You decide from there whether to enrol.</div>
       </div>
     </div>
-  </section>
-
-  <section class="section section-center" style="background:var(--off-white)">
-    <div class="section-tag">Student Results</div>
-    <h2 class="section-title">Real scores. <span class="hl">Real migration stories.</span></h2>
-    <p class="section-sub">Join thousands who reached their target band and are now living abroad.</p>
-    <div class="testi-grid">
-      <div class="testi-card"><div class="testi-top"><div class="testi-stars">★★★★★</div><div class="testi-chip">Band 7.5</div></div><p class="testi-text">Went from 6.0 to 7.5 in just 8 weeks. The reading strategies were game-changing — I finally understood skimming and scanning properly. Canada PR approved!</p><div class="testi-author"><div class="testi-av">PR</div><div><div class="testi-name">Priya Raghavan</div><div class="testi-meta">Canada PR ✓ · Bangalore</div></div></div></div>
-      <div class="testi-card"><div class="testi-top"><div class="testi-stars">★★★★★</div><div class="testi-chip">Band 8.0</div></div><p class="testi-text">The writing templates and mock speaking sessions gave me tremendous confidence. Scored 8.0 on my first attempt. TerraTern's trainers are world-class.</p><div class="testi-author"><div class="testi-av">AK</div><div><div class="testi-name">Arjun Krishnan</div><div class="testi-meta">Australia PR ✓ · Chennai</div></div></div></div>
-      <div class="testi-card"><div class="testi-top"><div class="testi-stars">★★★★★</div><div class="testi-chip">Band 7.0</div></div><p class="testi-text">The free diagnostic quiz showed me exactly what I needed to work on. Within 6 weeks I'd cleared my target score. Now studying at a UK university!</p><div class="testi-author"><div class="testi-av">SM</div><div><div class="testi-name">Sneha Murthy</div><div class="testi-meta">UK Student Visa ✓ · Hyderabad</div></div></div></div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="section-tag" style="background:rgba(245,197,24,0.12);color:var(--yellow);border-color:rgba(245,197,24,0.25)">Free · Limited Time</div>
-    <h2 class="section-title" style="margin-top:0.5rem">Know your band in <span class="hl">5 minutes — free.</span></h2>
-    <p class="section-sub">Take the diagnostic, get your estimated score, and receive a personalised study plan from our experts.</p>
-    <div class="cta-btn-wrap"><button class="btn-primary" onclick="goToForm()">Start Free Diagnostic →</button></div>
-  </section>
-
-  <div class="footer-strip">
-    <div class="footer-brand">Terra<span>Tern</span> Live Learning</div>
-    <div class="footer-copy">© 2025 TerraTern Pvt Ltd · Bangalore, India</div>
   </div>
-</div>
+</section>
 
-<!-- ════════════ FORM ════════════ -->
-<div id="form-screen" class="screen">
-  <div class="form-wrap">
-    <div class="form-header">
-      <div class="form-header-brand">Terra<span>Tern</span> Live</div>
-      <button class="form-back-btn" onclick="switchScreen('landing')">← Back</button>
-    </div>
-    <div class="form-body">
-      <div class="form-eyebrow">Free Diagnostic</div>
-      <div class="form-title">Ready to find your band?</div>
-      <div class="form-subtitle">Your details let us send a personalised score report and study plan right after the quiz.</div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="f-fname" type="text" placeholder="Arjun"/></div>
-        <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="f-lname" type="text" placeholder="Krishnan"/></div>
-      </div>
-      <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="f-email" type="email" placeholder="arjun@gmail.com"/></div>
-      <div class="form-group"><label class="form-label">WhatsApp Number</label><input class="form-input" id="f-phone" type="tel" placeholder="+91 98765 43210"/></div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label">Target Country</label><select class="form-input" id="f-country"><option value="">Select destination</option><option>Canada</option><option>Australia</option><option>United Kingdom</option><option>Germany</option><option>New Zealand</option><option>Other</option></select></div>
-        <div class="form-group"><label class="form-label">IELTS Experience</label><select class="form-input" id="f-exp"><option value="">Select one</option><option>First attempt — no prep</option><option>Preparing 1–3 months</option><option>Appeared before</option><option>Need to improve score</option></select></div>
-      </div>
-      <button class="form-submit" onclick="submitForm()">Begin Quiz →</button>
-      <div class="form-note">🔒 Free · No spam · Unsubscribe anytime</div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════ QUIZ ════════════ -->
-<div id="quiz-screen" class="screen">
-  <div class="quiz-topbar">
-    <div class="quiz-topbar-brand">Terra<span>Tern</span> Live</div>
-    <div class="quiz-prog-wrap">
-      <div class="quiz-dots" id="quiz-dots"></div>
-      <div class="quiz-prog-track"><div class="quiz-prog-fill" id="quiz-prog-fill"></div></div>
-      <div class="quiz-counter" id="quiz-counter">1 / 5</div>
-    </div>
-  </div>
-  <div class="quiz-container" id="quiz-container"></div>
-</div>
-
-<!-- ════════════ RESULTS ════════════ -->
-<div id="results-screen" class="screen">
-  <div class="res-topbar">
-    <div class="res-topbar-brand">Terra<span>Tern</span> Live</div>
-    <div class="res-tag">Diagnostic Report</div>
-  </div>
-  <div class="res-body">
-    <div id="r-score"></div>
-    <div id="r-breakdown"></div>
-    <div id="r-cta"></div>
-  </div>
-</div>
+<footer>
+  <div class="foot-logo">Terra<span>Tern</span> Learn</div>
+  <div class="foot-phone">📞 0806 235 8632</div>
+  <div class="foot-copy">© 2025 TerraTern Pvt Ltd · Bangalore, India</div>
+</footer>
 
 <script>
-const QS = [
-  { cat:"Reading Comprehension", q:"Read the passage and identify the author's primary argument.", passage:"Despite widespread belief that multitasking enhances productivity, research consistently shows that the human brain is fundamentally incapable of performing two cognitively demanding tasks simultaneously. What we call 'multitasking' is, in reality, rapid task-switching — a process that carries a significant cognitive cost and ultimately reduces overall efficiency.", hint:"Choose the answer that best captures the central claim made in the passage.", opts:["Multitasking effectively increases productivity","The brain switches rapidly between tasks rather than doing them simultaneously","Cognitive tasks are impossible under time pressure","Research on multitasking is inconclusive"], ans:1, ex:"The author argues that 'multitasking' is actually rapid task-switching with a cognitive cost — not genuine parallel processing." },
-  { cat:"Grammar & Sentence Structure", q:"Choose the grammatically correct sentence.", passage:null, hint:"Focus on subject-verb agreement, especially with 'neither...nor' constructions.", opts:["Neither the students nor the teacher were prepared.","Neither the students nor the teacher was prepared.","Neither the students nor the teacher are prepared.","Neither the students nor the teacher have been prepared."], ans:1, ex:"With 'neither...nor', the verb agrees with the nearest subject — 'teacher' (singular), so 'was' is correct." },
-  { cat:"Vocabulary in Context", q:"Which word best completes the sentence?", passage:"The scientist's findings were ________, contradicting decades of established research and forcing the academic community to reassess long-held assumptions about climate patterns.", hint:"Think about what word fits a discovery that upends decades of existing knowledge.", opts:["mundane","ambiguous","groundbreaking","superfluous"], ans:2, ex:"'Groundbreaking' means pioneering or revolutionary — perfectly fitting a finding that contradicts decades of research and forces reassessment." },
-  { cat:"Inference & Critical Reading", q:"What can be inferred from the passage below?", passage:"The new policy, while well-intentioned, has had the paradoxical effect of increasing the very inequality it was designed to reduce.", hint:"The word 'paradoxical' is the key clue.", opts:["The policy was implemented without research","The policy achieved all its intended goals","The policy's outcomes are opposite to its stated objectives","Policymakers were aware of the unintended consequences"], ans:2, ex:"'Paradoxical' means an outcome contrary to expectation — the policy designed to reduce inequality actually increased it." },
-  { cat:"Academic Word Usage", q:"Which sentence uses the word 'constitute' correctly?", passage:null, hint:"'Constitute' means 'to make up or form'. Identify where it functions accurately.", opts:["The heavy rain constituted us to stay indoors.","These three components constitute the core framework of the theory.","She constituted her opinion after reading the report.","The government constituted its budget plans last quarter."], ans:1, ex:"'Constitute' means to form or make up. 'These components constitute the framework' — they form/make up the framework." }
-];
-
-let cQ=0, answered=false, answers=[], user={};
-
-function switchScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-}
-function goToForm(){ switchScreen('form-screen'); }
-
-function submitForm(){
-  const fn=document.getElementById('f-fname').value.trim();
-  const em=document.getElementById('f-email').value.trim();
-  const ph=document.getElementById('f-phone').value.trim();
-  const co=document.getElementById('f-country').value;
-  const ex=document.getElementById('f-exp').value;
-  if(!fn||!em||!ph||!co||!ex){alert('Please fill in all fields to continue.');return;}
+function submitHero(){
+  const fn=document.getElementById('h-fname').value.trim();
+  const em=document.getElementById('h-email').value.trim();
+  const ph=document.getElementById('h-phone').value.trim();
+  const b=document.getElementById('h-band').value;
+  const c=document.getElementById('h-country').value;
+  if(!fn||!em||!ph||!b||!c){alert('Please fill in all fields to book your session.');return;}
   if(!em.includes('@')){alert('Please enter a valid email address.');return;}
-  user={fn,em,ph,co,ex};
-  cQ=0; answers=[]; answered=false;
-  buildDots(); switchScreen('quiz-screen'); renderQ();
+  document.getElementById('form-fields').style.display='none';
+  document.getElementById('form-success').style.display='block';
 }
-
-function buildDots(){
-  document.getElementById('quiz-dots').innerHTML=QS.map((_,i)=>`<div class="q-dot" id="d-${i}"></div>`).join('');
+function submitFinal(){
+  const fn=document.getElementById('f2-fname').value.trim();
+  const em=document.getElementById('f2-email').value.trim();
+  const ph=document.getElementById('f2-phone').value.trim();
+  const b=document.getElementById('f2-band').value;
+  const c=document.getElementById('f2-country').value;
+  if(!fn||!em||!ph||!b||!c){alert('Please fill in all fields to book your session.');return;}
+  if(!em.includes('@')){alert('Please enter a valid email address.');return;}
+  document.getElementById('ff-fields').style.display='none';
+  document.getElementById('ff-success').style.display='block';
 }
-function updateDots(){
-  QS.forEach((_,i)=>{
-    const d=document.getElementById('d-'+i);
-    if(!d)return;
-    d.className='q-dot';
-    if(i<cQ)d.classList.add('done');
-    else if(i===cQ)d.classList.add('active');
-  });
+function toggleFaq(el){
+  const item=el.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
+  if(!open)item.classList.add('open');
 }
-
-function renderQ(){
-  answered=false;
-  const q=QS[cQ];
-  document.getElementById('quiz-prog-fill').style.width=((cQ/QS.length)*100)+'%';
-  document.getElementById('quiz-counter').textContent=`${cQ+1} / ${QS.length}`;
-  updateDots();
-  const L=['A','B','C','D'];
-  const pass=q.passage?`<div class="quiz-passage">${q.passage}</div>`:'';
-  document.getElementById('quiz-container').innerHTML=`
-    <div class="quiz-cat-tag">${q.cat}</div>
-    <div class="quiz-q">${q.q}</div>
-    <p class="quiz-hint">${q.hint}</p>
-    ${pass}
-    <div class="opts-list">${q.opts.map((o,i)=>`<button class="opt" id="o-${i}" onclick="pick(${i})"><span class="opt-key">${L[i]}</span><span>${o}</span></button>`).join('')}</div>
-    <div class="quiz-fb" id="fb"></div>
-    <div class="quiz-nav"><button class="quiz-next" id="nxt" onclick="nextQ()">${cQ<QS.length-1?'Next Question →':'See My Results →'}</button></div>
-  `;
-}
-
-function pick(idx){
-  if(answered)return;
-  answered=true;
-  const q=QS[cQ];
-  const ok=idx===q.ans;
-  answers.push({qi:cQ,sel:idx,ok});
-  document.querySelectorAll('.opt').forEach((el,i)=>{
-    el.disabled=true;
-    if(i===q.ans)el.classList.add('correct');
-    else if(i===idx&&!ok)el.classList.add('wrong');
-  });
-  const fb=document.getElementById('fb');
-  fb.className=`quiz-fb show ${ok?'correct':'wrong'}`;
-  fb.textContent=ok?`✓ Correct! ${q.ex}`:`✗ Incorrect — correct answer is ${['A','B','C','D'][q.ans]}. ${q.ex}`;
-  document.getElementById('nxt').classList.add('show');
-}
-
-function nextQ(){
-  if(cQ<QS.length-1){cQ++;renderQ();}
-  else{buildResults();}
-}
-
-function buildResults(){
-  switchScreen('results-screen');
-  const score=answers.filter(a=>a.ok).length;
-  const total=QS.length;
-  const pct=Math.round((score/total)*100);
-  let band,label,color,emoji;
-  if(score===5){band='8.0–9.0';label='Excellent Performance';color='#10b981';emoji='🏆';}
-  else if(score===4){band='7.0–7.5';label='Proficient';color='#f5c518';emoji='🎯';}
-  else if(score===3){band='6.0–6.5';label='Good Foundation';color='#f59e0b';emoji='📈';}
-  else if(score===2){band='5.0–5.5';label='Developing';color='#f97316';emoji='💪';}
-  else{band='Below 5.0';label='Needs Focused Work';color='#ef4444';emoji='🔄';}
-
-  const R=60,C=2*Math.PI*R,off=C-(pct/100)*C;
-  document.getElementById('r-score').innerHTML=`
-    <div class="score-hero">
-      <div class="donut-wrap">
-        <svg class="donut-svg" viewBox="0 0 140 140">
-          <circle class="donut-bg" cx="70" cy="70" r="${R}"/>
-          <circle class="donut-fill" cx="70" cy="70" r="${R}" stroke="${color}" stroke-dasharray="${C}" stroke-dashoffset="${C}" id="donut-fill"/>
-        </svg>
-        <div class="donut-center"><div class="donut-score">${score}</div><div class="donut-total">out of ${total}</div></div>
-      </div>
-      <div class="score-right">
-        <div class="score-hi">Hi ${user.fn} ${emoji}</div>
-        <div class="score-headline">${label}</div>
-        <div class="score-desc">You scored ${pct}% on the TerraTern IELTS Diagnostic. Your estimated current band is:</div>
-        <div class="band-chip">Estimated Band &nbsp;<strong>${band}</strong></div>
-      </div>
-    </div>
-  `;
-  requestAnimationFrame(()=>setTimeout(()=>{document.getElementById('donut-fill').style.strokeDashoffset=off;},100));
-
-  document.getElementById('r-breakdown').innerHTML=`
-    <div class="breakdown-card">
-      <div class="breakdown-head">Question Breakdown<div class="score-chip">${score} / ${total} Correct</div></div>
-      ${answers.map((a,i)=>{const q=QS[a.qi];return`<div class="b-row"><div class="b-num">Q${i+1}</div><div class="b-info"><div class="b-cat">${q.cat}</div><div class="b-q">${q.q}</div></div><div class="b-badge ${a.ok?'ok':'no'}">${a.ok?'✓ Correct':'✗ Wrong'}</div></div>`;}).join('')}
-    </div>
-  `;
-
-  document.getElementById('r-cta').innerHTML=`
-    <div class="res-cta">
-      <h3>Ready to reach Band ${score>=4?'8.0+':'7.5'}?</h3>
-      <p>Get a personalised IELTS study plan built from your diagnostic results — free 15-minute expert consultation included.</p>
-      <div class="res-btns">
-        <button class="btn-wa" onclick="window.open('https://wa.me/917094956963','_blank')">📲 WhatsApp Us Now</button>
-        <button class="btn-retake" onclick="retake()">↺ Retake Quiz</button>
-      </div>
-    </div>
-  `;
-}
-
-function retake(){
-  cQ=0;answers=[];answered=false;
-  buildDots();renderQ();switchScreen('quiz-screen');
-}
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.animate').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
