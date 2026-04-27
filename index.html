@@ -911,6 +911,7 @@ function G(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
+  if(id === 's-listening') onEnterListening();
 }
 
 /* ── FORM SUBMIT ─────────────────────────────── */
@@ -1057,29 +1058,22 @@ function formatTime(s){
 }
 
 /* initialise when listening screen becomes active */
-const _origG = G;
-function G(id){
-  _origG(id);
-  if(id === 's-listening'){
-    setTimeout(initAudio, 100);
-    /* reset player state on new attempt */
-    audioPlayed = false;
-    audioPlayCount = 0;
-    const audio = document.getElementById('ielts-audio');
-    if(audio){ audio.currentTime=0; audio.pause(); }
-    document.getElementById('ap-play-icon').textContent='▶';
-    document.getElementById('ap-prog-fill').style.width='0%';
-    document.getElementById('ap-thumb').style.left='0%';
-    document.getElementById('ap-current').textContent='0:00';
-    document.getElementById('ap-duration').textContent='—';
-    document.getElementById('ap-play').disabled=false;
-    document.getElementById('plays-count').textContent='1';
-    document.getElementById('ap-plays-left').classList.remove('used');
-    document.getElementById('ap-plays-left').textContent='';
-    document.getElementById('ap-plays-left').innerHTML='<span id="plays-count">1</span> play remaining';
-    document.getElementById('ap-played-notice').style.display='none';
-    document.getElementById('ap-error').style.display='none';
-  }
+function onEnterListening(){
+  audioPlayed = false;
+  audioPlayCount = 0;
+  const audio = document.getElementById('ielts-audio');
+  if(audio){ audio.currentTime=0; audio.pause(); }
+  const pi = document.getElementById('ap-play-icon'); if(pi) pi.textContent='▶';
+  const pf = document.getElementById('ap-prog-fill'); if(pf) pf.style.width='0%';
+  const pt = document.getElementById('ap-thumb'); if(pt) pt.style.left='0%';
+  const ac = document.getElementById('ap-current'); if(ac) ac.textContent='0:00';
+  const ad = document.getElementById('ap-duration'); if(ad) ad.textContent='—';
+  const pb = document.getElementById('ap-play'); if(pb) pb.disabled=false;
+  const pl = document.getElementById('ap-plays-left');
+  if(pl){ pl.classList.remove('used'); pl.innerHTML='<span id="plays-count">1</span> play remaining'; }
+  const pn = document.getElementById('ap-played-notice'); if(pn) pn.style.display='none';
+  const pe = document.getElementById('ap-error'); if(pe) pe.style.display='none';
+  setTimeout(initAudio, 100);
 }
 
 
