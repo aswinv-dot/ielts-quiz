@@ -6,20 +6,16 @@
 <title>IELTS Mini Quiz — TerraTern Learn</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ── RESET ──────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;font-family:'Poppins',sans-serif;overflow-x:hidden;}
+html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-font-smoothing:antialiased;}
 
-/* ── BRAND TOKENS ───────────────────── */
 :root{
   --navy:#0c1e3c;
-  --blue:#0255cc;        /* TerraTern brand blue */
+  --blue:#0255cc;
   --blue2:#0244aa;
   --blue-lt:#e8f0fd;
-  --blue-mid:#c3d7fb;
+  --blue-mid:#b8d0f9;
   --yellow:#f5c518;
-  --yellow2:#d4a817;
-  --white:#ffffff;
   --off:#f8fafc;
   --border:#e2e8f0;
   --text:#0f172a;
@@ -27,473 +23,458 @@ html,body{height:100%;font-family:'Poppins',sans-serif;overflow-x:hidden;}
   --text3:#64748b;
   --green:#059669;
   --green-lt:#ecfdf5;
-  --green-mid:#a7f3d0;
   --red:#dc2626;
   --red-lt:#fef2f2;
-  --red-mid:#fecaca;
 }
 
-/* ── SCREENS ────────────────────────── */
-.screen{display:none;width:100%;min-height:100vh;}
-.screen.active{display:grid;grid-template-columns:42% 58%;min-height:100vh;}
+/* ─── SCREEN MANAGER ─────────────────── */
+.screen{display:none;}
+.screen.active{display:flex;min-height:100vh;}
 
-/* ════════════════════════════════════
-   LEFT PANEL — DARK (all screens)
-════════════════════════════════════ */
+/* ─── SPLIT SHELL ────────────────────── */
+.shell{
+  display:grid;
+  grid-template-columns:42% 58%;
+  width:100%;min-height:100vh;
+}
+
+/* ══════════════════════════════════════
+   LEFT PANEL — dark, sticky
+══════════════════════════════════════ */
 .lp{
   background:var(--navy);
-  padding:2.75rem 3rem;
   display:flex;flex-direction:column;
-  position:relative;overflow:hidden;
+  padding:2.5rem 3rem;
+  position:sticky;top:0;height:100vh;overflow:hidden;
+  position:relative;
 }
-.lp .grid{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);
-  background-size:42px 42px;pointer-events:none;
-}
-.lp::before{
-  content:'';position:absolute;top:-120px;right:-80px;
-  width:420px;height:420px;
-  background:radial-gradient(circle,rgba(2,85,204,0.22) 0%,transparent 65%);
-  pointer-events:none;
-}
-.lp::after{
-  content:'';position:absolute;bottom:-70px;left:-40px;
-  width:280px;height:280px;
-  background:radial-gradient(circle,rgba(245,197,24,0.08) 0%,transparent 65%);
-  pointer-events:none;
-}
+.lp::before{content:'';position:absolute;top:-100px;right:-60px;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(2,85,204,0.22) 0%,transparent 65%);pointer-events:none;}
+.lp-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+  background-size:40px 40px;pointer-events:none;}
 
-/* logo */
-.lp-logo{
-  display:flex;align-items:center;gap:0.55rem;
-  position:relative;z-index:1;
-}
-.lp-mark{
-  width:30px;height:30px;background:var(--blue);border-radius:7px;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:0.65rem;color:#fff;flex-shrink:0;
-}
-.lp-name{font-weight:700;font-size:0.88rem;color:#fff;letter-spacing:-0.01em;}
+.lp-logo{display:flex;align-items:center;gap:0.55rem;position:relative;z-index:1;}
+.lp-mark{width:30px;height:30px;background:var(--blue);border-radius:7px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.65rem;color:#fff;flex-shrink:0;}
+.lp-name{font-weight:700;font-size:0.9rem;color:#fff;}
 .lp-name span{color:var(--yellow);}
 
-/* body */
-.lp-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:2rem 0 1.5rem;}
+.lp-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:1.5rem 0;}
 
-.lp-eyebrow{
-  display:inline-flex;align-items:center;gap:0.4rem;
+/* landing left */
+.lp-eyebrow{display:inline-flex;align-items:center;gap:0.4rem;
   background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.28);
-  color:var(--yellow);padding:0.28rem 0.82rem;border-radius:20px;
+  color:var(--yellow);padding:0.28rem 0.8rem;border-radius:20px;
   font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-  margin-bottom:1.3rem;width:fit-content;
-}
+  margin-bottom:1.2rem;width:fit-content;}
 .lp-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);
   animation:blink 1.5s ease-in-out infinite;flex-shrink:0;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
-
-.lp-kicker{font-size:0.65rem;font-weight:600;color:rgba(255,255,255,0.38);
-  letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.45rem;}
-.lp-h{
-  font-weight:900;font-size:clamp(1.75rem,2.4vw,2.4rem);
-  color:#fff;line-height:1.1;letter-spacing:-0.04em;margin-bottom:1rem;
-}
+.lp-kicker{font-size:0.63rem;font-weight:600;color:rgba(255,255,255,0.38);
+  letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem;}
+.lp-h{font-weight:900;font-size:clamp(1.7rem,2.3vw,2.3rem);color:#fff;
+  line-height:1.1;letter-spacing:-0.04em;margin-bottom:0.9rem;}
 .lp-h .yl{color:var(--yellow);}
-.lp-h .bl{color:#5b9bff;}
-
-.lp-quote{
-  border-left:3px solid var(--yellow);
-  padding:0.65rem 0 0.65rem 1rem;
-  font-size:0.9rem;font-weight:500;font-style:italic;
-  color:rgba(255,255,255,0.7);line-height:1.6;
-  margin-bottom:1.75rem;max-width:320px;
-}
-.lp-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;}
-.lchip{
-  display:flex;align-items:center;gap:0.38rem;
+.lp-quote{border-left:3px solid var(--yellow);padding:0.6rem 0 0.6rem 1rem;
+  font-size:0.88rem;font-weight:500;font-style:italic;color:rgba(255,255,255,0.68);
+  line-height:1.6;margin-bottom:1.5rem;max-width:300px;}
+.lp-chips{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:1.3rem;}
+.lchip{display:flex;align-items:center;gap:0.35rem;
   background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
-  border-radius:6px;padding:0.35rem 0.72rem;
-  font-size:0.7rem;font-weight:500;color:rgba(255,255,255,0.62);
-}
-.lp-timer{
-  display:inline-flex;align-items:center;gap:0.55rem;
-  background:rgba(2,85,204,0.15);border:1px solid rgba(2,85,204,0.3);
-  border-radius:7px;padding:0.6rem 0.95rem;
-  font-size:0.78rem;font-weight:600;color:#7ab4ff;width:fit-content;
-}
+  border-radius:6px;padding:0.32rem 0.68rem;font-size:0.68rem;font-weight:500;color:rgba(255,255,255,0.6);}
+.lp-timer{display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(2,85,204,0.15);border:1px solid rgba(2,85,204,0.28);
+  border-radius:7px;padding:0.55rem 0.9rem;font-size:0.76rem;font-weight:600;color:#7ab4ff;width:fit-content;}
 
-/* progress donut (quiz + results) */
-.lp-prog{text-align:center;margin-bottom:1.5rem;}
-.prog-ring-wrap{position:relative;width:96px;height:96px;margin:0 auto;}
-.prog-ring{width:96px;height:96px;transform:rotate(-90deg);display:block;}
-.pr-bg{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:7;}
-.pr-arc{fill:none;stroke:var(--yellow);stroke-width:7;stroke-linecap:round;
-  stroke-dasharray:251;stroke-dashoffset:251;transition:stroke-dashoffset 0.4s ease;}
-.pr-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.pr-n{font-weight:900;font-size:1.5rem;color:#fff;line-height:1;}
-.pr-of{font-size:0.58rem;color:rgba(255,255,255,0.35);margin-top:1px;}
-.lp-prog-lbl{font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.5rem;}
-
-.lp-qbox{
-  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
-  border-radius:9px;padding:0.95rem 1.1rem;margin-bottom:1.1rem;
+/* section indicator (quiz screens) */
+.lp-section-badge{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  background:rgba(245,197,24,0.1);border:1px solid rgba(245,197,24,0.25);
+  color:var(--yellow);padding:0.28rem 0.8rem;border-radius:6px;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  margin-bottom:1rem;width:fit-content;
 }
-.lp-qcat{font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.3rem;}
-.lp-qtxt{font-size:0.8rem;font-weight:600;color:#fff;line-height:1.45;}
+.lp-section-title{font-weight:800;font-size:clamp(1.3rem,2vw,1.75rem);color:#fff;
+  line-height:1.15;letter-spacing:-0.035em;margin-bottom:0.6rem;}
+.lp-section-title .yl{color:var(--yellow);}
+.lp-section-desc{font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:1.5rem;}
 
-.lp-tips{display:flex;flex-direction:column;gap:0.35rem;}
-.lp-tip{font-size:0.7rem;color:rgba(255,255,255,0.38);display:flex;align-items:flex-start;gap:0.4rem;}
-.lp-tip::before{content:'›';color:var(--yellow);flex-shrink:0;font-size:0.82rem;line-height:1.3;}
+/* progress steps */
+.lp-steps{display:flex;flex-direction:column;gap:0.5rem;}
+.lp-step{display:flex;align-items:center;gap:0.65rem;padding:0.6rem 0.8rem;
+  border-radius:8px;transition:background 0.2s;}
+.lp-step.done{background:rgba(5,150,105,0.1);}
+.lp-step.active{background:rgba(2,85,204,0.15);}
+.lp-step-dot{width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;}
+.lp-step.done .lp-step-dot{background:rgba(5,150,105,0.2);color:#34d399;}
+.lp-step.active .lp-step-dot{background:rgba(2,85,204,0.25);color:#7ab4ff;}
+.lp-step.upcoming .lp-step-dot{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);}
+.lp-step-txt{font-size:0.75rem;font-weight:600;}
+.lp-step.done .lp-step-txt{color:#34d399;}
+.lp-step.active .lp-step-txt{color:#fff;}
+.lp-step.upcoming .lp-step-txt{color:rgba(255,255,255,0.3);}
+
+/* timer display */
+.lp-timer-display{
+  margin-top:1rem;padding:0.75rem 0.9rem;
+  background:rgba(2,85,204,0.12);border:1px solid rgba(2,85,204,0.25);
+  border-radius:8px;text-align:center;
+}
+.ltd-label{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.2rem;}
+.ltd-time{font-weight:900;font-size:1.6rem;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:-0.02em;}
+.ltd-time.urgent{color:#fca5a5;}
 
 /* results left */
-.rl-wrap{text-align:center;margin-bottom:1.25rem;}
-.sr-cont{position:relative;width:140px;height:140px;margin:0 auto 1rem;}
-.sr-svg{width:140px;height:140px;transform:rotate(-90deg);}
-.sr-bg{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:11;}
-.sr-fill{fill:none;stroke-width:11;stroke-linecap:round;
-  stroke-dasharray:352;stroke-dashoffset:352;transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1);}
-.sr-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.sr-n{font-weight:900;font-size:2.6rem;color:#fff;line-height:1;}
-.sr-d{font-size:0.62rem;color:rgba(255,255,255,0.35);margin-top:2px;}
-.rl-verdict{font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:0.4rem;}
-.rl-band{
-  display:inline-flex;align-items:center;gap:0.45rem;
+.rl-ring-cont{position:relative;width:130px;height:130px;margin:0 auto 1rem;}
+.rl-svg{width:130px;height:130px;transform:rotate(-90deg);}
+.rl-bg{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:10;}
+.rl-fill{fill:none;stroke-width:10;stroke-linecap:round;
+  stroke-dasharray:327;stroke-dashoffset:327;transition:stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1);}
+.rl-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.rl-n{font-weight:900;font-size:2.4rem;color:#fff;line-height:1;}
+.rl-d{font-size:0.6rem;color:rgba(255,255,255,0.35);margin-top:2px;}
+.rl-verdict{font-weight:800;font-size:1rem;color:#fff;text-align:center;margin-bottom:0.4rem;}
+.rl-band{display:inline-flex;align-items:center;gap:0.4rem;
   background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.28);
-  border-radius:6px;padding:0.38rem 0.85rem;
-  font-size:0.76rem;font-weight:700;color:var(--yellow);
-}
-.rl-band strong{font-size:0.9rem;}
-.rl-copy{font-size:0.76rem;color:rgba(255,255,255,0.52);line-height:1.6;margin:1.1rem 0 0.9rem;}
-.rl-call{
-  display:flex;align-items:center;justify-content:center;gap:0.5rem;
-  width:100%;padding:0.8rem;
-  background:var(--yellow);color:var(--navy);border:none;border-radius:8px;
-  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.85rem;
-  cursor:pointer;transition:all 0.18s;margin-bottom:0.5rem;text-decoration:none;
-}
-.rl-call:hover{background:var(--yellow2);transform:translateY(-1px);}
-.rl-retake{
-  width:100%;padding:0.65rem;
-  background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.62);
+  border-radius:6px;padding:0.35rem 0.8rem;
+  font-size:0.74rem;font-weight:700;color:var(--yellow);}
+.rl-band strong{font-size:0.88rem;}
+.rl-copy{font-size:0.74rem;color:rgba(255,255,255,0.5);line-height:1.6;margin:1rem 0 0.8rem;text-align:center;}
+.rl-call{display:flex;align-items:center;justify-content:center;gap:0.45rem;
+  width:100%;padding:0.75rem;background:var(--yellow);color:var(--navy);border:none;border-radius:8px;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.83rem;
+  cursor:pointer;transition:all 0.18s;margin-bottom:0.45rem;text-decoration:none;}
+.rl-call:hover{background:#d4a817;transform:translateY(-1px);}
+.rl-retake{width:100%;padding:0.62rem;
+  background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);
   border:1px solid rgba(255,255,255,0.1);border-radius:8px;
-  font-family:'Poppins',sans-serif;font-weight:600;font-size:0.78rem;
-  cursor:pointer;transition:all 0.18s;
-}
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:0.76rem;cursor:pointer;transition:all 0.18s;}
 .rl-retake:hover{background:rgba(255,255,255,0.09);}
 
-/* footer */
-.lp-foot{
-  position:relative;z-index:1;
-  padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.07);
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:0.65rem;color:rgba(255,255,255,0.28);
-}
-.lp-foot-phone{font-weight:700;color:var(--yellow);font-size:0.68rem;}
+/* left footer */
+.lp-foot{position:relative;z-index:1;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,0.07);
+  display:flex;align-items:center;justify-content:space-between;font-size:0.63rem;color:rgba(255,255,255,0.25);}
+.lp-phone{font-weight:700;color:var(--yellow);font-size:0.66rem;}
 
-/* ════════════════════════════════════
-   RIGHT PANEL — LIGHT (all screens)
-════════════════════════════════════ */
+/* ══════════════════════════════════════
+   RIGHT PANEL — light, scrollable
+══════════════════════════════════════ */
 .rp{
   background:var(--white);
   display:flex;flex-direction:column;
-  border-left:1px solid rgba(0,0,0,0.04);
   overflow-y:auto;
+  border-left:1px solid var(--border);
+  height:100vh;
+  position:sticky;top:0;
 }
 
-/* logo header */
-.rp-head{
-  padding:1.5rem 2.5rem;
+/* top bar */
+.rp-bar{
+  padding:1.25rem 2.5rem;
   border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;
-  flex-shrink:0;
+  flex-shrink:0;background:var(--white);
+  position:sticky;top:0;z-index:10;
 }
-.rp-logo{height:36px;object-fit:contain;}
-.rp-logo-fallback{
-  display:flex;align-items:center;gap:0.5rem;
-}
-.rp-logo-fb-mark{
-  width:30px;height:30px;background:var(--blue);border-radius:7px;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:0.65rem;color:#fff;
-}
-.rp-logo-fb-name{font-weight:700;font-size:0.88rem;color:var(--navy);}
-.rp-logo-fb-name span{color:var(--blue);}
-.rp-badge{
-  background:var(--off);border:1px solid var(--border);
-  padding:0.2rem 0.65rem;border-radius:5px;
-  font-size:0.6rem;font-weight:700;color:var(--text3);letter-spacing:0.04em;
-}
+.rp-logo-wrap{display:flex;align-items:center;gap:0.5rem;}
+.rp-logo-mark{width:28px;height:28px;background:var(--blue);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.62rem;color:#fff;}
+.rp-logo-name{font-weight:700;font-size:0.85rem;color:var(--navy);}
+.rp-logo-name span{color:var(--blue);}
+.rp-bar-right{display:flex;align-items:center;gap:0.75rem;}
+.rp-badge{background:var(--off);border:1px solid var(--border);
+  padding:0.18rem 0.65rem;border-radius:5px;font-size:0.6rem;font-weight:700;color:var(--text3);}
+.rp-prog-wrap{display:flex;align-items:center;gap:0.5rem;}
+.rp-prog-track{width:80px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.rp-prog-fill{height:100%;background:var(--blue);border-radius:2px;transition:width 0.3s ease;width:0%;}
+.rp-prog-txt{font-size:0.65rem;font-weight:700;color:var(--text3);}
 
 /* scrollable content */
-.rp-body{flex:1;padding:2rem 2.5rem 2.5rem;overflow-y:auto;}
+.rp-content{flex:1;overflow-y:auto;padding:2rem 2.5rem;}
 
-/* ── LANDING RIGHT ── */
-.rp-pre{font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;}
-.rp-title{font-weight:800;font-size:1.25rem;color:var(--navy);letter-spacing:-0.03em;line-height:1.2;margin-bottom:0.3rem;}
-.rp-sub{font-size:0.78rem;color:var(--text3);line-height:1.6;margin-bottom:1.5rem;}
+/* ── LANDING right ── */
+.land-pre{font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;}
+.land-title{font-weight:800;font-size:1.2rem;color:var(--navy);letter-spacing:-0.03em;line-height:1.2;margin-bottom:0.3rem;}
+.land-sub{font-size:0.78rem;color:var(--text3);line-height:1.6;margin-bottom:1.5rem;}
+.land-steps{display:flex;flex-direction:column;}
+.land-step{display:grid;grid-template-columns:34px 1fr;gap:0.9rem;padding:0.95rem 0;border-bottom:1px solid var(--border);}
+.land-step:last-child{border-bottom:none;}
+.ls-lhs{display:flex;flex-direction:column;align-items:center;}
+.ls-num{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.68rem;flex-shrink:0;}
+.ls-line{width:1.5px;flex:1;background:var(--border);margin-top:4px;}
+.land-step:last-child .ls-line{display:none;}
+.ls-body{padding-top:0.1rem;}
+.ls-title{font-weight:700;font-size:0.84rem;color:var(--navy);margin-bottom:0.25rem;display:flex;align-items:center;gap:0.4rem;}
+.ls-desc{font-size:0.74rem;color:var(--text3);line-height:1.62;}
+.land-cta-area{margin-top:1.5rem;padding-top:1.3rem;border-top:1px solid var(--border);}
+.land-cta-note{font-size:0.65rem;color:var(--text3);margin-bottom:0.65rem;display:flex;align-items:center;gap:0.38rem;}
+.land-cta-btn{width:100%;padding:0.92rem;background:var(--navy);color:#fff;border:none;border-radius:9px;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.95rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.2s;}
+.land-cta-btn:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 22px rgba(2,85,204,0.28);}
+.cta-arr{transition:transform 0.2s;}
+.land-cta-btn:hover .cta-arr{transform:translateX(4px);}
+.land-cta-tiny{text-align:center;font-size:0.63rem;color:var(--text3);margin-top:0.45rem;}
 
-.steps{display:flex;flex-direction:column;}
-.step{display:grid;grid-template-columns:36px 1fr;gap:0.95rem;padding:1rem 0;border-bottom:1px solid var(--border);}
-.step:last-child{border-bottom:none;}
-.step-lhs{display:flex;flex-direction:column;align-items:center;}
-.step-num{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--navy);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:0.7rem;flex-shrink:0;
-}
-.step-line{width:1.5px;flex:1;background:var(--border);margin-top:5px;}
-.step:last-child .step-line{display:none;}
-.step-rhs{padding-top:0.12rem;}
-.step-title{font-weight:700;font-size:0.86rem;color:var(--navy);margin-bottom:0.28rem;display:flex;align-items:center;gap:0.4rem;}
-.step-desc{font-size:0.75rem;color:var(--text3);line-height:1.62;}
-
-.cta-area{margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid var(--border);}
-.cta-note{font-size:0.66rem;color:var(--text3);margin-bottom:0.7rem;display:flex;align-items:center;gap:0.38rem;}
-.cta-btn{
-  width:100%;padding:0.95rem;
-  background:var(--navy);color:#fff;border:none;border-radius:9px;
-  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.95rem;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.55rem;
-  transition:all 0.2s;letter-spacing:0.01em;
-}
-.cta-btn:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 22px rgba(2,85,204,0.28);}
-.cta-arrow{transition:transform 0.2s;}
-.cta-btn:hover .cta-arrow{transform:translateX(4px);}
-.cta-tiny{text-align:center;font-size:0.63rem;color:var(--text3);margin-top:0.48rem;}
-
-/* ── FORM RIGHT ── */
-.fp-back{
-  display:inline-flex;align-items:center;gap:0.32rem;
-  background:none;border:none;cursor:pointer;
-  font-family:'Poppins',sans-serif;font-size:0.72rem;font-weight:600;
-  color:var(--text3);padding:0;margin-bottom:1.3rem;transition:color 0.18s;
-}
+/* ── FORM right ── */
+.fp-back{display:inline-flex;align-items:center;gap:0.3rem;background:none;border:none;
+  cursor:pointer;font-family:'Poppins',sans-serif;font-size:0.7rem;font-weight:600;
+  color:var(--text3);padding:0;margin-bottom:1.2rem;transition:color 0.18s;}
 .fp-back:hover{color:var(--navy);}
-.fg{margin-bottom:0.75rem;}
-.fl{display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text2);margin-bottom:0.28rem;}
-.fi{
-  width:100%;padding:0.65rem 0.88rem;
-  border:1.5px solid var(--border);border-radius:7px;
-  font-family:'Poppins',sans-serif;font-size:0.83rem;color:var(--text);
-  background:var(--off);outline:none;transition:all 0.18s;
-}
+.fg{margin-bottom:0.72rem;}
+.fl{display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:0.27rem;}
+.fi{width:100%;padding:0.63rem 0.85rem;border:1.5px solid var(--border);border-radius:7px;
+  font-family:'Poppins',sans-serif;font-size:0.82rem;color:var(--text);background:var(--off);
+  outline:none;transition:all 0.18s;}
 .fi::placeholder{color:#94a3b8;}
 .fi:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(2,85,204,0.08);}
 .fi option{background:#fff;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.68rem;}
-.f-submit{
-  width:100%;padding:0.86rem;margin-top:0.35rem;
-  background:var(--navy);color:#fff;border:none;border-radius:8px;
-  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.9rem;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.45rem;
-  transition:all 0.2s;
-}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;}
+.f-submit{width:100%;padding:0.85rem;margin-top:0.35rem;background:var(--navy);color:#fff;border:none;
+  border-radius:8px;font-family:'Poppins',sans-serif;font-weight:800;font-size:0.9rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.45rem;transition:all 0.2s;}
 .f-submit:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 6px 18px rgba(2,85,204,0.28);}
-.f-tiny{text-align:center;font-size:0.63rem;color:#94a3b8;margin-top:0.5rem;}
-.sp-row{display:flex;align-items:center;gap:0.55rem;margin-top:1rem;padding-top:0.9rem;border-top:1px solid var(--border);}
-.avs{display:flex;}
-.av{width:23px;height:23px;border-radius:50%;border:1.5px solid #fff;font-size:0.5rem;font-weight:800;display:flex;align-items:center;justify-content:center;color:#fff;margin-left:-6px;}
+.f-tiny{text-align:center;font-size:0.62rem;color:#94a3b8;margin-top:0.48rem;}
+.sp-row{display:flex;align-items:center;gap:0.5rem;margin-top:0.9rem;padding-top:0.85rem;border-top:1px solid var(--border);}
+.avs{display:flex;}.av{width:22px;height:22px;border-radius:50%;border:1.5px solid #fff;font-size:0.5rem;font-weight:800;display:flex;align-items:center;justify-content:center;color:#fff;margin-left:-5px;}
 .av:first-child{margin-left:0;background:var(--blue);}
-.av:nth-child(2){background:#0891b2;}
-.av:nth-child(3){background:#7c3aed;}
-.av:nth-child(4){background:var(--green);}
-.sp-txt{font-size:0.67rem;color:var(--text3);}
-.sp-txt strong{color:var(--text);}
+.av:nth-child(2){background:#0891b2;}.av:nth-child(3){background:#7c3aed;}.av:nth-child(4){background:var(--green);}
+.sp-txt{font-size:0.65rem;color:var(--text3);}.sp-txt strong{color:var(--text);}
 
-/* ── QUIZ RIGHT ── */
-.qr-bar{
-  display:flex;align-items:center;gap:0.85rem;
-  padding:1rem 2.5rem;background:var(--off);
-  border-bottom:1px solid var(--border);flex-shrink:0;
-  position:sticky;top:0;z-index:5;
-}
-.qr-lbl{font-size:0.7rem;font-weight:700;color:var(--text3);white-space:nowrap;}
-.qr-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
-.qr-fill{height:100%;background:linear-gradient(90deg,var(--navy),var(--blue));border-radius:3px;transition:width 0.35s ease;width:0%;}
-.qr-cnt{font-size:0.7rem;font-weight:800;color:var(--navy);white-space:nowrap;}
-
-.q-wrap{padding:1.75rem 2.5rem 2.5rem;}
-
-/* passage (Reading section) */
-.passage-box{
-  background:var(--off);border:1.5px solid var(--border);border-left:3px solid var(--blue);
-  border-radius:8px;padding:1.1rem 1.25rem;
-  font-size:0.8rem;color:var(--text2);line-height:1.78;margin-bottom:1.4rem;
-}
-.passage-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.5rem;}
-.passage-title{font-weight:800;font-size:0.88rem;color:var(--navy);margin-bottom:0.5rem;}
-
-.q-section-head{
-  display:flex;align-items:center;gap:0.5rem;
-  margin-bottom:1rem;
-  font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);
-}
-.q-section-head .divider{flex:1;height:1px;background:var(--border);}
-
-.q-block{margin-bottom:1.5rem;}
-.q-cat-pill{
-  display:inline-flex;align-items:center;
+/* ── READING section ── */
+.sec-header{margin-bottom:1.5rem;}
+.sec-type-badge{display:inline-flex;align-items:center;gap:0.4rem;
   background:var(--blue-lt);border:1px solid var(--blue-mid);color:var(--blue);
-  padding:0.18rem 0.65rem;border-radius:20px;
-  font-size:0.58rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.7rem;
-}
-.q-label{font-weight:700;font-size:0.88rem;color:var(--navy);line-height:1.4;letter-spacing:-0.015em;margin-bottom:0.35rem;}
-.q-hint{font-size:0.72rem;color:var(--text3);margin-bottom:0.9rem;}
+  padding:0.25rem 0.75rem;border-radius:5px;font-size:0.62rem;font-weight:800;
+  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;}
+.sec-title{font-weight:800;font-size:1.05rem;color:var(--navy);letter-spacing:-0.025em;margin-bottom:0.3rem;}
+.sec-instructions{font-size:0.76rem;color:var(--text3);line-height:1.6;
+  background:var(--off);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;}
 
-/* MCQ options */
-.opts{display:flex;flex-direction:column;gap:0.45rem;}
-.opt{
-  display:flex;align-items:center;gap:0.72rem;
-  background:var(--off);border:1.5px solid var(--border);border-radius:7px;
-  padding:0.7rem 0.9rem;cursor:pointer;
-  font-family:'Poppins',sans-serif;font-size:0.8rem;color:var(--text);
-  text-align:left;transition:all 0.15s;line-height:1.4;
+/* Passage */
+.passage-card{
+  background:var(--off);border:1.5px solid var(--border);border-left:3px solid var(--blue);
+  border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.75rem;
 }
-.opt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-lt);}
-.opt-k{
-  width:26px;height:26px;border-radius:6px;flex-shrink:0;
+.passage-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.4rem;}
+.passage-heading{font-weight:800;font-size:0.95rem;color:var(--navy);margin-bottom:0.75rem;}
+.passage-text{font-size:0.83rem;color:var(--text2);line-height:1.82;}
+
+/* Questions */
+.qs-section-label{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--blue);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem;}
+.qs-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.q-block{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+.q-block:last-of-type{border-bottom:none;}
+.q-num{font-size:0.62rem;font-weight:800;color:var(--blue);margin-bottom:0.4rem;letter-spacing:0.05em;}
+.q-txt{font-weight:600;font-size:0.88rem;color:var(--navy);line-height:1.45;margin-bottom:0.75rem;}
+
+/* MCQ */
+.opts{display:flex;flex-direction:column;gap:0.42rem;}
+.opt{display:flex;align-items:center;gap:0.68rem;
+  background:var(--off);border:1.5px solid var(--border);border-radius:7px;
+  padding:0.65rem 0.88rem;cursor:pointer;
+  font-family:'Poppins',sans-serif;font-size:0.8rem;color:var(--text);
+  text-align:left;transition:all 0.15s;line-height:1.4;width:100%;}
+.opt:hover{border-color:var(--blue);background:var(--blue-lt);}
+.opt-k{width:25px;height:25px;border-radius:5px;flex-shrink:0;
   background:#e2e8f0;border:1.5px solid #cbd5e1;
   display:flex;align-items:center;justify-content:center;
-  font-size:0.62rem;font-weight:800;color:var(--text3);transition:all 0.15s;
-}
-.opt:hover:not(:disabled) .opt-k{background:var(--blue);border-color:var(--blue);color:#fff;}
-.opt.selected{border-color:var(--blue);background:var(--blue-lt);}
-.opt.selected .opt-k{background:var(--blue);border-color:var(--blue);color:#fff;}
-.opt.correct{border-color:var(--green);background:var(--green-lt);}
-.opt.correct .opt-k{background:var(--green);border-color:var(--green);color:#fff;}
-.opt.wrong{border-color:var(--red);background:var(--red-lt);}
-.opt.wrong .opt-k{background:var(--red);border-color:var(--red);color:#fff;}
-.opt:disabled{cursor:default;}
+  font-size:0.62rem;font-weight:800;color:var(--text3);transition:all 0.15s;}
+.opt:hover .opt-k{background:var(--blue);border-color:var(--blue);color:#fff;}
+.opt.picked{border-color:var(--blue);background:var(--blue-lt);}
+.opt.picked .opt-k{background:var(--blue);border-color:var(--blue);color:#fff;}
 
-/* Gap Fill */
-.gapfill-row{
-  display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;
-  font-size:0.82rem;color:var(--text2);line-height:1.7;margin-bottom:0.35rem;
-}
-.gap-input{
-  border:none;border-bottom:2px solid var(--blue);
-  background:transparent;outline:none;
-  font-family:'Poppins',sans-serif;font-size:0.82rem;color:var(--navy);font-weight:600;
-  padding:0.1rem 0.3rem;min-width:100px;width:120px;text-align:center;
-  transition:border-color 0.18s;
-}
-.gap-input:focus{border-color:var(--navy);}
-.gap-input.correct{border-color:var(--green);color:var(--green);}
-.gap-input.wrong{border-color:var(--red);color:var(--red);}
-.gap-input:disabled{background:transparent;}
+/* Gap fill inline */
+.gap-sentence{font-size:0.85rem;color:var(--text2);line-height:2;margin-bottom:0.5rem;}
+.gap-inp{border:none;border-bottom:2px solid var(--blue);background:transparent;
+  outline:none;font-family:'Poppins',sans-serif;font-size:0.85rem;color:var(--navy);
+  font-weight:600;padding:0.05rem 0.25rem;min-width:90px;width:110px;text-align:center;}
+.gap-inp:focus{border-color:var(--navy);}
 
 /* True/False */
-.tf-opts{display:flex;gap:0.7rem;margin-top:0.5rem;}
-.tf-btn{
-  flex:1;padding:0.65rem;border:1.5px solid var(--border);border-radius:7px;
+.tf-row{display:flex;gap:0.65rem;margin-top:0.25rem;}
+.tf-btn{flex:1;padding:0.6rem;border:1.5px solid var(--border);border-radius:7px;
   font-family:'Poppins',sans-serif;font-size:0.82rem;font-weight:700;
-  cursor:pointer;background:var(--off);color:var(--text2);transition:all 0.15s;
-}
-.tf-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
-.tf-btn.selected{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
-.tf-btn.correct{border-color:var(--green);background:var(--green-lt);color:var(--green);}
-.tf-btn.wrong{border-color:var(--red);background:var(--red-lt);color:var(--red);}
-.tf-btn:disabled{cursor:default;}
+  cursor:pointer;background:var(--off);color:var(--text2);transition:all 0.15s;text-align:center;}
+.tf-btn:hover{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
+.tf-btn.picked{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
 
-/* Listening form fill */
-.listen-form{background:var(--off);border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem;}
-.lf-title{background:var(--navy);color:#fff;padding:0.75rem 1.1rem;font-weight:700;font-size:0.82rem;}
-.lf-table{width:100%;border-collapse:collapse;}
-.lf-table td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);font-size:0.78rem;color:var(--text2);vertical-align:middle;}
-.lf-table td:first-child{font-weight:600;color:var(--text);width:45%;border-right:1px solid var(--border);background:#fff;}
-.lf-table td:last-child{background:var(--off);}
-.lf-table tr:last-child td{border-bottom:none;}
-.lf-inp{
-  border:none;border-bottom:2px solid var(--blue);background:transparent;
-  outline:none;font-family:'Poppins',sans-serif;font-size:0.8rem;color:var(--navy);
-  font-weight:600;padding:0.1rem 0.3rem;width:130px;transition:border-color 0.18s;
-}
-.lf-inp:focus{border-color:var(--navy);}
-.lf-inp.correct{border-color:var(--green);color:var(--green);}
-.lf-inp.wrong{border-color:var(--red);color:var(--red);}
-.lf-inp:disabled{background:transparent;}
-.lf-example{font-size:0.7rem;font-style:italic;color:var(--text3);}
+/* Section submit */
+.section-submit-area{margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--border);}
+.section-submit-btn{width:100%;padding:0.92rem;background:var(--navy);color:#fff;border:none;border-radius:9px;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.95rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.2s;}
+.section-submit-btn:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 6px 20px rgba(2,85,204,0.28);}
+.section-submit-btn:disabled{background:#94a3b8;cursor:not-allowed;transform:none;box-shadow:none;}
+.submit-note{text-align:center;font-size:0.65rem;color:var(--text3);margin-top:0.5rem;}
 
-/* Feedback */
-.q-fb{
-  padding:0.65rem 0.95rem;border-radius:7px;
-  font-size:0.75rem;font-weight:500;line-height:1.55;
-  display:none;margin-top:0.75rem;
+/* ── LISTENING section ── */
+.listen-intro{
+  background:var(--off);border:1.5px solid var(--border);border-radius:10px;
+  padding:1.25rem 1.5rem;margin-bottom:1.75rem;
 }
-.q-fb.show{display:block;}
-.q-fb.ok{background:var(--green-lt);color:#065f46;border:1px solid var(--green-mid);}
-.q-fb.no{background:var(--red-lt);color:#7f1d1d;border:1px solid var(--red-mid);}
-
-/* Submit quiz btn */
-.submit-quiz-btn{
-  width:100%;padding:0.85rem;margin-top:1.5rem;
-  background:var(--navy);color:#fff;border:none;border-radius:8px;
-  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.9rem;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;
-  transition:all 0.2s;opacity:0;pointer-events:none;transform:translateY(4px);
+.li-head{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;}
+.li-icon{width:42px;height:42px;background:rgba(2,85,204,0.1);border:1.5px solid var(--blue-mid);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.li-head-txt{}
+.li-head-title{font-weight:700;font-size:0.88rem;color:var(--navy);margin-bottom:0.12rem;}
+.li-head-sub{font-size:0.72rem;color:var(--text3);}
+.li-divider{height:1px;background:var(--border);margin:0.85rem 0;}
+.li-transcript-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:0.4rem 0;}
+.ltt-label{font-size:0.75rem;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:0.4rem;}
+.ltt-arrow{font-size:0.7rem;color:var(--blue);transition:transform 0.2s;}
+.ltt-arrow.open{transform:rotate(180deg);}
+.li-transcript{
+  margin-top:0.75rem;background:#fff;border:1px solid var(--border);
+  border-radius:8px;padding:1rem 1.1rem;
+  font-size:0.78rem;color:var(--text2);line-height:1.75;
+  display:none;
 }
-.submit-quiz-btn.show{opacity:1;pointer-events:all;transform:translateY(0);}
-.submit-quiz-btn:hover{background:var(--blue);}
+.li-transcript.show{display:block;}
+.li-transcript strong{color:var(--navy);}
 
-/* ── RESULTS RIGHT ── */
-.rr-body{flex:1;padding:1.75rem 2.5rem;overflow-y:auto;}
-.rr-head{font-weight:800;font-size:1.1rem;color:var(--navy);letter-spacing:-0.025em;
+/* Enrolment form table */
+.enrol-table{width:100%;border-collapse:collapse;margin-bottom:1.25rem;
+  background:#fff;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;}
+.enrol-table th{background:var(--navy);color:#fff;padding:0.65rem 1rem;
+  font-size:0.72rem;font-weight:700;text-align:left;letter-spacing:0.03em;}
+.enrol-table td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);
+  font-size:0.8rem;color:var(--text2);vertical-align:middle;}
+.enrol-table tr:last-child td{border-bottom:none;}
+.enrol-table td:first-child{font-weight:600;color:var(--text);width:42%;background:var(--off);}
+.enrol-table td:last-child{background:#fff;}
+.et-inp{border:none;border-bottom:2px solid var(--blue);background:transparent;
+  outline:none;font-family:'Poppins',sans-serif;font-size:0.82rem;color:var(--navy);
+  font-weight:600;padding:0.08rem 0.25rem;transition:border-color 0.18s;}
+.et-inp:focus{border-color:var(--navy);}
+.et-prefix{font-size:0.78rem;color:var(--text3);margin-right:2px;}
+.et-suffix{font-size:0.78rem;color:var(--text3);margin-left:2px;}
+.et-example{font-size:0.72rem;color:var(--text3);font-style:italic;}
+
+/* ── RESULTS right ── */
+.rr-head{font-weight:800;font-size:1.05rem;color:var(--navy);letter-spacing:-0.025em;
   margin-bottom:1.25rem;padding-bottom:0.85rem;border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;}
-.rr-chip{background:var(--off);border:1.5px solid var(--border);border-radius:5px;padding:0.18rem 0.62rem;font-size:0.68rem;font-weight:800;color:var(--navy);}
-
-.bk-section{margin-bottom:1.25rem;}
-.bk-sec-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.5rem;}
-.bk-sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
-.bk-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
+.rr-score-chip{background:var(--off);border:1.5px solid var(--border);border-radius:5px;
+  padding:0.18rem 0.62rem;font-size:0.68rem;font-weight:800;color:var(--navy);}
+.bk-section-lbl{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--blue);margin:1rem 0 0.6rem;display:flex;align-items:center;gap:0.5rem;}
+.bk-section-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+.bk-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.72rem 0;border-bottom:1px solid var(--border);}
 .bk-row:last-child{border-bottom:none;}
-.bk-num{width:24px;height:24px;border-radius:5px;flex-shrink:0;background:var(--off);font-size:0.62rem;font-weight:800;color:var(--text3);display:flex;align-items:center;justify-content:center;}
+.bk-num{width:24px;height:24px;border-radius:5px;flex-shrink:0;background:var(--off);
+  font-size:0.62rem;font-weight:800;color:var(--text3);display:flex;align-items:center;justify-content:center;}
 .bk-info{flex:1;min-width:0;}
-.bk-q{font-size:0.75rem;color:var(--text2);line-height:1.4;margin-bottom:0.18rem;}
-.bk-ans{font-size:0.7rem;color:var(--text3);}
-.bk-ans strong{color:var(--navy);}
-.bk-badge{flex-shrink:0;padding:0.16rem 0.55rem;border-radius:5px;font-size:0.62rem;font-weight:800;margin-top:2px;}
+.bk-q{font-size:0.74rem;color:var(--text2);line-height:1.4;margin-bottom:0.15rem;}
+.bk-detail{font-size:0.68rem;color:var(--text3);}
+.bk-detail strong{color:var(--navy);}
+.bk-badge{flex-shrink:0;padding:0.15rem 0.52rem;border-radius:5px;font-size:0.62rem;font-weight:800;}
 .bk-badge.ok{background:var(--green-lt);color:var(--green);}
 .bk-badge.no{background:var(--red-lt);color:var(--red);}
+.improve-card{background:var(--off);border:1.5px solid var(--border);border-radius:9px;padding:1rem 1.1rem;margin-top:0.75rem;}
+.ic-head{font-weight:700;font-size:0.82rem;color:var(--navy);margin-bottom:0.3rem;}
+.ic-desc{font-size:0.72rem;color:var(--text3);line-height:1.65;margin-bottom:0.65rem;}
+.ic-tags{display:flex;flex-wrap:wrap;gap:0.38rem;}
+.ic-tag{background:var(--blue-lt);border:1px solid var(--blue-mid);color:var(--blue);
+  padding:0.14rem 0.55rem;border-radius:5px;font-size:0.62rem;font-weight:700;}
 
-.improve-card{background:var(--off);border:1.5px solid var(--border);border-radius:9px;padding:1rem 1.1rem;margin-top:0.5rem;}
-.ic-head{font-weight:700;font-size:0.83rem;color:var(--navy);margin-bottom:0.32rem;display:flex;align-items:center;gap:0.38rem;}
-.ic-desc{font-size:0.73rem;color:var(--text3);line-height:1.65;margin-bottom:0.7rem;}
-.ic-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
-.ic-tag{background:var(--blue-lt);border:1px solid var(--blue-mid);color:var(--blue);padding:0.16rem 0.58rem;border-radius:5px;font-size:0.63rem;font-weight:700;}
-.ic-tag.w{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
+/* ── AUDIO PLAYER ────────────────────── */
+.audio-player{
+  display:flex;align-items:center;gap:1rem;
+  background:#fff;border:1.5px solid var(--border);border-radius:10px;
+  padding:0.9rem 1.1rem;
+}
+.ap-play-btn{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:var(--blue);color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;transition:all 0.18s;
+}
+.ap-play-btn:hover{background:var(--blue2);transform:scale(1.06);}
+.ap-play-btn:disabled{background:#94a3b8;cursor:not-allowed;transform:none;}
+.ap-center{flex:1;min-width:0;}
+.ap-progress-track{
+  height:6px;background:var(--border);border-radius:3px;
+  position:relative;cursor:pointer;margin-bottom:0.4rem;
+}
+.ap-progress-fill{
+  height:100%;background:var(--blue);border-radius:3px;
+  width:0%;transition:width 0.1s linear;pointer-events:none;
+}
+.ap-progress-thumb{
+  width:12px;height:12px;border-radius:50%;
+  background:var(--blue);border:2px solid #fff;box-shadow:0 0 0 2px var(--blue);
+  position:absolute;top:50%;transform:translate(-50%,-50%);
+  left:0%;pointer-events:none;transition:left 0.1s linear;
+}
+.ap-times{display:flex;justify-content:space-between;font-size:0.65rem;font-weight:600;color:var(--text3);}
+.ap-right{flex-shrink:0;text-align:center;}
+.ap-plays-left{
+  font-size:0.65rem;font-weight:700;color:var(--text3);
+  background:var(--off);border:1px solid var(--border);
+  border-radius:6px;padding:0.25rem 0.55rem;white-space:nowrap;
+}
+.ap-plays-left.used{color:var(--red);background:var(--red-lt);border-color:#fecaca;}
+.ap-played-notice{
+  margin-top:0.75rem;padding:0.6rem 0.85rem;background:var(--green-lt);
+  border:1px solid #a7f3d0;border-radius:7px;
+  font-size:0.75rem;font-weight:600;color:var(--green);
+}
+.ap-error{
+  margin-top:0.75rem;padding:0.65rem 0.9rem;background:#fef2f2;
+  border:1px solid #fecaca;border-radius:7px;
+  font-size:0.75rem;color:var(--red);line-height:1.5;
+}
+.ap-error code{background:rgba(220,38,38,0.1);padding:0.1rem 0.35rem;border-radius:4px;font-size:0.72rem;}
 
-/* ── ANIM ────────────────────────────── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.fu{animation:fadeUp 0.38s ease both;}
-.d1{animation-delay:0.05s;}.d2{animation-delay:0.1s;}.d3{animation-delay:0.15s;}
+/* validation state */
+.opt.correct-final{border-color:var(--green)!important;background:var(--green-lt)!important;}
+.opt.correct-final .opt-k{background:var(--green)!important;border-color:var(--green)!important;color:#fff!important;}
+.opt.wrong-final{border-color:var(--red)!important;background:var(--red-lt)!important;}
+.opt.wrong-final .opt-k{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important;}
+.tf-btn.correct-final{border-color:var(--green)!important;background:var(--green-lt)!important;color:var(--green)!important;}
+.tf-btn.wrong-final{border-color:var(--red)!important;background:var(--red-lt)!important;color:var(--red)!important;}
+.gap-inp.correct-final{border-color:var(--green);color:var(--green);}
+.gap-inp.wrong-final{border-color:var(--red);color:var(--red);}
+.et-inp.correct-final{border-color:var(--green);color:var(--green);}
+.et-inp.wrong-final{border-color:var(--red);color:var(--red);}
 
-/* ── MOBILE ──────────────────────────── */
+/* answer reveal */
+.ans-reveal{font-size:0.72rem;margin-top:0.5rem;padding:0.5rem 0.75rem;border-radius:6px;
+  background:var(--off);border:1px solid var(--border);color:var(--text3);display:none;}
+.ans-reveal.show{display:block;}
+.ans-reveal strong{color:var(--navy);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp 0.35s ease both;}
+.d1{animation-delay:0.04s;}.d2{animation-delay:0.08s;}.d3{animation-delay:0.12s;}
+
+/* mobile */
 @media(max-width:800px){
-  .screen.active{grid-template-columns:1fr;}
-  .lp{min-height:auto;padding:1.75rem 1.5rem;}
-  .rp-head,.rp-body,.qr-bar,.q-wrap,.rr-body{padding-left:1.5rem;padding-right:1.5rem;}
+  .shell{grid-template-columns:1fr;}
+  .lp{height:auto;position:relative;}
+  .rp{height:auto;position:relative;}
   .frow{grid-template-columns:1fr!important;}
-  .lp-foot{display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════ SCREEN 1 — LANDING ═══════════════ -->
+<!-- ═══════════ S1: LANDING ═══════════ -->
 <div id="s-land" class="screen active">
+<div class="shell">
   <div class="lp">
-    <div class="grid"></div>
-    <div class="lp-logo">
-      <div class="lp-mark">TT</div>
-      <div class="lp-name">Terra<span>Tern</span> Learn</div>
-    </div>
+    <div class="lp-grid"></div>
+    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
     <div class="lp-body">
       <div class="lp-eyebrow"><span class="lp-dot"></span>🕐 Just 3 Minutes</div>
       <div class="lp-kicker">The IELTS Mini Quiz</div>
-      <h1 class="lp-h">Challenge<br>yourself —<br>in just <span class="yl">3 minutes!</span></h1>
+      <h1 class="lp-h">Challenge yourself —<br>in just <span class="yl">3 minutes!</span></h1>
       <div class="lp-quote">"Check your real IELTS score before booking your test."</div>
       <div class="lp-chips">
         <div class="lchip">🏅 IDP-Certified Trainers</div>
@@ -505,89 +486,87 @@ html,body{height:100%;font-family:'Poppins',sans-serif;overflow-x:hidden;}
     </div>
     <div class="lp-foot">
       <span>© 2025 TerraTern Pvt Ltd</span>
-      <span class="lp-foot-phone">📞 0806 235 8632</span>
+      <span class="lp-phone">📞 0806 235 8632</span>
     </div>
   </div>
 
   <div class="rp">
-    <div class="rp-head">
-      <div class="rp-logo-fallback">
-        <div class="rp-logo-fb-mark">TT</div>
-        <div class="rp-logo-fb-name">Terra<span>Tern</span> Learn</div>
+    <div class="rp-bar">
+      <div class="rp-logo-wrap">
+        <div class="rp-logo-mark">TT</div>
+        <div class="rp-logo-name">Terra<span>Tern</span> Learn</div>
       </div>
       <div class="rp-badge">IELTS Mini Quiz</div>
     </div>
-    <div class="rp-body">
-      <div class="rp-pre">How It Works</div>
-      <div class="rp-title">Your 3-minute path to knowing your real band</div>
-      <div class="rp-sub">No prep needed. Real IELTS-style Reading and Listening questions — instant, accurate results.</div>
-      <div class="steps">
-        <div class="step fu d1">
-          <div class="step-lhs"><div class="step-num">1</div><div class="step-line"></div></div>
-          <div class="step-rhs">
-            <div class="step-title">🔲 Get Started</div>
-            <div class="step-desc">We've selected real IELTS-style questions for your Mini Quiz. A quick mix of Reading comprehension, gap fill, true/false, and Listening form-fill questions to evaluate your current band level.</div>
+    <div class="rp-content">
+      <div class="land-pre">How It Works</div>
+      <div class="land-title">Your 3-minute IELTS diagnostic</div>
+      <div class="land-sub">Real exam-format questions. Immediate results. No prep needed.</div>
+      <div class="land-steps">
+        <div class="land-step fu d1">
+          <div class="ls-lhs"><div class="ls-num">1</div><div class="ls-line"></div></div>
+          <div class="ls-body">
+            <div class="ls-title">🔲 Get Started</div>
+            <div class="ls-desc">Fill in your details, then take a real IELTS-format mini quiz — Reading comprehension passage with MCQ, gap fill & true/false questions, followed by a Listening form-fill section.</div>
           </div>
         </div>
-        <div class="step fu d2">
-          <div class="step-lhs"><div class="step-num">2</div><div class="step-line"></div></div>
-          <div class="step-rhs">
-            <div class="step-title">📊 See Your Results</div>
-            <div class="step-desc">Instantly see your estimated score with a full question breakdown. Understand your strengths, identify weak areas, and learn exactly what's holding you back from Band 8+.</div>
+        <div class="land-step fu d2">
+          <div class="ls-lhs"><div class="ls-num">2</div><div class="ls-line"></div></div>
+          <div class="ls-body">
+            <div class="ls-title">📊 See Your Results</div>
+            <div class="ls-desc">Instantly see your estimated band score with a full question-by-question breakdown — what you got right, what you missed, and why.</div>
           </div>
         </div>
-        <div class="step fu d3">
-          <div class="step-lhs"><div class="step-num">3</div><div class="step-line"></div></div>
-          <div class="step-rhs">
-            <div class="step-title">🚀 Improve Your Score</div>
-            <div class="step-desc">Use your results to take the next step. Get expert-backed recommendations and learn how to improve faster with the right strategy from our IDP-certified trainers.</div>
+        <div class="land-step fu d3">
+          <div class="ls-lhs"><div class="ls-num">3</div><div class="ls-line"></div></div>
+          <div class="ls-body">
+            <div class="ls-title">🚀 Improve Your Score</div>
+            <div class="ls-desc">Get expert-backed recommendations and understand how to reach Band 8+ with our IDP-certified trainers in just 30 days.</div>
           </div>
         </div>
       </div>
-      <div class="cta-area fu">
-        <div class="cta-note">🔒 Free · No spam · Results in under 3 minutes</div>
-        <button class="cta-btn" onclick="G('s-form')">START QUIZ NOW <span class="cta-arrow">→</span></button>
-        <div class="cta-tiny">Instant band estimate · 5 real IELTS questions</div>
+      <div class="land-cta-area fu">
+        <div class="land-cta-note">🔒 Free · No spam · Instant results</div>
+        <button class="land-cta-btn" onclick="G('s-form')">START QUIZ NOW <span class="cta-arr">→</span></button>
+        <div class="land-cta-tiny">Reading + Listening · 5 questions · Under 3 minutes</div>
       </div>
     </div>
   </div>
 </div>
+</div>
 
-<!-- ═══════════════ SCREEN 2 — FORM ═══════════════ -->
+<!-- ═══════════ S2: FORM ═══════════ -->
 <div id="s-form" class="screen">
+<div class="shell">
   <div class="lp">
-    <div class="grid"></div>
+    <div class="lp-grid"></div>
     <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
     <div class="lp-body">
-      <div class="lp-eyebrow"><span class="lp-dot"></span>Almost There!</div>
-      <h1 class="lp-h" style="font-size:clamp(1.55rem,2vw,2rem)">Tell us about<br><span class="yl">yourself</span><br>first.</h1>
-      <div class="lp-chips" style="margin-bottom:1.3rem">
-        <div class="lchip">⚡ 5 real IELTS questions</div>
-        <div class="lchip">📊 Instant band estimate</div>
-        <div class="lchip">🎯 Personalised tips</div>
-        <div class="lchip">🔒 100% Free</div>
+      <div class="lp-eyebrow"><span class="lp-dot"></span>Almost There</div>
+      <h1 class="lp-h" style="font-size:clamp(1.45rem,1.9vw,1.9rem)">Tell us about<br>yourself first.</h1>
+      <div class="lp-steps">
+        <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Choose quiz</div></div>
+        <div class="lp-step active"><div class="lp-step-dot">2</div><div class="lp-step-txt">Your details</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">3</div><div class="lp-step-txt">Reading section</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">4</div><div class="lp-step-txt">Listening section</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">5</div><div class="lp-step-txt">Your results</div></div>
       </div>
-      <div class="lp-quote" style="font-size:0.83rem">Your results will be emailed instantly after the quiz.</div>
     </div>
     <div class="lp-foot">
       <span>© 2025 TerraTern Pvt Ltd</span>
-      <span class="lp-foot-phone">📞 0806 235 8632</span>
+      <span class="lp-phone">📞 0806 235 8632</span>
     </div>
   </div>
-
   <div class="rp">
-    <div class="rp-head">
-      <div class="rp-logo-fallback">
-        <div class="rp-logo-fb-mark">TT</div>
-        <div class="rp-logo-fb-name">Terra<span>Tern</span> Learn</div>
-      </div>
-      <div class="rp-badge">Step 1 of 2</div>
+    <div class="rp-bar">
+      <div class="rp-logo-wrap"><div class="rp-logo-mark">TT</div><div class="rp-logo-name">Terra<span>Tern</span> Learn</div></div>
+      <div class="rp-badge">Step 1 of 3</div>
     </div>
-    <div class="rp-body">
+    <div class="rp-content">
       <button class="fp-back" onclick="G('s-land')">← Back</button>
-      <div class="rp-pre">One quick step</div>
-      <div class="rp-title">Enter your details to begin</div>
-      <div class="rp-sub" style="margin-bottom:1.3rem">We'll send your band report and improvement tips right after the quiz.</div>
+      <div class="land-pre">One quick step</div>
+      <div class="land-title">Enter your details to begin</div>
+      <div class="land-sub" style="margin-bottom:1.25rem">We'll email your full band report and personalised study plan after the quiz.</div>
       <div class="frow">
         <div class="fg"><label class="fl">Name</label><input class="fi" id="u-name" placeholder="Arjun Krishnan" type="text"/></div>
         <div class="fg"><label class="fl">Email</label><input class="fi" id="u-email" placeholder="arjun@email.com" type="email"/></div>
@@ -605,7 +584,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;overflow-x:hidden;}
           <option>First Attempt — Not Sure</option>
         </select>
       </div>
-      <button class="f-submit" onclick="submitForm()">Start My Quiz →</button>
+      <button class="f-submit" onclick="submitForm()">Begin Quiz →</button>
       <div class="f-tiny">🔒 Your details are safe. No spam, ever.</div>
       <div class="sp-row">
         <div class="avs"><div class="av">AR</div><div class="av">PK</div><div class="av">SM</div><div class="av">+</div></div>
@@ -614,185 +593,327 @@ html,body{height:100%;font-family:'Poppins',sans-serif;overflow-x:hidden;}
     </div>
   </div>
 </div>
+</div>
 
-<!-- ═══════════════ SCREEN 3 — QUIZ ═══════════════ -->
-<div id="s-quiz" class="screen">
+<!-- ═══════════ S3: READING ═══════════ -->
+<div id="s-reading" class="screen">
+<div class="shell">
   <div class="lp">
-    <div class="grid"></div>
+    <div class="lp-grid"></div>
     <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
     <div class="lp-body">
-      <div class="lp-prog">
-        <div class="prog-ring-wrap">
-          <svg class="prog-ring" viewBox="0 0 96 96">
-            <circle class="pr-bg" cx="48" cy="48" r="40"/>
-            <circle class="pr-arc" cx="48" cy="48" r="40" id="pr-arc"
-              stroke-dasharray="251" stroke-dashoffset="251"/>
-          </svg>
-          <div class="pr-center"><div class="pr-n" id="pr-n">0</div><div class="pr-of">of 5</div></div>
-        </div>
-        <div class="lp-prog-lbl">Answered</div>
+      <div class="lp-section-badge">📖 Section 1 of 2</div>
+      <div class="lp-section-title">Reading<br><span class="yl">Comprehension</span></div>
+      <div class="lp-section-desc">Read the passage carefully on the right, then answer all 4 questions below it. Submit when you're done.</div>
+      <div class="lp-steps">
+        <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Your details</div></div>
+        <div class="lp-step active"><div class="lp-step-dot">📖</div><div class="lp-step-txt">Reading (4 questions)</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">🎧</div><div class="lp-step-txt">Listening (1 form)</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">★</div><div class="lp-step-txt">Results</div></div>
       </div>
-      <div class="lp-qbox" id="lp-qbox">
-        <div class="lp-qcat" id="lp-qcat">—</div>
-        <div class="lp-qtxt" id="lp-qtxt">—</div>
-      </div>
-      <div class="lp-tips">
-        <div class="lp-tip">Read the passage carefully before answering</div>
-        <div class="lp-tip">Type your answers exactly for gap fill</div>
-        <div class="lp-tip">Each question carries equal weight</div>
+      <div class="lp-timer-display">
+        <div class="ltd-label">Time remaining</div>
+        <div class="ltd-time" id="read-timer">08:00</div>
       </div>
     </div>
     <div class="lp-foot">
       <span>TerraTern Learn</span>
-      <span class="lp-foot-phone">📞 0806 235 8632</span>
+      <span class="lp-phone">📞 0806 235 8632</span>
     </div>
   </div>
-
   <div class="rp">
-    <div class="rp-head">
-      <div class="rp-logo-fallback">
-        <div class="rp-logo-fb-mark">TT</div>
-        <div class="rp-logo-fb-name">Terra<span>Tern</span> Learn</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:0.75rem;flex:1;margin-left:1rem;">
-        <div class="qr-track"><div class="qr-fill" id="qr-fill"></div></div>
-        <div class="qr-cnt" id="qr-cnt">0 / 5</div>
+    <div class="rp-bar">
+      <div class="rp-logo-wrap"><div class="rp-logo-mark">TT</div><div class="rp-logo-name">Terra<span>Tern</span> Learn</div></div>
+      <div class="rp-bar-right">
+        <div class="rp-prog-wrap">
+          <div class="rp-prog-track"><div class="rp-prog-fill" style="width:33%"></div></div>
+          <div class="rp-prog-txt">1 / 3 sections</div>
+        </div>
       </div>
     </div>
-    <div class="q-wrap" id="q-wrap"></div>
+    <div class="rp-content">
+      <!-- Passage -->
+      <div class="sec-header">
+        <div class="sec-type-badge">📖 Reading</div>
+        <div class="sec-title">The Evolution of Musical Expression</div>
+        <div class="sec-instructions">Read the passage, then answer all 4 questions below. You can refer back to the passage at any time.</div>
+      </div>
+
+      <div class="passage-card">
+        <div class="passage-label">Passage</div>
+        <div class="passage-heading">The Evolution of Musical Expression</div>
+        <div class="passage-text">Music has served as a universal language across cultures and centuries, evolving from simple rhythmic pulses to complex orchestral arrangements. In the early days of human history, primitive instruments crafted from <strong>bone</strong> and wood were used to communicate stories and celebrate communal rituals. As societies became more sophisticated, the development of musical notation allowed composers to preserve their intricate melodies for future generations.
+        <br><br>
+        The Baroque and Classical eras introduced a formal structure to music, emphasizing balance, symmetry, and the rise of the virtuoso performer. However, the dawn of the twentieth century brought a radical shift with the emergence of jazz, blues, and electronic genres that <strong>defied</strong> traditional rules. Today, digital technology has democratized music production, enabling artists to record and distribute their work from any corner of the globe.
+        <br><br>
+        Despite these technological changes, the core purpose of music remains the same: to evoke profound emotion and connect people through shared auditory experiences. Whether it is a solo piano piece or a high-energy rock anthem, music continues to shape the cultural identity of civilizations worldwide.</div>
+      </div>
+
+      <!-- Q1 MCQ -->
+      <div class="qs-section-label">Part I — Multiple Choice Questions</div>
+      <div class="q-block">
+        <div class="q-num">Question 1</div>
+        <div class="q-txt">What was a major contribution of the Baroque and Classical eras to music?</div>
+        <div class="opts" id="opts-1">
+          <button class="opt" onclick="pickMCQ(1,0)"><span class="opt-k">A</span>The invention of the first bone flute</button>
+          <button class="opt" onclick="pickMCQ(1,1)"><span class="opt-k">B</span>The introduction of formal structure and musical notation</button>
+          <button class="opt" onclick="pickMCQ(1,2)"><span class="opt-k">C</span>The complete removal of symmetry in compositions</button>
+          <button class="opt" onclick="pickMCQ(1,3)"><span class="opt-k">D</span>The transition to entirely digital production</button>
+        </div>
+      </div>
+
+      <!-- Q2 MCQ -->
+      <div class="q-block">
+        <div class="q-num">Question 2</div>
+        <div class="q-txt">How has digital technology impacted modern music according to the text?</div>
+        <div class="opts" id="opts-2">
+          <button class="opt" onclick="pickMCQ(2,0)"><span class="opt-k">A</span>It has made it harder for artists to distribute their work.</button>
+          <button class="opt" onclick="pickMCQ(2,1)"><span class="opt-k">B</span>It has restricted music production to professional studios only.</button>
+          <button class="opt" onclick="pickMCQ(2,2)"><span class="opt-k">C</span>It has democratized the creation and distribution of music.</button>
+          <button class="opt" onclick="pickMCQ(2,3)"><span class="opt-k">D</span>It has changed the core emotional purpose of music.</button>
+        </div>
+      </div>
+
+      <!-- Q3 Gap fill -->
+      <div class="qs-section-label">Part II — Gap Fill</div>
+      <div class="q-block">
+        <div class="q-num">Question 3</div>
+        <div class="q-txt">Complete the sentence using a word from the passage.</div>
+        <div class="gap-sentence">
+          In ancient times, humans used primitive instruments made of
+          <input class="gap-inp" id="gi-3" placeholder="________" autocomplete="off"/>
+          and wood to celebrate rituals.
+        </div>
+      </div>
+
+      <!-- Q4 True/False -->
+      <div class="qs-section-label">Part III — True or False</div>
+      <div class="q-block" style="border-bottom:none;padding-bottom:0;">
+        <div class="q-num">Question 4</div>
+        <div class="q-txt">According to the paragraph, the fundamental purpose of music has changed significantly due to modern technology.</div>
+        <div class="tf-row" id="tf-4">
+          <button class="tf-btn" onclick="pickTF('True')">True</button>
+          <button class="tf-btn" onclick="pickTF('False')">False</button>
+        </div>
+      </div>
+
+      <!-- Submit reading -->
+      <div class="section-submit-area">
+        <button class="section-submit-btn" id="read-submit-btn" onclick="submitReading()">
+          Submit Reading &amp; Continue to Listening →
+        </button>
+        <div class="submit-note">Answer all 4 questions before submitting</div>
+      </div>
+    </div>
   </div>
 </div>
+</div>
 
-<!-- ═══════════════ SCREEN 4 — RESULTS ═══════════════ -->
-<div id="s-results" class="screen">
+<!-- ═══════════ S4: LISTENING ═══════════ -->
+<div id="s-listening" class="screen">
+<div class="shell">
   <div class="lp">
-    <div class="grid"></div>
+    <div class="lp-grid"></div>
     <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
     <div class="lp-body">
-      <div class="rl-wrap">
-        <div class="sr-cont">
-          <svg class="sr-svg" viewBox="0 0 140 140">
-            <circle class="sr-bg" cx="70" cy="70" r="56"/>
-            <circle class="sr-fill" cx="70" cy="70" r="56" id="sr-fill"/>
-          </svg>
-          <div class="sr-center">
-            <div class="sr-n" id="sr-n">0</div>
-            <div class="sr-d">out of 5</div>
+      <div class="lp-section-badge">🎧 Section 2 of 2</div>
+      <div class="lp-section-title">Listening<br><span class="yl">Form Fill</span></div>
+      <div class="lp-section-desc">Read the conversation transcript, then fill in the 5 missing details in the enrolment form on the right.</div>
+      <div class="lp-steps">
+        <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Your details</div></div>
+        <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Reading (4 Qs)</div></div>
+        <div class="lp-step active"><div class="lp-step-dot">🎧</div><div class="lp-step-txt">Listening (form fill)</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">★</div><div class="lp-step-txt">Results</div></div>
+      </div>
+      <div class="lp-timer-display">
+        <div class="ltd-label">Time remaining</div>
+        <div class="ltd-time" id="list-timer">06:00</div>
+      </div>
+    </div>
+    <div class="lp-foot"><span>TerraTern Learn</span><span class="lp-phone">📞 0806 235 8632</span></div>
+  </div>
+  <div class="rp">
+    <div class="rp-bar">
+      <div class="rp-logo-wrap"><div class="rp-logo-mark">TT</div><div class="rp-logo-name">Terra<span>Tern</span> Learn</div></div>
+      <div class="rp-bar-right">
+        <div class="rp-prog-wrap">
+          <div class="rp-prog-track"><div class="rp-prog-fill" style="width:66%"></div></div>
+          <div class="rp-prog-txt">2 / 3 sections</div>
+        </div>
+      </div>
+    </div>
+    <div class="rp-content">
+      <div class="sec-header">
+        <div class="sec-type-badge">🎧 Listening</div>
+        <div class="sec-title">Happies Nursery — Enrolment Form</div>
+        <div class="sec-instructions">
+          <strong>Instructions:</strong> You will hear a conversation between a nursery receptionist and a parent. Listen carefully and fill in the 5 missing details in the form below.<br>
+          <span style="color:#dc2626;font-weight:600">⚠ The audio plays once only — just like the real IELTS exam. Fill in answers as you listen.</span>
+        </div>
+      </div>
+
+      <!-- AUDIO PLAYER -->
+      <div class="listen-intro">
+        <div class="li-head">
+          <div class="li-icon">🎧</div>
+          <div class="li-head-txt">
+            <div class="li-head-title">Happies Nursery — Enrolment Conversation</div>
+            <div class="li-head-sub">Press Play when ready. Fill in the form as you listen.</div>
           </div>
         </div>
-        <div class="rl-verdict" id="rl-verdict">—</div>
-        <div style="display:flex;justify-content:center;">
-          <div class="rl-band" id="rl-band">Estimated Band <strong>—</strong></div>
+        <div class="li-divider"></div>
+
+        <!-- Custom player -->
+        <audio id="ielts-audio" src="audio-ielts.mp3" preload="auto"></audio>
+        <div class="audio-player" id="audio-player">
+          <button class="ap-play-btn" id="ap-play" onclick="togglePlay()">
+            <span id="ap-play-icon">▶</span>
+          </button>
+          <div class="ap-center">
+            <div class="ap-waveform" id="ap-waveform">
+              <div class="ap-progress-track" onclick="seekAudio(event)">
+                <div class="ap-progress-fill" id="ap-prog-fill"></div>
+                <div class="ap-progress-thumb" id="ap-thumb"></div>
+              </div>
+            </div>
+            <div class="ap-times">
+              <span id="ap-current">0:00</span>
+              <span id="ap-duration">—</span>
+            </div>
+          </div>
+          <div class="ap-right">
+            <div class="ap-plays-left" id="ap-plays-left">
+              <span id="plays-count">1</span> play remaining
+            </div>
+          </div>
         </div>
+
+        <!-- played notice -->
+        <div class="ap-played-notice" id="ap-played-notice" style="display:none">
+          ✓ Audio has finished. Complete the form above and submit.
+        </div>
+        <!-- error fallback -->
+        <div class="ap-error" id="ap-error" style="display:none">
+          ⚠ Audio file not found. Make sure <code>audio-ielts.mp3</code> is in the same folder as this HTML file.
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="qs-section-label">Fill in the 5 missing details (Questions 1–5)</div>
+      <table class="enrol-table">
+        <tr><th>Field</th><th>Answer</th></tr>
+        <tr>
+          <td>Example: Child's age</td>
+          <td><span class="et-example">2 (given)</span></td>
+        </tr>
+        <tr>
+          <td>Mother's name</td>
+          <td><input class="et-inp" id="lf1" placeholder="First name" style="width:130px" autocomplete="off"/> <span class="et-suffix">Beckett</span></td>
+        </tr>
+        <tr>
+          <td>Address (house number)</td>
+          <td><input class="et-inp" id="lf2" placeholder="Number" style="width:60px" autocomplete="off"/> <span class="et-suffix">Castle Crescent, Backley, BA3 7TR</span></td>
+        </tr>
+        <tr>
+          <td>Mother's mobile</td>
+          <td><span class="et-prefix">07743 812 </span><input class="et-inp" id="lf3" placeholder="___" style="width:55px" autocomplete="off"/></td>
+        </tr>
+        <tr>
+          <td>Fees paid by</td>
+          <td><input class="et-inp" id="lf4" placeholder="payment method" style="width:150px" autocomplete="off"/></td>
+        </tr>
+        <tr>
+          <td>Allergies</td>
+          <td><input class="et-inp" id="lf5" placeholder="type here" style="width:130px" autocomplete="off"/></td>
+        </tr>
+      </table>
+
+      <div class="section-submit-area">
+        <button class="section-submit-btn" onclick="submitListening()">Submit &amp; See My Results →</button>
+        <div class="submit-note">Fill in all 5 fields, then submit to see your score</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════ S5: RESULTS ═══════════ -->
+<div id="s-results" class="screen">
+<div class="shell">
+  <div class="lp">
+    <div class="lp-grid"></div>
+    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-body">
+      <div class="rl-ring-cont">
+        <svg class="rl-svg" viewBox="0 0 130 130">
+          <circle class="rl-bg" cx="65" cy="65" r="52"/>
+          <circle class="rl-fill" cx="65" cy="65" r="52" id="rl-fill"/>
+        </svg>
+        <div class="rl-center"><div class="rl-n" id="rl-n">0</div><div class="rl-d">out of 9</div></div>
+      </div>
+      <div class="rl-verdict" id="rl-verdict">—</div>
+      <div style="display:flex;justify-content:center;margin-bottom:0.75rem;">
+        <div class="rl-band" id="rl-band">Estimated Band <strong>—</strong></div>
       </div>
       <div class="rl-copy" id="rl-copy">—</div>
       <a href="tel:08062358632" class="rl-call">📞 Call 0806 235 8632</a>
       <button class="rl-retake" onclick="retake()">↺ Retake Quiz</button>
     </div>
-    <div class="lp-foot">
-      <span>© 2025 TerraTern Pvt Ltd</span>
-      <span class="lp-foot-phone">📞 0806 235 8632</span>
-    </div>
+    <div class="lp-foot"><span>© 2025 TerraTern Pvt Ltd</span><span class="lp-phone">📞 0806 235 8632</span></div>
   </div>
-
   <div class="rp">
-    <div class="rp-head">
-      <div class="rp-logo-fallback">
-        <div class="rp-logo-fb-mark">TT</div>
-        <div class="rp-logo-fb-name">Terra<span>Tern</span> Learn</div>
+    <div class="rp-bar">
+      <div class="rp-logo-wrap"><div class="rp-logo-mark">TT</div><div class="rp-logo-name">Terra<span>Tern</span> Learn</div></div>
+      <div class="rp-bar-right">
+        <div class="rp-prog-wrap">
+          <div class="rp-prog-track"><div class="rp-prog-fill" style="width:100%"></div></div>
+          <div class="rp-prog-txt">Complete ✓</div>
+        </div>
       </div>
-      <div class="rp-badge">Your Results</div>
     </div>
-    <div class="rr-body">
-      <div class="rr-head">Question Breakdown <div class="rr-chip" id="rr-chip">— / 5</div></div>
+    <div class="rp-content">
+      <div class="rr-head">Your Detailed Results <div class="rr-score-chip" id="rr-chip">— / 9</div></div>
       <div id="bk-list"></div>
       <div class="improve-card" id="improve-card"></div>
     </div>
   </div>
 </div>
+</div>
 
 <script>
-/* ══════════════════════════════════════════════
-   QUIZ DATA — from TerraTern PDF
-══════════════════════════════════════════════ */
-const PASSAGE = `Music has served as a universal language across cultures and centuries, evolving from simple rhythmic pulses to complex orchestral arrangements. In the early days of human history, primitive instruments crafted from bone and wood were used to communicate stories and celebrate communal rituals. As societies became more sophisticated, the development of musical notation allowed composers to preserve their intricate melodies for future generations. The Baroque and Classical eras introduced a formal structure to music, emphasizing balance, symmetry, and the rise of the virtuoso performer. However, the dawn of the twentieth century brought a radical shift with the emergence of jazz, blues, and electronic genres that defied traditional rules. Today, digital technology has democratized music production, enabling artists to record and distribute their work from any corner of the globe. Despite these technological changes, the core purpose of music remains the same: to evoke profound emotion and connect people through shared auditory experiences.`;
+/* ── STATE ──────────────────────────────────── */
+let user={};
+let readingAnswers={1:null, 2:null, 3:null, 4:null}; /* q → user value */
+let listeningAnswers={lf1:null,lf2:null,lf3:null,lf4:null,lf5:null};
+let readTimer=null, listTimer=null;
 
-/* Question types: mcq | gapfill | truefalse | listening */
-const QS = [
-  {
-    id:1, section:'Reading', type:'mcq',
-    cat:'Reading — Multiple Choice',
-    label:'What was a major contribution of the Baroque and Classical eras to music?',
-    hint:'Choose the best answer based on the passage above.',
-    opts:[
-      'The invention of the first bone flute',
-      'The introduction of formal structure and musical notation',
-      'The complete removal of symmetry in compositions',
-      'The transition to entirely digital production'
-    ],
-    ans:1,  /* B */
-    ansLabel:'B — The introduction of formal structure and musical notation',
-    ex:'The passage states: "The Baroque and Classical eras introduced a formal structure to music, emphasizing balance, symmetry, and the rise of the virtuoso performer."'
-  },
-  {
-    id:2, section:'Reading', type:'mcq',
-    cat:'Reading — Multiple Choice',
-    label:'How has digital technology impacted modern music according to the text?',
-    hint:'Select the answer that matches what the passage says.',
-    opts:[
-      'It has made it harder for artists to distribute their work.',
-      'It has restricted music production to professional studios only.',
-      'It has democratized the creation and distribution of music.',
-      'It has changed the core emotional purpose of music.'
-    ],
-    ans:2, /* C */
-    ansLabel:'C — It has democratized the creation and distribution of music',
-    ex:'The passage says: "digital technology has democratized music production, enabling artists to record and distribute their work from any corner of the globe."'
-  },
-  {
-    id:3, section:'Reading', type:'gapfill',
-    cat:'Reading — Gap Fill',
-    label:'In ancient times, humans used primitive instruments made of _______ and wood to celebrate rituals.',
-    hint:'Type the missing word from the passage.',
-    ans:'bone',
-    ex:'The passage states: "primitive instruments crafted from bone and wood."'
-  },
-  {
-    id:4, section:'Reading', type:'truefalse',
-    cat:'Reading — True or False',
-    label:'According to the paragraph, the fundamental purpose of music has changed significantly due to modern technology.',
-    hint:'Select True or False based on what the passage states.',
-    ans:'False',
-    ex:'False. The text states: "Despite these technological changes, the core purpose of music remains the same: to evoke profound emotion and connect people."'
-  },
-  {
-    id:5, section:'Listening', type:'listening',
-    cat:'Listening — Form Fill',
-    label:'Happies Nursery — New Child Enrolment Form',
-    hint:'Fill in the 5 missing details from the nursery enrolment form.',
-    fields:[
-      { label:"Mother's Name", prefix:"", suffix:" Beckett", placeholder:"First name", ans:"Glorian", id:"lf1" },
-      { label:"Address (house number)", prefix:"", suffix:" Castle Crescent, Backley, BA3 7TR", placeholder:"Number", ans:"40", id:"lf2" },
-      { label:"Mother's Mobile (last digits)", prefix:"07743 812 ", suffix:"", placeholder:"digits", ans:"451", id:"lf3" },
-      { label:"Fees will be paid by", prefix:"", suffix:"", placeholder:"payment method", ans:"bank transfer", id:"lf4" },
-      { label:"Allergies", prefix:"", suffix:"", placeholder:"type of allergy", ans:"cats", id:"lf5" }
-    ]
-  }
-];
+/* ANSWER KEYS */
+const READ_KEY={
+  1:{ans:1, correct:'B — The introduction of formal structure and musical notation',
+     ex:'The passage states the Baroque and Classical eras "introduced a formal structure to music, emphasizing balance, symmetry."'},
+  2:{ans:2, correct:'C — It has democratized the creation and distribution of music',
+     ex:'The passage says "digital technology has democratized music production, enabling artists to record and distribute their work."'},
+  3:{ans:'bone',
+     ex:'The passage states "primitive instruments crafted from bone and wood."'},
+  4:{ans:'False',
+     ex:'The passage clearly states "the core purpose of music remains the same: to evoke profound emotion and connect people."'}
+};
+const LISTEN_KEY={
+  lf1:{ans:'Glorian', label:"Mother's name"},
+  lf2:{ans:'40',      label:'Address (house number)'},
+  lf3:{ans:'451',     label:"Mother's mobile (last digits)"},
+  lf4:{ans:'bank transfer', label:'Fees paid by'},
+  lf5:{ans:'cats',    label:'Allergies'}
+};
 
-/* ── STATE ──────────────────────────── */
-let userData={}, answered=0, results=[];
-/* answered = bitmask / count across all 5 */
-let qAnswered={1:false,2:false,3:false,4:false,5:false};
-
-/* ── NAV ────────────────────────────── */
+/* ── NAVIGATION ─────────────────────────────── */
 function G(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
 
-/* ── FORM ───────────────────────────── */
+/* ── FORM SUBMIT ─────────────────────────────── */
 function submitForm(){
   const n=document.getElementById('u-name').value.trim();
   const e=document.getElementById('u-email').value.trim();
@@ -801,347 +922,305 @@ function submitForm(){
   const b=document.getElementById('u-band').value;
   if(!n||!e||!p||!c||!b){alert('Please fill in all fields to continue.');return;}
   if(!e.includes('@')){alert('Please enter a valid email address.');return;}
-  userData={n,e,p,c,b};
-  results=[];
-  Object.keys(qAnswered).forEach(k=>qAnswered[k]=false);
-  G('s-quiz');
-  renderQuiz();
+  user={n,e,p,c,b};
+  readingAnswers={1:null,2:null,3:null,4:null};
+  G('s-reading');
+  startTimer('read-timer',8*60);
 }
 
-/* ── RENDER QUIZ (all 5 at once) ────── */
-function renderQuiz(){
-  updateProgress(0);
-
-  let html = '';
-
-  /* ── READING PASSAGE ── */
-  html += `
-    <div class="passage-box fu">
-      <div class="passage-label">Reading Passage</div>
-      <div class="passage-title">The Evolution of Musical Expression</div>
-      ${PASSAGE}
-    </div>
-    <div class="q-section-head">📖 Reading <div class="divider"></div></div>
-  `;
-
-  /* Q1 — MCQ */
-  html += renderMCQ(QS[0]);
-  /* Q2 — MCQ */
-  html += renderMCQ(QS[1]);
-  /* Q3 — Gap Fill */
-  html += renderGapFill(QS[2]);
-  /* Q4 — True/False */
-  html += renderTrueFalse(QS[3]);
-
-  /* ── LISTENING ── */
-  html += `<div class="q-section-head" style="margin-top:1.5rem">🎧 Listening <div class="divider"></div></div>`;
-  html += renderListening(QS[4]);
-
-  /* Submit button */
-  html += `<button class="submit-quiz-btn" id="sub-btn" onclick="submitQuiz()">See My Results →</button>`;
-
-  document.getElementById('q-wrap').innerHTML = html;
-  updateSidebar(QS[0]);
-
-  /* scroll listener to update sidebar */
-  document.querySelector('.rp').addEventListener('scroll', onScroll);
+/* ── READING INTERACTIONS ───────────────────── */
+function pickMCQ(qNum, idx){
+  /* Clear prev */
+  document.querySelectorAll(`#opts-${qNum} .opt`).forEach(o=>o.classList.remove('picked'));
+  /* Mark picked */
+  document.querySelectorAll(`#opts-${qNum} .opt`)[idx].classList.add('picked');
+  readingAnswers[qNum]=idx;
 }
 
-function renderMCQ(q){
-  const L=['A','B','C','D'];
-  return `
-    <div class="q-block fu" data-qid="${q.id}">
-      <div class="q-cat-pill">${q.cat}</div>
-      <div class="q-label">Q${q.id}. ${q.label}</div>
-      <div class="q-hint">${q.hint}</div>
-      <div class="opts" id="opts-${q.id}">
-        ${q.opts.map((o,i)=>`
-          <button class="opt" id="opt-${q.id}-${i}" onclick="pickMCQ(${q.id},${i})">
-            <span class="opt-k">${L[i]}</span>${o}
-          </button>`).join('')}
-      </div>
-      <div class="q-fb" id="fb-${q.id}"></div>
-    </div>`;
+function pickTF(val){
+  document.querySelectorAll('#tf-4 .tf-btn').forEach(b=>b.classList.remove('picked'));
+  const t=val==='True'?0:1;
+  document.querySelectorAll('#tf-4 .tf-btn')[t].classList.add('picked');
+  readingAnswers[4]=val;
 }
 
-function renderGapFill(q){
-  const parts = q.label.split('_______');
-  return `
-    <div class="q-block fu" data-qid="${q.id}">
-      <div class="q-cat-pill">${q.cat}</div>
-      <div class="q-label">Q${q.id}.</div>
-      <div class="q-hint">${q.hint}</div>
-      <div class="gapfill-row">
-        <span>${parts[0]}</span>
-        <input class="gap-input" id="gi-${q.id}" placeholder="type answer" autocomplete="off"/>
-        <span>${parts[1]||''}</span>
-      </div>
-      <div style="margin-top:0.6rem">
-        <button onclick="checkGap(${q.id})" style="background:var(--blue);color:#fff;border:none;padding:0.4rem 1rem;border-radius:6px;font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;" id="gap-btn-${q.id}">Check Answer</button>
-      </div>
-      <div class="q-fb" id="fb-${q.id}"></div>
-    </div>`;
+/* ── SUBMIT READING ─────────────────────────── */
+function submitReading(){
+  /* Validate all 4 answered */
+  const gapVal=document.getElementById('gi-3').value.trim();
+  readingAnswers[3]=gapVal;
+
+  if(readingAnswers[1]===null){alert('Please answer Question 1.');return;}
+  if(readingAnswers[2]===null){alert('Please answer Question 2.');return;}
+  if(!gapVal){alert('Please fill in the gap for Question 3.');return;}
+  if(readingAnswers[4]===null){alert('Please answer True or False for Question 4.');return;}
+
+  clearInterval(readTimer);
+  G('s-listening');
+  startTimer('list-timer',6*60);
 }
 
-function renderTrueFalse(q){
-  return `
-    <div class="q-block fu" data-qid="${q.id}">
-      <div class="q-cat-pill">${q.cat}</div>
-      <div class="q-label">Q${q.id}. ${q.label}</div>
-      <div class="q-hint">${q.hint}</div>
-      <div class="tf-opts" id="tf-${q.id}">
-        <button class="tf-btn" id="tf-${q.id}-T" onclick="pickTF(${q.id},'True')">True</button>
-        <button class="tf-btn" id="tf-${q.id}-F" onclick="pickTF(${q.id},'False')">False</button>
-      </div>
-      <div class="q-fb" id="fb-${q.id}"></div>
-    </div>`;
-}
 
-function renderListening(q){
-  const rows = q.fields.map((f,i)=>`
-    <tr>
-      ${i===0?`<td rowspan="1"><span class="lf-example">Example: Child's age = 2</span></td>`:
-      `<td>${f.label}</td>`}
-      ${i===0?`<td>${f.label}: ${f.prefix}<input class="lf-inp" id="${f.id}" placeholder="${f.placeholder}" autocomplete="off"/>${f.suffix}</td>`:
-      `<td>${f.prefix}<input class="lf-inp" id="${f.id}" placeholder="${f.placeholder}" autocomplete="off"/>${f.suffix}</td>`}
-    </tr>`).join('');
 
-  /* simplified: just show all fields cleanly */
-  const cleanRows = q.fields.map(f=>`
-    <tr>
-      <td>${f.label}</td>
-      <td>${f.prefix}<input class="lf-inp" id="${f.id}" placeholder="${f.placeholder}" autocomplete="off"/>${f.suffix}</td>
-    </tr>`).join('');
-
-  return `
-    <div class="q-block fu" data-qid="${q.id}">
-      <div class="q-cat-pill">${q.cat}</div>
-      <div class="q-label">Q${q.id}. ${q.label}</div>
-      <div class="q-hint">${q.hint}</div>
-      <div class="listen-form">
-        <div class="lf-title">Happies Nursery — New Child Enrolment Form</div>
-        <table class="lf-table">
-          <tr><td><em>Example: Child's age</em></td><td><strong>2</strong></td></tr>
-          ${cleanRows}
-        </table>
-      </div>
-      <div class="q-fb" id="fb-${q.id}"></div>
-    </div>`;
-}
-
-/* ── ANSWER HANDLERS ──────────────────── */
-function pickMCQ(qid, idx){
-  const q = QS.find(x=>x.id===qid);
-  if(qAnswered[qid]) return;
-  qAnswered[qid]=true;
-  markAnswered();
-
-  const ok = idx===q.ans;
-  results.push({qid,ok,type:'mcq',userAns:['A','B','C','D'][idx]+' — '+q.opts[idx],correctAns:q.ansLabel});
-
-  document.querySelectorAll(`#opts-${qid} .opt`).forEach((el,i)=>{
-    el.disabled=true;
-    if(i===q.ans) el.classList.add('correct');
-    else if(i===idx&&!ok) el.classList.add('wrong');
-  });
-  showFb(qid, ok, q.ex);
-  tryShowSubmit();
-}
-
-function checkGap(qid){
-  const q = QS.find(x=>x.id===qid);
-  if(qAnswered[qid]) return;
-  const inp = document.getElementById(`gi-${qid}`);
-  const val = inp.value.trim().toLowerCase();
-  const ok = val === q.ans.toLowerCase();
-  qAnswered[qid]=true;
-  markAnswered();
-
-  inp.disabled=true;
-  inp.classList.add(ok?'correct':'wrong');
-  document.getElementById(`gap-btn-${qid}`).disabled=true;
-  document.getElementById(`gap-btn-${qid}`).style.opacity='0.4';
-
-  results.push({qid,ok,type:'gap',userAns:`"${inp.value.trim()||'(blank)'}"`,correctAns:`"${q.ans}"`});
-  showFb(qid, ok, `Correct answer: "${q.ans}". ${q.ex}`);
-  tryShowSubmit();
-}
-
-function pickTF(qid, val){
-  const q = QS.find(x=>x.id===qid);
-  if(qAnswered[qid]) return;
-  qAnswered[qid]=true;
-  markAnswered();
-
-  const ok = val===q.ans;
-  results.push({qid,ok,type:'tf',userAns:val,correctAns:q.ans});
-
-  ['T','F'].forEach(t=>{
-    const btn=document.getElementById(`tf-${qid}-${t}`);
-    btn.disabled=true;
-    const bval = t==='T'?'True':'False';
-    if(bval===q.ans) btn.classList.add('correct');
-    else if(bval===val&&!ok) btn.classList.add('wrong');
-  });
-  showFb(qid, ok, q.ex);
-  tryShowSubmit();
-}
-
-function showFb(qid, ok, msg){
-  const fb=document.getElementById(`fb-${qid}`);
-  fb.className=`q-fb show ${ok?'ok':'no'}`;
-  fb.textContent=(ok?'✓ Correct. ':'✗ Incorrect. ')+msg;
-}
-
-function markAnswered(){
-  const done = Object.values(qAnswered).filter(Boolean).length;
-  updateProgress(done);
-}
-
-function tryShowSubmit(){
-  /* Check listening fields + all others answered */
-  const listeningDone = QS[4].fields.every(f=>document.getElementById(f.id)&&document.getElementById(f.id).value.trim()!=='');
-  const readingDone = [1,2,3,4].every(id=>qAnswered[id]);
-  if(readingDone){
-    document.getElementById('sub-btn').classList.add('show');
-  }
-}
-
-function updateProgress(done){
-  const C=251, off=C-((done/5)*C);
-  document.getElementById('pr-arc').style.strokeDashoffset=off;
-  document.getElementById('pr-n').textContent=done;
-  document.getElementById('qr-fill').style.width=((done/5)*100)+'%';
-  document.getElementById('qr-cnt').textContent=`${done} / 5`;
-}
-
-function updateSidebar(q){
-  document.getElementById('lp-qcat').textContent=q.cat;
-  document.getElementById('lp-qtxt').textContent=q.label;
-}
-
-function onScroll(){
-  /* update sidebar with currently visible question */
-  const blocks=document.querySelectorAll('.q-block');
-  const rp=document.querySelector('#s-quiz .rp');
-  const scrollTop=rp.scrollTop+200;
-  blocks.forEach(b=>{
-    if(b.offsetTop<=scrollTop){
-      const qid=parseInt(b.dataset.qid);
-      const q=QS.find(x=>x.id===qid);
-      if(q){
-        document.getElementById('lp-qcat').textContent=q.cat;
-        document.getElementById('lp-qtxt').textContent=q.label.substring(0,90)+(q.label.length>90?'…':'');
-      }
-    }
-  });
-}
-
-/* ── SUBMIT QUIZ ─────────────────────── */
-function submitQuiz(){
-  /* Grade listening */
-  const lq=QS[4];
-  let listenScore=0;
-  const listenDetails=lq.fields.map(f=>{
-    const inp=document.getElementById(f.id);
-    const val=inp?inp.value.trim().toLowerCase():'';
-    const ok=val===f.ans.toLowerCase();
-    if(ok)listenScore++;
-    if(inp){inp.disabled=true;inp.classList.add(ok?'correct':'wrong');}
-    return{id:f.id,label:f.label,ok,userAns:inp?inp.value.trim():'',correctAns:f.ans};
-  });
-  const listenOk=listenScore>=3; /* 3+/5 = pass for listening section */
-  results.push({qid:5,ok:listenOk,type:'listening',listenScore,listenDetails,userAns:`${listenScore}/5 fields correct`,correctAns:`${lq.fields.length}/5`});
-
-  /* update progress to 5 */
-  updateProgress(5);
+/* ── SUBMIT LISTENING ───────────────────────── */
+function submitListening(){
+  const fields=['lf1','lf2','lf3','lf4','lf5'];
+  const missing=fields.filter(id=>!document.getElementById(id).value.trim());
+  if(missing.length>0){alert(`Please fill in all 5 fields before submitting.`);return;}
+  fields.forEach(id=>listeningAnswers[id]=document.getElementById(id).value.trim());
+  clearInterval(listTimer);
   buildResults();
 }
 
-/* ── RESULTS ─────────────────────────── */
+/* ── AUDIO PLAYER ───────────────────────────── */
+let audioPlayed = false;
+let audioPlayCount = 0;
+const MAX_PLAYS = 1;
+
+function initAudio(){
+  const audio = document.getElementById('ielts-audio');
+  if(!audio) return;
+
+  /* Error — file not found */
+  audio.addEventListener('error', () => {
+    document.getElementById('ap-error').style.display = 'block';
+    document.getElementById('ap-play').disabled = true;
+  });
+
+  /* Duration loaded */
+  audio.addEventListener('loadedmetadata', () => {
+    document.getElementById('ap-duration').textContent = formatTime(audio.duration);
+  });
+
+  /* Time update — move progress bar */
+  audio.addEventListener('timeupdate', () => {
+    if(!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    document.getElementById('ap-prog-fill').style.width = pct + '%';
+    document.getElementById('ap-thumb').style.left = pct + '%';
+    document.getElementById('ap-current').textContent = formatTime(audio.currentTime);
+  });
+
+  /* Ended */
+  audio.addEventListener('ended', () => {
+    document.getElementById('ap-play-icon').textContent = '▶';
+    document.getElementById('ap-played-notice').style.display = 'block';
+    /* lock — no more plays */
+    document.getElementById('ap-play').disabled = true;
+    const pill = document.getElementById('ap-plays-left');
+    pill.textContent = 'Played (1/1)';
+    pill.classList.add('used');
+    document.getElementById('plays-count').textContent = '0';
+    audioPlayed = true;
+    /* timer continues */
+  });
+}
+
+function togglePlay(){
+  const audio = document.getElementById('ielts-audio');
+  if(!audio) return;
+
+  if(audioPlayCount >= MAX_PLAYS && audio.paused){
+    /* Already used up plays — do nothing (button should be disabled) */
+    return;
+  }
+
+  if(audio.paused){
+    audio.play().catch(()=>{
+      document.getElementById('ap-error').style.display = 'block';
+    });
+    document.getElementById('ap-play-icon').textContent = '⏸';
+    if(audioPlayCount === 0){
+      audioPlayCount++;
+      document.getElementById('plays-count').textContent = '0';
+    }
+  } else {
+    audio.pause();
+    document.getElementById('ap-play-icon').textContent = '▶';
+  }
+}
+
+function seekAudio(e){
+  const audio = document.getElementById('ielts-audio');
+  if(!audio || !audio.duration || audioPlayCount === 0) return;
+  const track = e.currentTarget;
+  const rect = track.getBoundingClientRect();
+  const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  audio.currentTime = pct * audio.duration;
+}
+
+function formatTime(s){
+  if(isNaN(s)) return '0:00';
+  const m = Math.floor(s/60);
+  const sec = Math.floor(s%60);
+  return `${m}:${String(sec).padStart(2,'0')}`;
+}
+
+/* initialise when listening screen becomes active */
+const _origG = G;
+function G(id){
+  _origG(id);
+  if(id === 's-listening'){
+    setTimeout(initAudio, 100);
+    /* reset player state on new attempt */
+    audioPlayed = false;
+    audioPlayCount = 0;
+    const audio = document.getElementById('ielts-audio');
+    if(audio){ audio.currentTime=0; audio.pause(); }
+    document.getElementById('ap-play-icon').textContent='▶';
+    document.getElementById('ap-prog-fill').style.width='0%';
+    document.getElementById('ap-thumb').style.left='0%';
+    document.getElementById('ap-current').textContent='0:00';
+    document.getElementById('ap-duration').textContent='—';
+    document.getElementById('ap-play').disabled=false;
+    document.getElementById('plays-count').textContent='1';
+    document.getElementById('ap-plays-left').classList.remove('used');
+    document.getElementById('ap-plays-left').textContent='';
+    document.getElementById('ap-plays-left').innerHTML='<span id="plays-count">1</span> play remaining';
+    document.getElementById('ap-played-notice').style.display='none';
+    document.getElementById('ap-error').style.display='none';
+  }
+}
+
+
+function startTimer(elId, secs){
+  let remaining=secs;
+  const el=document.getElementById(elId);
+  const update=()=>{
+    const m=Math.floor(remaining/60), s=remaining%60;
+    el.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if(remaining<=60) el.classList.add('urgent');
+    if(remaining<=0){clearInterval(tid);el.textContent='00:00';}
+    remaining--;
+  };
+  update();
+  const tid=setInterval(update,1000);
+  if(elId==='read-timer') readTimer=tid;
+  else listTimer=tid;
+}
+
+/* ── BUILD RESULTS ──────────────────────────── */
 function buildResults(){
   G('s-results');
 
-  const score=results.filter(r=>r.ok).length;
-  const total=QS.length;
+  /* Grade reading */
+  const r1ok = readingAnswers[1]===READ_KEY[1].ans;
+  const r2ok = readingAnswers[2]===READ_KEY[2].ans;
+  const r3ok = readingAnswers[3].toLowerCase().trim()===READ_KEY[3].ans.toLowerCase();
+  const r4ok = readingAnswers[4]===READ_KEY[4].ans;
+
+  /* Grade listening */
+  const lGrades={};
+  Object.keys(LISTEN_KEY).forEach(id=>{
+    lGrades[id]=listeningAnswers[id].toLowerCase().trim()===LISTEN_KEY[id].ans.toLowerCase();
+  });
+  const lScore=Object.values(lGrades).filter(Boolean).length;
+
+  /* Total: 4 reading + 5 listening = 9 */
+  const readScore=[r1ok,r2ok,r3ok,r4ok].filter(Boolean).length;
+  const total=9;
+  const score=readScore+lScore;
   const pct=Math.round((score/total)*100);
 
+  /* Band */
   let band,verdict,color,tips;
-  if(score===5){band='8.0–9.0';verdict='Outstanding! 🏆';color='#059669';
-    tips=['Maintain consistency across all 4 modules','Practise Band 9 Writing Task 2 structure','Focus on advanced vocabulary precision'];}
-  else if(score===4){band='7.0–7.5';verdict='Proficient 🎯';color=`#0255cc`;
-    tips=['Improve complex sentence variety','Sharpen vocabulary precision in Reading','Practise Listening form-fill accuracy'];}
-  else if(score===3){band='6.0–6.5';verdict='Good Foundation 📈';color='#f59e0b';
-    tips=['Build Reading comprehension strategies','Focus on gap fill with exact vocabulary','Review Listening question types daily'];}
-  else if(score===2){band='5.0–5.5';verdict='Developing 💪';color:'#f97316';
-    tips=['Strengthen grammar fundamentals','Daily vocabulary building — 10 words/day','Timed practice with full AI mock tests'];}
-  else{band='Below 5.0';verdict='Keep Going 🔄';color='#dc2626';
-    tips=['Start with grammar foundations','Build daily reading habits','Book a free session with our IDP trainer'];}
+  if(score>=8){band='8.0–9.0';verdict='Outstanding! 🏆';color='#059669';
+    tips=['Maintain accuracy across all 4 IELTS skills','Target Band 9 Writing Task 2 structure','Advanced vocabulary precision is your final step'];}
+  else if(score>=6){band='7.0–7.5';verdict='Proficient 🎯';color='#0255cc';
+    tips=['Work on Reading inference questions','Improve Listening accuracy under time pressure','Sharpen vocabulary precision in gap fill'];}
+  else if(score>=4){band='6.0–6.5';verdict='Good Foundation 📈';color='#f59e0b';
+    tips=['Build Reading comprehension strategies','Focus on Listening form-fill accuracy','Review grammar for True/False precision'];}
+  else{band='Below 6.0';verdict='Developing 💪';color='#dc2626';
+    tips=['Grammar fundamentals first','Daily vocabulary — 10 new words/day','Book a free session with our IDP trainer'];}
 
-  /* ring: 352 = 2π×56 */
-  const C=352,off=C-(pct/100)*C;
-  const fill=document.getElementById('sr-fill');
+  /* Ring: 327 = 2π×52 */
+  const C=327,off=C-(pct/100)*C;
+  const fill=document.getElementById('rl-fill');
   fill.style.stroke=color;fill.style.strokeDashoffset=C;
-  document.getElementById('sr-n').textContent=score;
-  document.getElementById('sr-n').style.color=color;
+  document.getElementById('rl-n').textContent=score;
+  document.getElementById('rl-n').style.color=color;
   document.getElementById('rl-verdict').textContent=verdict;
   document.getElementById('rl-band').innerHTML=`Estimated Band &nbsp;<strong>${band}</strong>`;
-  document.getElementById('rl-copy').textContent=score>=4
-    ?`Strong result, ${userData.n||'there'}! One free session with our IDP trainer and Band 8+ is within reach.`
-    :`Good start, ${userData.n||'there'}! Our IDP-certified trainers can get you to Band 8+ in 30 days.`;
+  document.getElementById('rl-copy').textContent=score>=6
+    ?`Great work, ${user.n||'there'}! A free session with our IDP trainer will get you to Band 8+ in 30 days.`
+    :`Good start, ${user.n||'there'}! Our trainers can build your Band 8+ plan from exactly where you are now.`;
   document.getElementById('rr-chip').textContent=`${score} / ${total} Correct`;
 
   requestAnimationFrame(()=>setTimeout(()=>{fill.style.strokeDashoffset=off;},150));
 
-  /* breakdown */
-  let bkHTML='';
+  /* Breakdown */
+  const rAns=[readingAnswers[1],readingAnswers[2]];
+  const rOpts=[
+    ['The invention of the first bone flute','The introduction of formal structure and musical notation','The complete removal of symmetry','Transition to digital production'],
+    ['Made it harder for artists to distribute','Restricted music production to studios','Democratized creation and distribution','Changed the emotional purpose']
+  ];
 
-  /* Reading section */
-  bkHTML+=`<div class="bk-section"><div class="bk-sec-label">📖 Reading</div>`;
-  results.filter(r=>r.qid<=4).forEach(r=>{
-    const q=QS.find(x=>x.id===r.qid);
-    bkHTML+=`<div class="bk-row">
-      <div class="bk-num">Q${r.qid}</div>
-      <div class="bk-info">
-        <div class="bk-q">${q.label.substring(0,70)}${q.label.length>70?'…':''}</div>
-        <div class="bk-ans">Your answer: <strong>${r.userAns}</strong> · Correct: <strong>${r.correctAns}</strong></div>
-      </div>
-      <div class="bk-badge ${r.ok?'ok':'no'}">${r.ok?'✓':'✗'}</div>
-    </div>`;
+  let bk=`<div class="bk-section-lbl">📖 Reading (${readScore} / 4)</div>`;
+
+  /* Q1 */
+  bk+=bkRow(1,'MCQ','What was a major contribution of the Baroque and Classical eras?',
+    r1ok,
+    r1ok?'B — Correct':'Your choice: '+(readingAnswers[1]!==null?['A','B','C','D'][readingAnswers[1]]+' — '+rOpts[0][readingAnswers[1]]:'No answer'),
+    READ_KEY[1].correct, READ_KEY[1].ex);
+
+  /* Q2 */
+  bk+=bkRow(2,'MCQ','How has digital technology impacted modern music?',
+    r2ok,
+    r2ok?'C — Correct':'Your choice: '+(readingAnswers[2]!==null?['A','B','C','D'][readingAnswers[2]]+' — '+rOpts[1][readingAnswers[2]]:'No answer'),
+    READ_KEY[2].correct, READ_KEY[2].ex);
+
+  /* Q3 */
+  bk+=bkRow(3,'Gap Fill','In ancient times, humans used primitive instruments made of _____ and wood.',
+    r3ok,
+    `You wrote: "${readingAnswers[3]||'(blank)'}"`,
+    `Correct: "${READ_KEY[3].ans}"`, READ_KEY[3].ex);
+
+  /* Q4 */
+  bk+=bkRow(4,'True/False','The fundamental purpose of music has changed due to modern technology.',
+    r4ok,
+    `You answered: ${readingAnswers[4]||'No answer'}`,
+    `Correct: ${READ_KEY[4].ans}`, READ_KEY[4].ex);
+
+  bk+=`<div class="bk-section-lbl">🎧 Listening (${lScore} / 5)</div>`;
+  Object.keys(LISTEN_KEY).forEach((id,i)=>{
+    const ok=lGrades[id];
+    const k=LISTEN_KEY[id];
+    bk+=bkRow(i+5,'Form Fill',k.label,ok,
+      `You wrote: "${listeningAnswers[id]||'(blank)'}"`,
+      `Correct: "${k.ans}"`,'');
   });
-  bkHTML+=`</div>`;
 
-  /* Listening section */
-  const lr=results.find(r=>r.qid===5);
-  if(lr){
-    bkHTML+=`<div class="bk-section"><div class="bk-sec-label">🎧 Listening (${lr.listenScore}/5 fields correct)</div>`;
-    lr.listenDetails.forEach(d=>{
-      bkHTML+=`<div class="bk-row">
-        <div class="bk-num" style="font-size:0.6rem">${d.id.replace('lf','')}</div>
-        <div class="bk-info">
-          <div class="bk-q">${d.label}</div>
-          <div class="bk-ans">Your answer: <strong>"${d.userAns||'blank'}"</strong> · Correct: <strong>"${d.correctAns}"</strong></div>
-        </div>
-        <div class="bk-badge ${d.ok?'ok':'no'}">${d.ok?'✓':'✗'}</div>
-      </div>`;
-    });
-    bkHTML+=`</div>`;
-  }
-
-  document.getElementById('bk-list').innerHTML=bkHTML;
-
+  document.getElementById('bk-list').innerHTML=bk;
   document.getElementById('improve-card').innerHTML=`
     <div class="ic-head">📌 Your Action Plan</div>
-    <div class="ic-desc">${score>=4?'Strong performance! To reach Band 8+, focus on precision and consistency across all four IELTS modules.':'Based on your results, here\'s what to work on next:'}</div>
-    <div class="ic-tags">
-      ${tips.map(t=>`<span class="ic-tag">${t}</span>`).join('')}
-    </div>`;
+    <div class="ic-desc">${score>=6?'Strong performance! Focus on the gaps above to push toward Band 8+.':'Based on your results, here\'s what to focus on first:'}</div>
+    <div class="ic-tags">${tips.map(t=>`<span class="ic-tag">${t}</span>`).join('')}</div>`;
+}
+
+function bkRow(num,type,q,ok,userAns,correctAns,ex){
+  return `<div class="bk-row">
+    <div class="bk-num">Q${num}</div>
+    <div class="bk-info">
+      <div class="bk-q"><em style="font-size:0.6rem;color:var(--blue);font-style:normal;font-weight:700;margin-right:4px">${type}</em>${q}</div>
+      <div class="bk-detail">${userAns}${ok?'':` · <strong>${correctAns}</strong>`}</div>
+      ${ex?`<div class="bk-detail" style="margin-top:2px;color:#94a3b8">${ex}</div>`:''}
+    </div>
+    <div class="bk-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</div>
+  </div>`;
 }
 
 function retake(){
-  results=[];
-  Object.keys(qAnswered).forEach(k=>qAnswered[k]=false);
-  G('s-quiz');renderQuiz();
+  readingAnswers={1:null,2:null,3:null,4:null};
+  listeningAnswers={lf1:null,lf2:null,lf3:null,lf4:null,lf5:null};
+  clearInterval(readTimer);clearInterval(listTimer);
+  /* reset reading UI */
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('picked','correct-final','wrong-final'));
+  document.querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('picked','correct-final','wrong-final'));
+  if(document.getElementById('gi-3')) document.getElementById('gi-3').value='';
+  ['lf1','lf2','lf3','lf4','lf5'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.value='';
+  });
+  G('s-form');
 }
 </script>
 </body>
