@@ -44,7 +44,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 .lp{
   background:var(--navy);
   display:flex;flex-direction:column;
-  padding:2.5rem 3rem;
+  padding:2rem 2.5rem;
   position:sticky;top:0;height:100vh;overflow:hidden;
   position:relative;
 }
@@ -54,13 +54,21 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
   background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
   background-size:40px 40px;pointer-events:none;}
 
-.lp-logo{display:flex;align-items:center;gap:0.55rem;position:relative;z-index:1;}
-.lp-mark{width:30px;height:30px;background:var(--blue);border-radius:7px;
-  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.65rem;color:#fff;flex-shrink:0;}
-.lp-name{font-weight:700;font-size:0.9rem;color:#fff;}
-.lp-name span{color:var(--yellow);}
+.lp-logo{display:flex;align-items:flex-start;position:relative;z-index:1;margin-bottom:0;}
+.lp-logo img{width:180px;height:auto;max-height:200px;object-fit:contain;display:block;}
+.lp-logo .logo-fallback{
+  width:180px;height:80px;display:none;align-items:center;
+  gap:0.5rem;
+}
+.lp-logo .logo-fallback .fb-mark{
+  width:40px;height:40px;background:var(--blue);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:0.9rem;color:#fff;flex-shrink:0;
+}
+.lp-logo .logo-fallback .fb-name{font-weight:700;font-size:0.95rem;color:#fff;}
+.lp-logo .logo-fallback .fb-name span{color:var(--yellow);}
 
-.lp-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:1.5rem 0;}
+.lp-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:0.75rem 0 1rem;}
 
 /* landing left */
 .lp-eyebrow{display:inline-flex;align-items:center;gap:0.4rem;
@@ -172,17 +180,13 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 
 /* top bar */
 .rp-bar{
-  padding:1.25rem 2.5rem;
+  padding:1rem 2.5rem;
   border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;justify-content:flex-end;
   flex-shrink:0;background:var(--white);
   position:sticky;top:0;z-index:10;
+  gap:0.75rem;
 }
-.rp-logo-wrap{display:flex;align-items:center;gap:0.5rem;}
-.rp-logo-mark{width:28px;height:28px;background:var(--blue);border-radius:6px;
-  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.62rem;color:#fff;}
-.rp-logo-name{font-weight:700;font-size:0.85rem;color:var(--navy);}
-.rp-logo-name span{color:var(--blue);}
 .rp-bar-right{display:flex;align-items:center;gap:0.75rem;}
 .rp-badge{background:var(--off);border:1px solid var(--border);
   padding:0.18rem 0.65rem;border-radius:5px;font-size:0.6rem;font-weight:700;color:var(--text3);}
@@ -470,7 +474,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 <div class="shell">
   <div class="lp">
     <div class="lp-grid"></div>
-    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-logo"><img src="logo.png" alt="TerraTern Learn" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-fallback"><div class="fb-mark">TT</div><div class="fb-name">Terra<span>Tern</span> Learn</div></div></div>
     <div class="lp-body">
       <div class="lp-eyebrow"><span class="lp-dot"></span>🕐 Just 3 Minutes</div>
       <div class="lp-kicker">The IELTS Mini Quiz</div>
@@ -492,10 +496,6 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 
   <div class="rp">
     <div class="rp-bar">
-      <div class="rp-logo-wrap">
-        <div class="rp-logo-mark">TT</div>
-        <div class="rp-logo-name">Terra<span>Tern</span> Learn</div>
-      </div>
       <div class="rp-badge">IELTS Mini Quiz</div>
     </div>
     <div class="rp-content">
@@ -540,7 +540,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 <div class="shell">
   <div class="lp">
     <div class="lp-grid"></div>
-    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-logo"><img src="logo.png" alt="TerraTern Learn" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-fallback"><div class="fb-mark">TT</div><div class="fb-name">Terra<span>Tern</span> Learn</div></div></div>
     <div class="lp-body">
       <div class="lp-eyebrow"><span class="lp-dot"></span>Almost There</div>
       <h1 class="lp-h" style="font-size:clamp(1.45rem,1.9vw,1.9rem)">Tell us about<br>yourself first.</h1>
@@ -559,7 +559,6 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
   </div>
   <div class="rp">
     <div class="rp-bar">
-      <div class="rp-logo-wrap"><div class="rp-logo-mark">TT</div><div class="rp-logo-name">Terra<span>Tern</span> Learn</div></div>
       <div class="rp-badge">Step 1 of 3</div>
     </div>
     <div class="rp-content">
@@ -600,7 +599,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 <div class="shell">
   <div class="lp">
     <div class="lp-grid"></div>
-    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-logo"><img src="logo.png" alt="TerraTern Learn" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-fallback"><div class="fb-mark">TT</div><div class="fb-name">Terra<span>Tern</span> Learn</div></div></div>
     <div class="lp-body">
       <div class="lp-section-badge">📖 Section 1 of 2</div>
       <div class="lp-section-title">Reading<br><span class="yl">Comprehension</span></div>
@@ -623,7 +622,6 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
   </div>
   <div class="rp">
     <div class="rp-bar">
-      <div class="rp-logo-wrap"><div class="rp-logo-mark">TT</div><div class="rp-logo-name">Terra<span>Tern</span> Learn</div></div>
       <div class="rp-bar-right">
         <div class="rp-prog-wrap">
           <div class="rp-prog-track"><div class="rp-prog-fill" style="width:33%"></div></div>
@@ -714,7 +712,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 <div class="shell">
   <div class="lp">
     <div class="lp-grid"></div>
-    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-logo"><img src="logo.png" alt="TerraTern Learn" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-fallback"><div class="fb-mark">TT</div><div class="fb-name">Terra<span>Tern</span> Learn</div></div></div>
     <div class="lp-body">
       <div class="lp-section-badge">🎧 Section 2 of 2</div>
       <div class="lp-section-title">Listening<br><span class="yl">Form Fill</span></div>
@@ -734,7 +732,6 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
   </div>
   <div class="rp">
     <div class="rp-bar">
-      <div class="rp-logo-wrap"><div class="rp-logo-mark">TT</div><div class="rp-logo-name">Terra<span>Tern</span> Learn</div></div>
       <div class="rp-bar-right">
         <div class="rp-prog-wrap">
           <div class="rp-prog-track"><div class="rp-prog-fill" style="width:66%"></div></div>
@@ -842,7 +839,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 <div class="shell">
   <div class="lp">
     <div class="lp-grid"></div>
-    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-logo"><img src="logo.png" alt="TerraTern Learn" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-fallback"><div class="fb-mark">TT</div><div class="fb-name">Terra<span>Tern</span> Learn</div></div></div>
     <div class="lp-body">
       <div class="rl-ring-cont">
         <svg class="rl-svg" viewBox="0 0 130 130">
@@ -863,7 +860,6 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
   </div>
   <div class="rp">
     <div class="rp-bar">
-      <div class="rp-logo-wrap"><div class="rp-logo-mark">TT</div><div class="rp-logo-name">Terra<span>Tern</span> Learn</div></div>
       <div class="rp-bar-right">
         <div class="rp-prog-wrap">
           <div class="rp-prog-track"><div class="rp-prog-fill" style="width:100%"></div></div>
