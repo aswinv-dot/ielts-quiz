@@ -6,830 +6,793 @@
 <title>IELTS Mini Quiz — TerraTern Learn</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET & BASE ─────────────────────── */
+/* ── RESET ──────────────────────────── */
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;font-family:'Poppins',sans-serif;overflow-x:hidden;}
 
-/* ─── BRAND TOKENS ─────────────────────── */
+/* ── BRAND TOKENS ───────────────────── */
 :root{
   --navy:#0c1e3c;
-  --navy-deep:#060f1e;
-  --navy-mid:#132240;
-  --blue:#2563eb;
-  --blue-lt:#eff6ff;
+  --blue:#0255cc;        /* TerraTern brand blue */
+  --blue2:#0244aa;
+  --blue-lt:#e8f0fd;
+  --blue-mid:#c3d7fb;
   --yellow:#f5c518;
-  --yellow-dk:#d4a817;
+  --yellow2:#d4a817;
   --white:#ffffff;
   --off:#f8fafc;
   --border:#e2e8f0;
   --text:#0f172a;
   --text2:#334155;
   --text3:#64748b;
+  --green:#059669;
+  --green-lt:#ecfdf5;
+  --green-mid:#a7f3d0;
+  --red:#dc2626;
+  --red-lt:#fef2f2;
+  --red-mid:#fecaca;
 }
 
-/* ─── SCREENS ──────────────────────────── */
-.screen{display:none;min-height:100vh;}
-.screen.active{display:flex;}
+/* ── SCREENS ────────────────────────── */
+.screen{display:none;width:100%;min-height:100vh;}
+.screen.active{display:grid;grid-template-columns:42% 58%;min-height:100vh;}
 
-/* ─── SPLIT LAYOUT ─────────────────────── */
-.split{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  min-height:100vh;
-  width:100%;
-}
-
-/* ═══════════════════════════════════════
-   LEFT PANEL — DARK
-═══════════════════════════════════════ */
-.left{
+/* ════════════════════════════════════
+   LEFT PANEL — DARK (all screens)
+════════════════════════════════════ */
+.lp{
   background:var(--navy);
-  padding:3.5rem 4rem;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  position:relative;
-  overflow:hidden;
+  padding:2.75rem 3rem;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
 }
-/* subtle radial glow */
-.left::before{
-  content:'';position:absolute;
-  top:-120px;right:-100px;
-  width:500px;height:500px;
-  background:radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 65%);
+.lp .grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);
+  background-size:42px 42px;pointer-events:none;
+}
+.lp::before{
+  content:'';position:absolute;top:-120px;right:-80px;
+  width:420px;height:420px;
+  background:radial-gradient(circle,rgba(2,85,204,0.22) 0%,transparent 65%);
   pointer-events:none;
 }
-.left::after{
-  content:'';position:absolute;
-  bottom:-80px;left:-60px;
-  width:360px;height:360px;
-  background:radial-gradient(circle, rgba(245,197,24,0.07) 0%, transparent 65%);
+.lp::after{
+  content:'';position:absolute;bottom:-70px;left:-40px;
+  width:280px;height:280px;
+  background:radial-gradient(circle,rgba(245,197,24,0.08) 0%,transparent 65%);
   pointer-events:none;
 }
 
 /* logo */
-.logo{
-  display:flex;align-items:center;gap:0.6rem;
-  margin-bottom:0;position:relative;z-index:1;
-}
-.logo-mark{
-  width:34px;height:34px;background:var(--blue);border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:0.72rem;color:#fff;letter-spacing:-0.03em;
-}
-.logo-name{font-weight:700;font-size:0.95rem;color:#fff;}
-.logo-name span{color:var(--yellow);}
-
-/* main copy block */
-.left-main{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:3rem 0 2rem;}
-
-.eyebrow{
-  display:inline-flex;align-items:center;gap:0.45rem;
-  background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.3);
-  color:var(--yellow);padding:0.3rem 0.9rem;border-radius:20px;
-  font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-  margin-bottom:1.5rem;width:fit-content;
-}
-.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);animation:blink 1.5s ease-in-out infinite;flex-shrink:0;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
-
-.left-tag{
-  font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.45);
-  letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.6rem;
-}
-.left-h1{
-  font-weight:900;font-size:clamp(2rem,3vw,2.8rem);
-  color:#fff;line-height:1.1;letter-spacing:-0.04em;
-  margin-bottom:1.25rem;
-}
-.left-h1 .yl{color:var(--yellow);}
-.left-h1 .bl{color:#60a5fa;}
-
-.left-quote{
-  border-left:3px solid var(--yellow);
-  padding:0.75rem 0 0.75rem 1.25rem;
-  margin-bottom:2rem;
-  font-size:1rem;font-weight:500;font-style:italic;
-  color:rgba(255,255,255,0.75);line-height:1.6;
-}
-
-/* stat chips */
-.chips{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2rem;}
-.chip{
-  display:flex;align-items:center;gap:0.4rem;
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
-  border-radius:6px;padding:0.4rem 0.8rem;
-  font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.7);
-}
-.chip .ci{font-size:0.85rem;}
-
-/* timer badge */
-.timer-badge{
-  display:inline-flex;align-items:center;gap:0.6rem;
-  background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);
-  border-radius:8px;padding:0.7rem 1.1rem;
-  font-size:0.82rem;font-weight:600;color:#93c5fd;
-}
-.timer-badge .t-icon{font-size:1.1rem;}
-
-/* left footer */
-.left-footer{
+.lp-logo{
+  display:flex;align-items:center;gap:0.55rem;
   position:relative;z-index:1;
-  padding-top:1.5rem;
-  border-top:1px solid rgba(255,255,255,0.07);
+}
+.lp-mark{
+  width:30px;height:30px;background:var(--blue);border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:0.65rem;color:#fff;flex-shrink:0;
+}
+.lp-name{font-weight:700;font-size:0.88rem;color:#fff;letter-spacing:-0.01em;}
+.lp-name span{color:var(--yellow);}
+
+/* body */
+.lp-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:2rem 0 1.5rem;}
+
+.lp-eyebrow{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.28);
+  color:var(--yellow);padding:0.28rem 0.82rem;border-radius:20px;
+  font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:1.3rem;width:fit-content;
+}
+.lp-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);
+  animation:blink 1.5s ease-in-out infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+
+.lp-kicker{font-size:0.65rem;font-weight:600;color:rgba(255,255,255,0.38);
+  letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.45rem;}
+.lp-h{
+  font-weight:900;font-size:clamp(1.75rem,2.4vw,2.4rem);
+  color:#fff;line-height:1.1;letter-spacing:-0.04em;margin-bottom:1rem;
+}
+.lp-h .yl{color:var(--yellow);}
+.lp-h .bl{color:#5b9bff;}
+
+.lp-quote{
+  border-left:3px solid var(--yellow);
+  padding:0.65rem 0 0.65rem 1rem;
+  font-size:0.9rem;font-weight:500;font-style:italic;
+  color:rgba(255,255,255,0.7);line-height:1.6;
+  margin-bottom:1.75rem;max-width:320px;
+}
+.lp-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;}
+.lchip{
+  display:flex;align-items:center;gap:0.38rem;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
+  border-radius:6px;padding:0.35rem 0.72rem;
+  font-size:0.7rem;font-weight:500;color:rgba(255,255,255,0.62);
+}
+.lp-timer{
+  display:inline-flex;align-items:center;gap:0.55rem;
+  background:rgba(2,85,204,0.15);border:1px solid rgba(2,85,204,0.3);
+  border-radius:7px;padding:0.6rem 0.95rem;
+  font-size:0.78rem;font-weight:600;color:#7ab4ff;width:fit-content;
+}
+
+/* progress donut (quiz + results) */
+.lp-prog{text-align:center;margin-bottom:1.5rem;}
+.prog-ring-wrap{position:relative;width:96px;height:96px;margin:0 auto;}
+.prog-ring{width:96px;height:96px;transform:rotate(-90deg);display:block;}
+.pr-bg{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:7;}
+.pr-arc{fill:none;stroke:var(--yellow);stroke-width:7;stroke-linecap:round;
+  stroke-dasharray:251;stroke-dashoffset:251;transition:stroke-dashoffset 0.4s ease;}
+.pr-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.pr-n{font-weight:900;font-size:1.5rem;color:#fff;line-height:1;}
+.pr-of{font-size:0.58rem;color:rgba(255,255,255,0.35);margin-top:1px;}
+.lp-prog-lbl{font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.5rem;}
+
+.lp-qbox{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:9px;padding:0.95rem 1.1rem;margin-bottom:1.1rem;
+}
+.lp-qcat{font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.3rem;}
+.lp-qtxt{font-size:0.8rem;font-weight:600;color:#fff;line-height:1.45;}
+
+.lp-tips{display:flex;flex-direction:column;gap:0.35rem;}
+.lp-tip{font-size:0.7rem;color:rgba(255,255,255,0.38);display:flex;align-items:flex-start;gap:0.4rem;}
+.lp-tip::before{content:'›';color:var(--yellow);flex-shrink:0;font-size:0.82rem;line-height:1.3;}
+
+/* results left */
+.rl-wrap{text-align:center;margin-bottom:1.25rem;}
+.sr-cont{position:relative;width:140px;height:140px;margin:0 auto 1rem;}
+.sr-svg{width:140px;height:140px;transform:rotate(-90deg);}
+.sr-bg{fill:none;stroke:rgba(255,255,255,0.07);stroke-width:11;}
+.sr-fill{fill:none;stroke-width:11;stroke-linecap:round;
+  stroke-dasharray:352;stroke-dashoffset:352;transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1);}
+.sr-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.sr-n{font-weight:900;font-size:2.6rem;color:#fff;line-height:1;}
+.sr-d{font-size:0.62rem;color:rgba(255,255,255,0.35);margin-top:2px;}
+.rl-verdict{font-weight:800;font-size:1.05rem;color:#fff;margin-bottom:0.4rem;}
+.rl-band{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.28);
+  border-radius:6px;padding:0.38rem 0.85rem;
+  font-size:0.76rem;font-weight:700;color:var(--yellow);
+}
+.rl-band strong{font-size:0.9rem;}
+.rl-copy{font-size:0.76rem;color:rgba(255,255,255,0.52);line-height:1.6;margin:1.1rem 0 0.9rem;}
+.rl-call{
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  width:100%;padding:0.8rem;
+  background:var(--yellow);color:var(--navy);border:none;border-radius:8px;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.85rem;
+  cursor:pointer;transition:all 0.18s;margin-bottom:0.5rem;text-decoration:none;
+}
+.rl-call:hover{background:var(--yellow2);transform:translateY(-1px);}
+.rl-retake{
+  width:100%;padding:0.65rem;
+  background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.62);
+  border:1px solid rgba(255,255,255,0.1);border-radius:8px;
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:0.78rem;
+  cursor:pointer;transition:all 0.18s;
+}
+.rl-retake:hover{background:rgba(255,255,255,0.09);}
+
+/* footer */
+.lp-foot{
+  position:relative;z-index:1;
+  padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.07);
   display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:0.75rem;
+  font-size:0.65rem;color:rgba(255,255,255,0.28);
 }
-.lf-idp{font-size:0.7rem;font-weight:600;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:0.4rem;}
-.lf-phone{font-size:0.75rem;font-weight:700;color:var(--yellow);}
+.lp-foot-phone{font-weight:700;color:var(--yellow);font-size:0.68rem;}
 
-/* ═══════════════════════════════════════
-   RIGHT PANEL — LIGHT
-═══════════════════════════════════════ */
-.right{
+/* ════════════════════════════════════
+   RIGHT PANEL — LIGHT (all screens)
+════════════════════════════════════ */
+.rp{
   background:var(--white);
-  padding:3.5rem 4rem;
   display:flex;flex-direction:column;
-  border-left:1px solid var(--border);
+  border-left:1px solid rgba(0,0,0,0.04);
+  overflow-y:auto;
 }
 
-.right-header{margin-bottom:2.25rem;}
-.right-pretitle{
-  font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--blue);margin-bottom:0.5rem;
-}
-.right-title{
-  font-weight:800;font-size:1.4rem;color:var(--navy);
-  letter-spacing:-0.03em;line-height:1.2;margin-bottom:0.4rem;
-}
-.right-sub{font-size:0.82rem;color:var(--text3);line-height:1.55;}
-
-/* steps */
-.steps{display:flex;flex-direction:column;gap:0;flex:1;}
-.step-item{
-  display:flex;gap:1.1rem;
-  padding:1.25rem 0;
+/* logo header */
+.rp-head{
+  padding:1.5rem 2.5rem;
   border-bottom:1px solid var(--border);
-  position:relative;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-shrink:0;
 }
-.step-item:last-child{border-bottom:none;}
-.step-left{display:flex;flex-direction:column;align-items:center;gap:0;}
+.rp-logo{height:36px;object-fit:contain;}
+.rp-logo-fallback{
+  display:flex;align-items:center;gap:0.5rem;
+}
+.rp-logo-fb-mark{
+  width:30px;height:30px;background:var(--blue);border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:0.65rem;color:#fff;
+}
+.rp-logo-fb-name{font-weight:700;font-size:0.88rem;color:var(--navy);}
+.rp-logo-fb-name span{color:var(--blue);}
+.rp-badge{
+  background:var(--off);border:1px solid var(--border);
+  padding:0.2rem 0.65rem;border-radius:5px;
+  font-size:0.6rem;font-weight:700;color:var(--text3);letter-spacing:0.04em;
+}
+
+/* scrollable content */
+.rp-body{flex:1;padding:2rem 2.5rem 2.5rem;overflow-y:auto;}
+
+/* ── LANDING RIGHT ── */
+.rp-pre{font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;}
+.rp-title{font-weight:800;font-size:1.25rem;color:var(--navy);letter-spacing:-0.03em;line-height:1.2;margin-bottom:0.3rem;}
+.rp-sub{font-size:0.78rem;color:var(--text3);line-height:1.6;margin-bottom:1.5rem;}
+
+.steps{display:flex;flex-direction:column;}
+.step{display:grid;grid-template-columns:36px 1fr;gap:0.95rem;padding:1rem 0;border-bottom:1px solid var(--border);}
+.step:last-child{border-bottom:none;}
+.step-lhs{display:flex;flex-direction:column;align-items:center;}
 .step-num{
   width:34px;height:34px;border-radius:50%;
   background:var(--navy);color:#fff;
   display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:0.75rem;flex-shrink:0;
+  font-weight:800;font-size:0.7rem;flex-shrink:0;
 }
-.step-line{width:1.5px;flex:1;background:var(--border);margin-top:6px;}
-.step-item:last-child .step-line{display:none;}
-.step-body{padding-top:0.15rem;}
-.step-title{font-weight:700;font-size:0.9rem;color:var(--navy);margin-bottom:0.3rem;display:flex;align-items:center;gap:0.5rem;}
-.step-icon{font-size:0.95rem;}
-.step-desc{font-size:0.78rem;color:var(--text3);line-height:1.6;}
+.step-line{width:1.5px;flex:1;background:var(--border);margin-top:5px;}
+.step:last-child .step-line{display:none;}
+.step-rhs{padding-top:0.12rem;}
+.step-title{font-weight:700;font-size:0.86rem;color:var(--navy);margin-bottom:0.28rem;display:flex;align-items:center;gap:0.4rem;}
+.step-desc{font-size:0.75rem;color:var(--text3);line-height:1.62;}
 
-/* CTA area */
-.cta-area{
-  margin-top:2rem;padding-top:1.75rem;
-  border-top:1px solid var(--border);
-}
-.cta-note{font-size:0.72rem;color:var(--text3);margin-bottom:0.85rem;display:flex;align-items:center;gap:0.4rem;}
+.cta-area{margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid var(--border);}
+.cta-note{font-size:0.66rem;color:var(--text3);margin-bottom:0.7rem;display:flex;align-items:center;gap:0.38rem;}
 .cta-btn{
-  width:100%;padding:1rem;
-  background:var(--navy);color:#fff;border:none;border-radius:10px;
-  font-family:'Poppins',sans-serif;font-weight:800;font-size:1rem;
-  cursor:pointer;letter-spacing:-0.01em;
-  display:flex;align-items:center;justify-content:center;gap:0.6rem;
-  transition:all 0.2s;position:relative;overflow:hidden;
+  width:100%;padding:0.95rem;
+  background:var(--navy);color:#fff;border:none;border-radius:9px;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.95rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.55rem;
+  transition:all 0.2s;letter-spacing:0.01em;
 }
-.cta-btn::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.06) 50%,transparent 70%);
-  transform:translateX(-100%);transition:transform 0.5s ease;
-}
-.cta-btn:hover::after{transform:translateX(100%);}
-.cta-btn:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,0.3);}
-.cta-arrow{font-size:1.1rem;transition:transform 0.2s;}
+.cta-btn:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 22px rgba(2,85,204,0.28);}
+.cta-arrow{transition:transform 0.2s;}
 .cta-btn:hover .cta-arrow{transform:translateX(4px);}
-.cta-tiny{text-align:center;font-size:0.67rem;color:var(--text3);margin-top:0.6rem;}
+.cta-tiny{text-align:center;font-size:0.63rem;color:var(--text3);margin-top:0.48rem;}
 
-/* ═══════════════════════════════════════
-   LEAD FORM SCREEN
-═══════════════════════════════════════ */
-#form-screen{align-items:stretch;}
-#form-screen .split{}
-
-/* form panel */
-.form-panel{
-  background:var(--white);
-  padding:3.5rem 4rem;
-  display:flex;flex-direction:column;
-  overflow-y:auto;
-}
+/* ── FORM RIGHT ── */
 .fp-back{
-  display:inline-flex;align-items:center;gap:0.35rem;
+  display:inline-flex;align-items:center;gap:0.32rem;
   background:none;border:none;cursor:pointer;
-  font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:600;color:var(--text3);
-  margin-bottom:1.75rem;padding:0;transition:color 0.18s;
+  font-family:'Poppins',sans-serif;font-size:0.72rem;font-weight:600;
+  color:var(--text3);padding:0;margin-bottom:1.3rem;transition:color 0.18s;
 }
 .fp-back:hover{color:var(--navy);}
-.fp-pretitle{font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;}
-.fp-title{font-weight:800;font-size:1.5rem;color:var(--navy);letter-spacing:-0.03em;margin-bottom:0.3rem;}
-.fp-sub{font-size:0.8rem;color:var(--text3);line-height:1.55;margin-bottom:1.75rem;}
-.fg{margin-bottom:0.9rem;}
-.fl{display:block;font-size:0.67rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:0.35rem;}
+.fg{margin-bottom:0.75rem;}
+.fl{display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--text2);margin-bottom:0.28rem;}
 .fi{
-  width:100%;padding:0.7rem 1rem;
-  border:1.5px solid var(--border);border-radius:8px;
-  font-family:'Poppins',sans-serif;font-size:0.85rem;color:var(--text);
+  width:100%;padding:0.65rem 0.88rem;
+  border:1.5px solid var(--border);border-radius:7px;
+  font-family:'Poppins',sans-serif;font-size:0.83rem;color:var(--text);
   background:var(--off);outline:none;transition:all 0.18s;
 }
 .fi::placeholder{color:#94a3b8;}
-.fi:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,0.08);}
+.fi:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(2,85,204,0.08);}
 .fi option{background:#fff;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;}
-.form-submit{
-  width:100%;padding:0.9rem;margin-top:0.5rem;
-  background:var(--navy);color:#fff;border:none;border-radius:9px;
-  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.95rem;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:0.68rem;}
+.f-submit{
+  width:100%;padding:0.86rem;margin-top:0.35rem;
+  background:var(--navy);color:#fff;border:none;border-radius:8px;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.9rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.45rem;
   transition:all 0.2s;
 }
-.form-submit:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,0.3);}
-.form-tiny{text-align:center;font-size:0.67rem;color:#94a3b8;margin-top:0.6rem;}
+.f-submit:hover{background:var(--blue);transform:translateY(-1px);box-shadow:0 6px 18px rgba(2,85,204,0.28);}
+.f-tiny{text-align:center;font-size:0.63rem;color:#94a3b8;margin-top:0.5rem;}
+.sp-row{display:flex;align-items:center;gap:0.55rem;margin-top:1rem;padding-top:0.9rem;border-top:1px solid var(--border);}
+.avs{display:flex;}
+.av{width:23px;height:23px;border-radius:50%;border:1.5px solid #fff;font-size:0.5rem;font-weight:800;display:flex;align-items:center;justify-content:center;color:#fff;margin-left:-6px;}
+.av:first-child{margin-left:0;background:var(--blue);}
+.av:nth-child(2){background:#0891b2;}
+.av:nth-child(3){background:#7c3aed;}
+.av:nth-child(4){background:var(--green);}
+.sp-txt{font-size:0.67rem;color:var(--text3);}
+.sp-txt strong{color:var(--text);}
 
-/* mini left panel in form screen */
-.form-left-mini{
-  background:var(--navy);
-  padding:3.5rem 4rem;
-  display:flex;flex-direction:column;
-  justify-content:space-between;
-  position:relative;overflow:hidden;
+/* ── QUIZ RIGHT ── */
+.qr-bar{
+  display:flex;align-items:center;gap:0.85rem;
+  padding:1rem 2.5rem;background:var(--off);
+  border-bottom:1px solid var(--border);flex-shrink:0;
+  position:sticky;top:0;z-index:5;
 }
-.form-left-mini::before{
-  content:'';position:absolute;
-  top:-80px;right:-60px;
-  width:350px;height:350px;
-  background:radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 65%);
-  pointer-events:none;
-}
-.flm-logo{display:flex;align-items:center;gap:0.6rem;margin-bottom:0;position:relative;z-index:1;}
-.flm-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:2.5rem 0 2rem;}
-.flm-q{
-  font-weight:800;font-size:clamp(1.4rem,2vw,1.9rem);color:#fff;
-  letter-spacing:-0.035em;line-height:1.2;margin-bottom:1rem;
-}
-.flm-q .yl{color:var(--yellow);}
-.flm-items{display:flex;flex-direction:column;gap:0.6rem;}
-.flm-item{
-  display:flex;align-items:center;gap:0.7rem;
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
-  border-radius:8px;padding:0.7rem 0.9rem;
-  font-size:0.79rem;font-weight:500;color:rgba(255,255,255,0.75);
-}
-.flm-icon{font-size:1rem;flex-shrink:0;}
-.flm-footer{position:relative;z-index:1;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.07);font-size:0.7rem;color:rgba(255,255,255,0.3);}
+.qr-lbl{font-size:0.7rem;font-weight:700;color:var(--text3);white-space:nowrap;}
+.qr-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.qr-fill{height:100%;background:linear-gradient(90deg,var(--navy),var(--blue));border-radius:3px;transition:width 0.35s ease;width:0%;}
+.qr-cnt{font-size:0.7rem;font-weight:800;color:var(--navy);white-space:nowrap;}
 
-/* ═══════════════════════════════════════
-   QUIZ SCREEN
-═══════════════════════════════════════ */
-#quiz-screen{align-items:stretch;}
+.q-wrap{padding:1.75rem 2.5rem 2.5rem;}
 
-.quiz-left{
-  background:var(--navy);
-  padding:3.5rem 4rem;
-  display:flex;flex-direction:column;
-  position:relative;overflow:hidden;
-}
-.quiz-left::before{
-  content:'';position:absolute;top:-80px;right:-60px;
-  width:350px;height:350px;
-  background:radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 65%);
-  pointer-events:none;
-}
-.ql-logo{display:flex;align-items:center;gap:0.6rem;margin-bottom:0;position:relative;z-index:1;}
-.ql-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:2.5rem 0;}
-
-/* progress donut */
-.prog-wrap{text-align:center;margin-bottom:2rem;}
-.prog-svg{width:110px;height:110px;transform:rotate(-90deg);margin:0 auto;}
-.prog-bg{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:8;}
-.prog-arc{fill:none;stroke:var(--yellow);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 0.4s ease;}
-.prog-label{
-  font-weight:800;font-size:0.65rem;color:rgba(255,255,255,0.5);
-  letter-spacing:0.1em;text-transform:uppercase;margin-top:0.75rem;
-}
-.prog-center{position:relative;}
-.prog-num{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  font-weight:900;font-size:1.75rem;color:#fff;line-height:1;
-  margin-top:-4px;
-}
-.prog-of{font-size:0.65rem;color:rgba(255,255,255,0.4);margin-top:3px;}
-
-.q-info-box{
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
-  border-radius:10px;padding:1.1rem 1.25rem;
-}
-.qi-section{font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.4rem;}
-.qi-title{font-weight:700;font-size:0.9rem;color:#fff;line-height:1.4;}
-
-.ql-tips{display:flex;flex-direction:column;gap:0.5rem;margin-top:1.5rem;}
-.tip{
-  display:flex;align-items:center;gap:0.6rem;
-  font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:500;
-}
-.tip::before{content:'•';color:var(--yellow);flex-shrink:0;}
-
-.ql-footer{position:relative;z-index:1;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:space-between;font-size:0.7rem;color:rgba(255,255,255,0.3);}
-
-/* quiz right */
-.quiz-right{
-  background:var(--off);
-  padding:2.5rem 3.5rem;
-  display:flex;flex-direction:column;
-  overflow-y:auto;
-}
-.qr-top{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:2rem;
-}
-.qr-counter{
-  font-weight:700;font-size:0.78rem;color:var(--text3);
-  display:flex;align-items:center;gap:0.5rem;
-}
-.prog-bar-wrap{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin:0 1rem;}
-.prog-bar-fill{height:100%;background:linear-gradient(90deg,var(--navy),var(--blue));border-radius:3px;transition:width 0.35s ease;width:0%;}
-.qr-num{font-weight:800;font-size:0.78rem;color:var(--navy);}
-
-.q-card{
-  background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1.75rem;
-  margin-bottom:1.25rem;flex:1;
-}
-.q-cat-tag{
-  display:inline-flex;align-items:center;background:var(--blue-lt);border:1px solid #bfdbfe;
-  color:var(--blue);padding:0.22rem 0.7rem;border-radius:20px;
-  font-size:0.63rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;
-}
-.q-text{font-weight:700;font-size:1rem;color:var(--navy);line-height:1.4;letter-spacing:-0.02em;margin-bottom:0.5rem;}
-.q-hint{font-size:0.76rem;color:var(--text3);margin-bottom:1.25rem;}
-.q-passage{
+/* passage (Reading section) */
+.passage-box{
   background:var(--off);border:1.5px solid var(--border);border-left:3px solid var(--blue);
-  border-radius:8px;padding:1rem 1.1rem;
-  font-size:0.83rem;color:var(--text2);line-height:1.75;font-style:italic;margin-bottom:1.25rem;
+  border-radius:8px;padding:1.1rem 1.25rem;
+  font-size:0.8rem;color:var(--text2);line-height:1.78;margin-bottom:1.4rem;
 }
-.opts{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;}
+.passage-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.5rem;}
+.passage-title{font-weight:800;font-size:0.88rem;color:var(--navy);margin-bottom:0.5rem;}
+
+.q-section-head{
+  display:flex;align-items:center;gap:0.5rem;
+  margin-bottom:1rem;
+  font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);
+}
+.q-section-head .divider{flex:1;height:1px;background:var(--border);}
+
+.q-block{margin-bottom:1.5rem;}
+.q-cat-pill{
+  display:inline-flex;align-items:center;
+  background:var(--blue-lt);border:1px solid var(--blue-mid);color:var(--blue);
+  padding:0.18rem 0.65rem;border-radius:20px;
+  font-size:0.58rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.7rem;
+}
+.q-label{font-weight:700;font-size:0.88rem;color:var(--navy);line-height:1.4;letter-spacing:-0.015em;margin-bottom:0.35rem;}
+.q-hint{font-size:0.72rem;color:var(--text3);margin-bottom:0.9rem;}
+
+/* MCQ options */
+.opts{display:flex;flex-direction:column;gap:0.45rem;}
 .opt{
-  display:flex;align-items:center;gap:0.8rem;
-  background:var(--off);border:1.5px solid var(--border);border-radius:8px;
-  padding:0.78rem 1rem;cursor:pointer;
-  font-family:'Poppins',sans-serif;font-size:0.83rem;color:var(--text);
+  display:flex;align-items:center;gap:0.72rem;
+  background:var(--off);border:1.5px solid var(--border);border-radius:7px;
+  padding:0.7rem 0.9rem;cursor:pointer;
+  font-family:'Poppins',sans-serif;font-size:0.8rem;color:var(--text);
   text-align:left;transition:all 0.15s;line-height:1.4;
 }
 .opt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-lt);}
 .opt-k{
-  width:28px;height:28px;border-radius:6px;flex-shrink:0;
+  width:26px;height:26px;border-radius:6px;flex-shrink:0;
   background:#e2e8f0;border:1.5px solid #cbd5e1;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Poppins',sans-serif;font-size:0.68rem;font-weight:800;color:#64748b;
-  transition:all 0.15s;
+  font-size:0.62rem;font-weight:800;color:var(--text3);transition:all 0.15s;
 }
 .opt:hover:not(:disabled) .opt-k{background:var(--blue);border-color:var(--blue);color:#fff;}
 .opt.selected{border-color:var(--blue);background:var(--blue-lt);}
 .opt.selected .opt-k{background:var(--blue);border-color:var(--blue);color:#fff;}
-.opt.correct{border-color:#059669;background:#f0fdf4;}
-.opt.correct .opt-k{background:#059669;border-color:#059669;color:#fff;}
-.opt.wrong{border-color:#dc2626;background:#fef2f2;}
-.opt.wrong .opt-k{background:#dc2626;border-color:#dc2626;color:#fff;}
+.opt.correct{border-color:var(--green);background:var(--green-lt);}
+.opt.correct .opt-k{background:var(--green);border-color:var(--green);color:#fff;}
+.opt.wrong{border-color:var(--red);background:var(--red-lt);}
+.opt.wrong .opt-k{background:var(--red);border-color:var(--red);color:#fff;}
 .opt:disabled{cursor:default;}
 
+/* Gap Fill */
+.gapfill-row{
+  display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;
+  font-size:0.82rem;color:var(--text2);line-height:1.7;margin-bottom:0.35rem;
+}
+.gap-input{
+  border:none;border-bottom:2px solid var(--blue);
+  background:transparent;outline:none;
+  font-family:'Poppins',sans-serif;font-size:0.82rem;color:var(--navy);font-weight:600;
+  padding:0.1rem 0.3rem;min-width:100px;width:120px;text-align:center;
+  transition:border-color 0.18s;
+}
+.gap-input:focus{border-color:var(--navy);}
+.gap-input.correct{border-color:var(--green);color:var(--green);}
+.gap-input.wrong{border-color:var(--red);color:var(--red);}
+.gap-input:disabled{background:transparent;}
+
+/* True/False */
+.tf-opts{display:flex;gap:0.7rem;margin-top:0.5rem;}
+.tf-btn{
+  flex:1;padding:0.65rem;border:1.5px solid var(--border);border-radius:7px;
+  font-family:'Poppins',sans-serif;font-size:0.82rem;font-weight:700;
+  cursor:pointer;background:var(--off);color:var(--text2);transition:all 0.15s;
+}
+.tf-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
+.tf-btn.selected{border-color:var(--blue);background:var(--blue-lt);color:var(--blue);}
+.tf-btn.correct{border-color:var(--green);background:var(--green-lt);color:var(--green);}
+.tf-btn.wrong{border-color:var(--red);background:var(--red-lt);color:var(--red);}
+.tf-btn:disabled{cursor:default;}
+
+/* Listening form fill */
+.listen-form{background:var(--off);border:1.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem;}
+.lf-title{background:var(--navy);color:#fff;padding:0.75rem 1.1rem;font-weight:700;font-size:0.82rem;}
+.lf-table{width:100%;border-collapse:collapse;}
+.lf-table td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);font-size:0.78rem;color:var(--text2);vertical-align:middle;}
+.lf-table td:first-child{font-weight:600;color:var(--text);width:45%;border-right:1px solid var(--border);background:#fff;}
+.lf-table td:last-child{background:var(--off);}
+.lf-table tr:last-child td{border-bottom:none;}
+.lf-inp{
+  border:none;border-bottom:2px solid var(--blue);background:transparent;
+  outline:none;font-family:'Poppins',sans-serif;font-size:0.8rem;color:var(--navy);
+  font-weight:600;padding:0.1rem 0.3rem;width:130px;transition:border-color 0.18s;
+}
+.lf-inp:focus{border-color:var(--navy);}
+.lf-inp.correct{border-color:var(--green);color:var(--green);}
+.lf-inp.wrong{border-color:var(--red);color:var(--red);}
+.lf-inp:disabled{background:transparent;}
+.lf-example{font-size:0.7rem;font-style:italic;color:var(--text3);}
+
+/* Feedback */
 .q-fb{
-  padding:0.75rem 1rem;border-radius:8px;
-  font-size:0.78rem;font-weight:500;line-height:1.55;
-  display:none;margin-bottom:1rem;
+  padding:0.65rem 0.95rem;border-radius:7px;
+  font-size:0.75rem;font-weight:500;line-height:1.55;
+  display:none;margin-top:0.75rem;
 }
 .q-fb.show{display:block;}
-.q-fb.ok{background:#f0fdf4;color:#065f46;border:1px solid #a7f3d0;}
-.q-fb.no{background:#fef2f2;color:#7f1d1d;border:1px solid #fecaca;}
+.q-fb.ok{background:var(--green-lt);color:#065f46;border:1px solid var(--green-mid);}
+.q-fb.no{background:var(--red-lt);color:#7f1d1d;border:1px solid var(--red-mid);}
 
-.q-nav{display:flex;justify-content:flex-end;}
-.next-btn{
-  background:var(--navy);color:#fff;border:none;
-  padding:0.7rem 1.5rem;border-radius:8px;
-  font-family:'Poppins',sans-serif;font-weight:700;font-size:0.82rem;
-  cursor:pointer;display:flex;align-items:center;gap:0.45rem;
-  transition:all 0.18s;opacity:0;pointer-events:none;transform:translateY(4px);
-}
-.next-btn.show{opacity:1;pointer-events:all;transform:translateY(0);}
-.next-btn:hover{background:var(--blue);}
-
-/* ═══════════════════════════════════════
-   RESULTS SCREEN
-═══════════════════════════════════════ */
-#results-screen{align-items:stretch;}
-
-.res-left{
-  background:var(--navy);
-  padding:3.5rem 4rem;
-  display:flex;flex-direction:column;
-  position:relative;overflow:hidden;
-  justify-content:space-between;
-}
-.res-left::before{
-  content:'';position:absolute;top:-80px;right:-60px;
-  width:400px;height:400px;
-  background:radial-gradient(circle, rgba(37,99,235,0.22) 0%, transparent 65%);
-  pointer-events:none;
-}
-.rl-logo{display:flex;align-items:center;gap:0.6rem;position:relative;z-index:1;}
-.rl-body{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;padding:2rem 0;}
-
-.score-ring-wrap{position:relative;width:160px;height:160px;margin:0 auto 1.75rem;}
-.score-ring-svg{width:160px;height:160px;transform:rotate(-90deg);}
-.sr-bg{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:12;}
-.sr-fill{fill:none;stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1);}
-.sr-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.sr-n{font-weight:900;font-size:3rem;color:#fff;line-height:1;}
-.sr-d{font-size:0.72rem;color:rgba(255,255,255,0.4);margin-top:2px;}
-.rl-score-label{text-align:center;margin-bottom:1.5rem;}
-.rl-verdict{font-weight:800;font-size:1.2rem;color:#fff;margin-bottom:0.3rem;}
-.rl-band-chip{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:rgba(245,197,24,0.14);border:1px solid rgba(245,197,24,0.35);
-  border-radius:7px;padding:0.45rem 0.9rem;
-  font-size:0.8rem;font-weight:700;color:var(--yellow);
-}
-.rl-band-chip strong{font-size:0.95rem;}
-
-.rl-cta-area{position:relative;z-index:1;}
-.rl-cta-title{font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.65);margin-bottom:1rem;line-height:1.55;}
-.rl-btn{
-  width:100%;padding:0.85rem;
-  background:var(--yellow);color:var(--navy);border:none;border-radius:8px;
-  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.88rem;
+/* Submit quiz btn */
+.submit-quiz-btn{
+  width:100%;padding:0.85rem;margin-top:1.5rem;
+  background:var(--navy);color:#fff;border:none;border-radius:8px;
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:0.9rem;
   cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.5rem;
-  transition:all 0.18s;margin-bottom:0.6rem;
+  transition:all 0.2s;opacity:0;pointer-events:none;transform:translateY(4px);
 }
-.rl-btn:hover{background:var(--yellow-dk);transform:translateY(-1px);}
-.rl-retake{
-  width:100%;padding:0.75rem;
-  background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.7);
-  border:1px solid rgba(255,255,255,0.12);border-radius:8px;
-  font-family:'Poppins',sans-serif;font-weight:600;font-size:0.82rem;
-  cursor:pointer;transition:all 0.18s;
-}
-.rl-retake:hover{background:rgba(255,255,255,0.1);}
-.rl-footer{position:relative;z-index:1;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.07);font-size:0.7rem;color:rgba(255,255,255,0.3);}
+.submit-quiz-btn.show{opacity:1;pointer-events:all;transform:translateY(0);}
+.submit-quiz-btn:hover{background:var(--blue);}
 
-/* results right */
-.res-right{
-  background:var(--white);
-  padding:3rem 4rem;
-  display:flex;flex-direction:column;
-  overflow-y:auto;
-}
-.rr-title{
-  font-weight:800;font-size:1.2rem;color:var(--navy);letter-spacing:-0.025em;
-  margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);
-}
-.rr-title span{color:var(--blue);}
+/* ── RESULTS RIGHT ── */
+.rr-body{flex:1;padding:1.75rem 2.5rem;overflow-y:auto;}
+.rr-head{font-weight:800;font-size:1.1rem;color:var(--navy);letter-spacing:-0.025em;
+  margin-bottom:1.25rem;padding-bottom:0.85rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;}
+.rr-chip{background:var(--off);border:1.5px solid var(--border);border-radius:5px;padding:0.18rem 0.62rem;font-size:0.68rem;font-weight:800;color:var(--navy);}
 
-.bk-row{
-  display:flex;align-items:center;gap:0.85rem;
-  padding:0.9rem 0;border-bottom:1px solid var(--border);
-  transition:background 0.15s;
-}
+.bk-section{margin-bottom:1.25rem;}
+.bk-sec-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.5rem;}
+.bk-sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.bk-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid var(--border);}
 .bk-row:last-child{border-bottom:none;}
-.bk-num{
-  width:28px;height:28px;border-radius:6px;flex-shrink:0;
-  background:var(--off);font-size:0.68rem;font-weight:800;color:var(--text3);
-  display:flex;align-items:center;justify-content:center;
-}
+.bk-num{width:24px;height:24px;border-radius:5px;flex-shrink:0;background:var(--off);font-size:0.62rem;font-weight:800;color:var(--text3);display:flex;align-items:center;justify-content:center;}
 .bk-info{flex:1;min-width:0;}
-.bk-cat{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;color:var(--blue);margin-bottom:0.12rem;}
-.bk-q{font-size:0.78rem;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.bk-badge{flex-shrink:0;padding:0.18rem 0.6rem;border-radius:5px;font-size:0.65rem;font-weight:800;}
-.bk-badge.ok{background:#f0fdf4;color:#059669;}
-.bk-badge.no{background:#fef2f2;color:#dc2626;}
+.bk-q{font-size:0.75rem;color:var(--text2);line-height:1.4;margin-bottom:0.18rem;}
+.bk-ans{font-size:0.7rem;color:var(--text3);}
+.bk-ans strong{color:var(--navy);}
+.bk-badge{flex-shrink:0;padding:0.16rem 0.55rem;border-radius:5px;font-size:0.62rem;font-weight:800;margin-top:2px;}
+.bk-badge.ok{background:var(--green-lt);color:var(--green);}
+.bk-badge.no{background:var(--red-lt);color:var(--red);}
 
-.improve-box{
-  background:var(--off);border:1.5px solid var(--border);
-  border-radius:10px;padding:1.25rem;margin-top:1.5rem;
-}
-.ib-title{font-weight:700;font-size:0.88rem;color:var(--navy);margin-bottom:0.4rem;display:flex;align-items:center;gap:0.4rem;}
-.ib-desc{font-size:0.78rem;color:var(--text3);line-height:1.65;}
-.ib-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.9rem;}
-.ib-tag{background:var(--blue-lt);border:1px solid #bfdbfe;color:var(--blue);padding:0.2rem 0.65rem;border-radius:5px;font-size:0.68rem;font-weight:700;}
+.improve-card{background:var(--off);border:1.5px solid var(--border);border-radius:9px;padding:1rem 1.1rem;margin-top:0.5rem;}
+.ic-head{font-weight:700;font-size:0.83rem;color:var(--navy);margin-bottom:0.32rem;display:flex;align-items:center;gap:0.38rem;}
+.ic-desc{font-size:0.73rem;color:var(--text3);line-height:1.65;margin-bottom:0.7rem;}
+.ic-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.ic-tag{background:var(--blue-lt);border:1px solid var(--blue-mid);color:var(--blue);padding:0.16rem 0.58rem;border-radius:5px;font-size:0.63rem;font-weight:700;}
+.ic-tag.w{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
 
-/* ─── ANIMATIONS ───────────────────────── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{animation:fadeUp 0.45s ease both;}
-.d1{animation-delay:0.05s;}
-.d2{animation-delay:0.1s;}
-.d3{animation-delay:0.15s;}
-.d4{animation-delay:0.2s;}
+/* ── ANIM ────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp 0.38s ease both;}
+.d1{animation-delay:0.05s;}.d2{animation-delay:0.1s;}.d3{animation-delay:0.15s;}
 
-/* ─── RESPONSIVE ───────────────────────── */
-@media(max-width:860px){
-  .split{grid-template-columns:1fr;}
-  .left{padding:2.5rem 1.75rem;min-height:auto;}
-  .right{padding:2.5rem 1.75rem;}
-  .form-left-mini{display:none;}
-  .form-panel{padding:2.5rem 1.75rem;}
-  .quiz-left{padding:1.5rem 1.75rem;min-height:auto;}
-  .quiz-left .prog-wrap{display:none;}
-  .quiz-right{padding:2rem 1.75rem;}
-  .res-left{min-height:auto;padding:2.5rem 1.75rem;}
-  .res-right{padding:2rem 1.75rem;}
+/* ── MOBILE ──────────────────────────── */
+@media(max-width:800px){
+  .screen.active{grid-template-columns:1fr;}
+  .lp{min-height:auto;padding:1.75rem 1.5rem;}
+  .rp-head,.rp-body,.qr-bar,.q-wrap,.rr-body{padding-left:1.5rem;padding-right:1.5rem;}
   .frow{grid-template-columns:1fr!important;}
+  .lp-foot{display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════
-     SCREEN 1 — LANDING SPLIT
-═══════════════════════════════════════ -->
-<div id="landing-screen" class="screen active">
-  <div class="split">
-
-    <!-- LEFT: DARK PERSUASION PANEL -->
-    <div class="left">
-      <div class="logo">
-        <div class="logo-mark">TT</div>
-        <div class="logo-name">Terra<span>Tern</span> Learn</div>
-      </div>
-
-      <div class="left-main">
-        <div class="eyebrow"><span class="eyebrow-dot"></span>🕐 Just 3 Minutes</div>
-        <div class="left-tag">The IELTS Mini Quiz</div>
-        <h1 class="left-h1">Challenge<br>yourself <span class="yl">today.</span><br>Score <span class="bl">Band 8+</span><br>in 30 days.</h1>
-        <div class="left-quote">"Check your real IELTS score before booking your test."</div>
-        <div class="chips">
-          <div class="chip"><span class="ci">🏅</span> IDP-Certified Trainers</div>
-          <div class="chip"><span class="ci">🤖</span> 100+ AI Mock Tests</div>
-          <div class="chip"><span class="ci">👥</span> 12,000+ Students</div>
-          <div class="chip"><span class="ci">⭐</span> 4.9 Rated</div>
-        </div>
-        <div class="timer-badge">
-          <span class="t-icon">⏱️</span>
-          5 questions · ~3 minutes · Free
-        </div>
-      </div>
-
-      <div class="left-footer">
-        <div class="lf-idp">🏅 IDP-Certified Trainers</div>
-        <div class="lf-phone">📞 0806 235 8632</div>
-      </div>
+<!-- ═══════════════ SCREEN 1 — LANDING ═══════════════ -->
+<div id="s-land" class="screen active">
+  <div class="lp">
+    <div class="grid"></div>
+    <div class="lp-logo">
+      <div class="lp-mark">TT</div>
+      <div class="lp-name">Terra<span>Tern</span> Learn</div>
     </div>
-
-    <!-- RIGHT: INFO + CTA PANEL -->
-    <div class="right">
-      <div class="right-header">
-        <div class="right-pretitle">How It Works</div>
-        <div class="right-title">Your 3-minute path to<br>knowing your real band</div>
-        <div class="right-sub">No preparation needed. Just honest answers — and instant, accurate results.</div>
+    <div class="lp-body">
+      <div class="lp-eyebrow"><span class="lp-dot"></span>🕐 Just 3 Minutes</div>
+      <div class="lp-kicker">The IELTS Mini Quiz</div>
+      <h1 class="lp-h">Challenge<br>yourself —<br>in just <span class="yl">3 minutes!</span></h1>
+      <div class="lp-quote">"Check your real IELTS score before booking your test."</div>
+      <div class="lp-chips">
+        <div class="lchip">🏅 IDP-Certified Trainers</div>
+        <div class="lchip">🤖 100+ AI Mock Tests</div>
+        <div class="lchip">👥 12,000+ Students</div>
+        <div class="lchip">⭐ 4.9 Rated</div>
       </div>
+      <div class="lp-timer">⏱️ &nbsp;Reading + Listening · 5 Qs · Free</div>
+    </div>
+    <div class="lp-foot">
+      <span>© 2025 TerraTern Pvt Ltd</span>
+      <span class="lp-foot-phone">📞 0806 235 8632</span>
+    </div>
+  </div>
 
+  <div class="rp">
+    <div class="rp-head">
+      <div class="rp-logo-fallback">
+        <div class="rp-logo-fb-mark">TT</div>
+        <div class="rp-logo-fb-name">Terra<span>Tern</span> Learn</div>
+      </div>
+      <div class="rp-badge">IELTS Mini Quiz</div>
+    </div>
+    <div class="rp-body">
+      <div class="rp-pre">How It Works</div>
+      <div class="rp-title">Your 3-minute path to knowing your real band</div>
+      <div class="rp-sub">No prep needed. Real IELTS-style Reading and Listening questions — instant, accurate results.</div>
       <div class="steps">
-        <div class="step-item fade-up d1">
-          <div class="step-left">
-            <div class="step-num">1</div>
-            <div class="step-line"></div>
-          </div>
-          <div class="step-body">
-            <div class="step-title"><span class="step-icon">🔲</span> Get Started</div>
-            <div class="step-desc">We've selected a set of real IELTS-style questions for your Mini Quiz. You'll get a quick mix of Reading, Listening, and Grammar-based questions designed to evaluate your current band level.</div>
+        <div class="step fu d1">
+          <div class="step-lhs"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-rhs">
+            <div class="step-title">🔲 Get Started</div>
+            <div class="step-desc">We've selected real IELTS-style questions for your Mini Quiz. A quick mix of Reading comprehension, gap fill, true/false, and Listening form-fill questions to evaluate your current band level.</div>
           </div>
         </div>
-
-        <div class="step-item fade-up d2">
-          <div class="step-left">
-            <div class="step-num">2</div>
-            <div class="step-line"></div>
-          </div>
-          <div class="step-body">
-            <div class="step-title"><span class="step-icon">📊</span> See Your Results</div>
-            <div class="step-desc">Once you complete the quiz, you'll instantly see your estimated score along with insights into your performance. Understand your strengths, identify weak areas, and learn what's holding you back from Band 8+.</div>
+        <div class="step fu d2">
+          <div class="step-lhs"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-rhs">
+            <div class="step-title">📊 See Your Results</div>
+            <div class="step-desc">Instantly see your estimated score with a full question breakdown. Understand your strengths, identify weak areas, and learn exactly what's holding you back from Band 8+.</div>
           </div>
         </div>
-
-        <div class="step-item fade-up d3">
-          <div class="step-left">
-            <div class="step-num">3</div>
-            <div class="step-line"></div>
-          </div>
-          <div class="step-body">
-            <div class="step-title"><span class="step-icon">🚀</span> Improve Your Score</div>
-            <div class="step-desc">Use your results to take the next step in your IELTS journey. Get expert-backed recommendations and understand how to improve faster with the right strategy.</div>
+        <div class="step fu d3">
+          <div class="step-lhs"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-rhs">
+            <div class="step-title">🚀 Improve Your Score</div>
+            <div class="step-desc">Use your results to take the next step. Get expert-backed recommendations and learn how to improve faster with the right strategy from our IDP-certified trainers.</div>
           </div>
         </div>
       </div>
-
-      <div class="cta-area fade-up d4">
-        <div class="cta-note">🔒 Free · No spam · Results in 3 minutes</div>
-        <button class="cta-btn" onclick="goToForm()">
-          START QUIZ NOW <span class="cta-arrow">→</span>
-        </button>
-        <div class="cta-tiny">Takes less than 3 minutes · Instant band estimate</div>
+      <div class="cta-area fu">
+        <div class="cta-note">🔒 Free · No spam · Results in under 3 minutes</div>
+        <button class="cta-btn" onclick="G('s-form')">START QUIZ NOW <span class="cta-arrow">→</span></button>
+        <div class="cta-tiny">Instant band estimate · 5 real IELTS questions</div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SCREEN 2 — LEAD FORM
-═══════════════════════════════════════ -->
-<div id="form-screen" class="screen">
-  <div class="split">
-
-    <!-- MINI LEFT -->
-    <div class="form-left-mini">
-      <div class="flm-logo">
-        <div class="logo-mark">TT</div>
-        <div class="logo-name" style="font-weight:700;font-size:0.95rem;color:#fff;">Terra<span style="color:var(--yellow)">Tern</span> Learn</div>
+<!-- ═══════════════ SCREEN 2 — FORM ═══════════════ -->
+<div id="s-form" class="screen">
+  <div class="lp">
+    <div class="grid"></div>
+    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-body">
+      <div class="lp-eyebrow"><span class="lp-dot"></span>Almost There!</div>
+      <h1 class="lp-h" style="font-size:clamp(1.55rem,2vw,2rem)">Tell us about<br><span class="yl">yourself</span><br>first.</h1>
+      <div class="lp-chips" style="margin-bottom:1.3rem">
+        <div class="lchip">⚡ 5 real IELTS questions</div>
+        <div class="lchip">📊 Instant band estimate</div>
+        <div class="lchip">🎯 Personalised tips</div>
+        <div class="lchip">🔒 100% Free</div>
       </div>
-      <div class="flm-body">
-        <h2 class="flm-q">Almost there!<br>Tell us a bit about<br><span class="yl">yourself first.</span></h2>
-        <div class="flm-items">
-          <div class="flm-item"><span class="flm-icon">⚡</span>5 real IELTS-style questions</div>
-          <div class="flm-item"><span class="flm-icon">📊</span>Instant estimated band score</div>
-          <div class="flm-item"><span class="flm-icon">🎯</span>Personalised improvement tips</div>
-          <div class="flm-item"><span class="flm-icon">🔒</span>Free — no credit card needed</div>
-        </div>
-      </div>
-      <div class="flm-footer">© 2025 TerraTern Pvt Ltd · Bangalore, India</div>
+      <div class="lp-quote" style="font-size:0.83rem">Your results will be emailed instantly after the quiz.</div>
     </div>
+    <div class="lp-foot">
+      <span>© 2025 TerraTern Pvt Ltd</span>
+      <span class="lp-foot-phone">📞 0806 235 8632</span>
+    </div>
+  </div>
 
-    <!-- FORM -->
-    <div class="form-panel">
-      <button class="fp-back" onclick="goBack('landing-screen')">← Back</button>
-      <div class="fp-pretitle">One quick step</div>
-      <div class="fp-title">Enter your details to begin</div>
-      <div class="fp-sub">We'll send your personalised band report and study tips right after the quiz.</div>
-
+  <div class="rp">
+    <div class="rp-head">
+      <div class="rp-logo-fallback">
+        <div class="rp-logo-fb-mark">TT</div>
+        <div class="rp-logo-fb-name">Terra<span>Tern</span> Learn</div>
+      </div>
+      <div class="rp-badge">Step 1 of 2</div>
+    </div>
+    <div class="rp-body">
+      <button class="fp-back" onclick="G('s-land')">← Back</button>
+      <div class="rp-pre">One quick step</div>
+      <div class="rp-title">Enter your details to begin</div>
+      <div class="rp-sub" style="margin-bottom:1.3rem">We'll send your band report and improvement tips right after the quiz.</div>
       <div class="frow">
         <div class="fg"><label class="fl">Name</label><input class="fi" id="u-name" placeholder="Arjun Krishnan" type="text"/></div>
         <div class="fg"><label class="fl">Email</label><input class="fi" id="u-email" placeholder="arjun@email.com" type="email"/></div>
       </div>
       <div class="frow">
         <div class="fg"><label class="fl">Phone Number</label><input class="fi" id="u-phone" placeholder="+91 98765 43210" type="tel"/></div>
-        <div class="fg">
-          <label class="fl">City</label>
-          <input class="fi" id="u-city" placeholder="Bangalore" type="text"/>
-        </div>
+        <div class="fg"><label class="fl">City</label><input class="fi" id="u-city" placeholder="Bangalore" type="text"/></div>
       </div>
       <div class="fg">
         <label class="fl">Current Band Score</label>
         <select class="fi" id="u-band">
           <option value="">Select your current level</option>
-          <option>Below 5.0</option>
-          <option>5.0–5.5</option>
-          <option>6.0–6.5</option>
-          <option>7.0–7.5</option>
+          <option>Below 5.0</option><option>5.0 – 5.5</option>
+          <option>6.0 – 6.5</option><option>7.0 – 7.5</option>
           <option>First Attempt — Not Sure</option>
         </select>
       </div>
-      <button class="form-submit" onclick="submitForm()">Start My Quiz →</button>
-      <div class="form-tiny">🔒 Your details are safe. No spam, ever.</div>
+      <button class="f-submit" onclick="submitForm()">Start My Quiz →</button>
+      <div class="f-tiny">🔒 Your details are safe. No spam, ever.</div>
+      <div class="sp-row">
+        <div class="avs"><div class="av">AR</div><div class="av">PK</div><div class="av">SM</div><div class="av">+</div></div>
+        <div class="sp-txt"><strong>47 students</strong> completed this quiz today</div>
+      </div>
     </div>
-
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SCREEN 3 — QUIZ
-═══════════════════════════════════════ -->
-<div id="quiz-screen" class="screen">
-  <div class="split">
-
-    <!-- QUIZ LEFT PANEL -->
-    <div class="quiz-left">
-      <div class="ql-logo">
-        <div class="logo-mark">TT</div>
-        <div class="logo-name" style="font-weight:700;font-size:0.95rem;color:#fff;">Terra<span style="color:var(--yellow)">Tern</span> Learn</div>
+<!-- ═══════════════ SCREEN 3 — QUIZ ═══════════════ -->
+<div id="s-quiz" class="screen">
+  <div class="lp">
+    <div class="grid"></div>
+    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-body">
+      <div class="lp-prog">
+        <div class="prog-ring-wrap">
+          <svg class="prog-ring" viewBox="0 0 96 96">
+            <circle class="pr-bg" cx="48" cy="48" r="40"/>
+            <circle class="pr-arc" cx="48" cy="48" r="40" id="pr-arc"
+              stroke-dasharray="251" stroke-dashoffset="251"/>
+          </svg>
+          <div class="pr-center"><div class="pr-n" id="pr-n">0</div><div class="pr-of">of 5</div></div>
+        </div>
+        <div class="lp-prog-lbl">Answered</div>
       </div>
-
-      <div class="ql-body">
-        <div class="prog-wrap">
-          <div class="prog-center">
-            <svg class="prog-svg" viewBox="0 0 110 110">
-              <circle class="prog-bg" cx="55" cy="55" r="46"/>
-              <circle class="prog-arc" cx="55" cy="55" r="46" id="prog-arc"
-                stroke-dasharray="289" stroke-dashoffset="289"/>
-            </svg>
-            <div class="prog-num" id="prog-num">0</div>
-          </div>
-          <div class="prog-label">Progress</div>
-        </div>
-
-        <div class="q-info-box" id="q-info-box">
-          <div class="qi-section" id="qi-section">—</div>
-          <div class="qi-title" id="qi-title">—</div>
-        </div>
-
-        <div class="ql-tips">
-          <div class="tip">Read the passage carefully before answering</div>
-          <div class="tip">Trust your first instinct</div>
-          <div class="tip">Each question carries equal weight</div>
-        </div>
+      <div class="lp-qbox" id="lp-qbox">
+        <div class="lp-qcat" id="lp-qcat">—</div>
+        <div class="lp-qtxt" id="lp-qtxt">—</div>
       </div>
-
-      <div class="ql-footer">
-        <span>TerraTern Learn</span>
-        <span>📞 0806 235 8632</span>
+      <div class="lp-tips">
+        <div class="lp-tip">Read the passage carefully before answering</div>
+        <div class="lp-tip">Type your answers exactly for gap fill</div>
+        <div class="lp-tip">Each question carries equal weight</div>
       </div>
     </div>
-
-    <!-- QUIZ RIGHT PANEL -->
-    <div class="quiz-right">
-      <div class="qr-top">
-        <div class="qr-counter" id="qr-counter">Question 1</div>
-        <div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-fill"></div></div>
-        <div class="qr-num" id="qr-num">1 / 5</div>
-      </div>
-      <div id="q-area"></div>
+    <div class="lp-foot">
+      <span>TerraTern Learn</span>
+      <span class="lp-foot-phone">📞 0806 235 8632</span>
     </div>
+  </div>
 
+  <div class="rp">
+    <div class="rp-head">
+      <div class="rp-logo-fallback">
+        <div class="rp-logo-fb-mark">TT</div>
+        <div class="rp-logo-fb-name">Terra<span>Tern</span> Learn</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem;flex:1;margin-left:1rem;">
+        <div class="qr-track"><div class="qr-fill" id="qr-fill"></div></div>
+        <div class="qr-cnt" id="qr-cnt">0 / 5</div>
+      </div>
+    </div>
+    <div class="q-wrap" id="q-wrap"></div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════
-     SCREEN 4 — RESULTS
-═══════════════════════════════════════ -->
-<div id="results-screen" class="screen">
-  <div class="split">
-
-    <!-- RESULTS LEFT -->
-    <div class="res-left">
-      <div class="rl-logo">
-        <div class="logo-mark">TT</div>
-        <div class="logo-name" style="font-weight:700;font-size:0.95rem;color:#fff;">Terra<span style="color:var(--yellow)">Tern</span> Learn</div>
-      </div>
-
-      <div class="rl-body">
-        <div class="score-ring-wrap">
-          <svg class="score-ring-svg" viewBox="0 0 160 160">
-            <circle class="sr-bg" cx="80" cy="80" r="64"/>
-            <circle class="sr-fill" cx="80" cy="80" r="64" id="sr-fill"
-              stroke-dasharray="402" stroke-dashoffset="402"/>
+<!-- ═══════════════ SCREEN 4 — RESULTS ═══════════════ -->
+<div id="s-results" class="screen">
+  <div class="lp">
+    <div class="grid"></div>
+    <div class="lp-logo"><div class="lp-mark">TT</div><div class="lp-name">Terra<span>Tern</span> Learn</div></div>
+    <div class="lp-body">
+      <div class="rl-wrap">
+        <div class="sr-cont">
+          <svg class="sr-svg" viewBox="0 0 140 140">
+            <circle class="sr-bg" cx="70" cy="70" r="56"/>
+            <circle class="sr-fill" cx="70" cy="70" r="56" id="sr-fill"/>
           </svg>
           <div class="sr-center">
             <div class="sr-n" id="sr-n">0</div>
             <div class="sr-d">out of 5</div>
           </div>
         </div>
-        <div class="rl-score-label">
-          <div class="rl-verdict" id="rl-verdict">—</div>
-        </div>
-        <div style="text-align:center;margin-bottom:1.5rem">
-          <div class="rl-band-chip" id="rl-band-chip">Estimated Band <strong>—</strong></div>
-        </div>
-
-        <div class="rl-cta-area">
-          <div class="rl-cta-title" id="rl-cta-title">Ready to move up? Book your free expert session and get a personalised Band 8+ plan.</div>
-          <a href="tel:08062358632" class="rl-btn">📞 Call 0806 235 8632</a>
-          <button class="rl-retake" onclick="retake()">↺ Retake Quiz</button>
+        <div class="rl-verdict" id="rl-verdict">—</div>
+        <div style="display:flex;justify-content:center;">
+          <div class="rl-band" id="rl-band">Estimated Band <strong>—</strong></div>
         </div>
       </div>
-
-      <div class="rl-footer">© 2025 TerraTern Pvt Ltd · Bangalore</div>
+      <div class="rl-copy" id="rl-copy">—</div>
+      <a href="tel:08062358632" class="rl-call">📞 Call 0806 235 8632</a>
+      <button class="rl-retake" onclick="retake()">↺ Retake Quiz</button>
     </div>
+    <div class="lp-foot">
+      <span>© 2025 TerraTern Pvt Ltd</span>
+      <span class="lp-foot-phone">📞 0806 235 8632</span>
+    </div>
+  </div>
 
-    <!-- RESULTS RIGHT -->
-    <div class="res-right">
-      <div class="rr-title">Your <span>Question Breakdown</span></div>
+  <div class="rp">
+    <div class="rp-head">
+      <div class="rp-logo-fallback">
+        <div class="rp-logo-fb-mark">TT</div>
+        <div class="rp-logo-fb-name">Terra<span>Tern</span> Learn</div>
+      </div>
+      <div class="rp-badge">Your Results</div>
+    </div>
+    <div class="rr-body">
+      <div class="rr-head">Question Breakdown <div class="rr-chip" id="rr-chip">— / 5</div></div>
       <div id="bk-list"></div>
-      <div class="improve-box" id="improve-box"></div>
+      <div class="improve-card" id="improve-card"></div>
     </div>
-
   </div>
 </div>
 
 <script>
-/* ── QUIZ DATA ──────────────────────────── */
-const QS=[
-  {cat:"Reading Comprehension",q:"What is the author's primary argument in the passage?",hint:"Choose the answer that best captures the central claim made.",pass:"Despite widespread belief that multitasking enhances productivity, research consistently shows that the human brain is fundamentally incapable of performing two cognitively demanding tasks simultaneously. What we call 'multitasking' is rapid task-switching — a process with a significant cognitive cost that ultimately reduces efficiency.",opts:["Multitasking effectively increases productivity","The brain switches rapidly between tasks rather than doing them at once","Cognitive tasks are impossible under time pressure","Research on multitasking is inconclusive"],ans:1,ex:"The author argues that 'multitasking' is actually rapid task-switching with a cognitive cost — not genuine parallel processing."},
-  {cat:"Grammar & Structure",q:"Choose the grammatically correct sentence.",hint:"Focus on subject–verb agreement in 'neither…nor' constructions.",pass:null,opts:["Neither the students nor the teacher were prepared.","Neither the students nor the teacher was prepared.","Neither the students nor the teacher are prepared.","Neither the students nor the teacher have been prepared."],ans:1,ex:"With 'neither…nor', the verb agrees with the nearest subject — 'teacher' (singular), so 'was' is correct."},
-  {cat:"Vocabulary in Context",q:"Which word best completes the sentence?",hint:"Think about what fits a discovery that upends decades of established knowledge.",pass:"The scientist's findings were ________, contradicting decades of established research and forcing the academic community to reassess long-held assumptions about climate patterns.",opts:["mundane","ambiguous","groundbreaking","superfluous"],ans:2,ex:"'Groundbreaking' means revolutionary — exactly right for a finding that forces academic reassessment."},
-  {cat:"Inference & Critical Reading",q:"What can be inferred from the passage?",hint:"The word 'paradoxical' is the key clue here.",pass:"The new policy, while well-intentioned, has had the paradoxical effect of increasing the very inequality it was designed to reduce.",opts:["The policy was implemented without planning","The policy achieved all its intended goals","The policy's outcomes are the opposite of its objectives","Policymakers were aware of the unintended consequences"],ans:2,ex:"'Paradoxical' means an outcome contrary to intention — the policy designed to reduce inequality actually increased it."},
-  {cat:"Academic Word Usage",q:"Which sentence uses 'constitute' correctly?",hint:"'Constitute' means 'to make up or form' — find where it works accurately.",pass:null,opts:["The heavy rain constituted us to stay indoors.","These three components constitute the core framework of the theory.","She constituted her opinion after reading the report.","The government constituted its budget plans."],ans:1,ex:"'Constitute' means to form or make up. 'These components constitute the framework' is the accurate usage."}
+/* ══════════════════════════════════════════════
+   QUIZ DATA — from TerraTern PDF
+══════════════════════════════════════════════ */
+const PASSAGE = `Music has served as a universal language across cultures and centuries, evolving from simple rhythmic pulses to complex orchestral arrangements. In the early days of human history, primitive instruments crafted from bone and wood were used to communicate stories and celebrate communal rituals. As societies became more sophisticated, the development of musical notation allowed composers to preserve their intricate melodies for future generations. The Baroque and Classical eras introduced a formal structure to music, emphasizing balance, symmetry, and the rise of the virtuoso performer. However, the dawn of the twentieth century brought a radical shift with the emergence of jazz, blues, and electronic genres that defied traditional rules. Today, digital technology has democratized music production, enabling artists to record and distribute their work from any corner of the globe. Despite these technological changes, the core purpose of music remains the same: to evoke profound emotion and connect people through shared auditory experiences.`;
+
+/* Question types: mcq | gapfill | truefalse | listening */
+const QS = [
+  {
+    id:1, section:'Reading', type:'mcq',
+    cat:'Reading — Multiple Choice',
+    label:'What was a major contribution of the Baroque and Classical eras to music?',
+    hint:'Choose the best answer based on the passage above.',
+    opts:[
+      'The invention of the first bone flute',
+      'The introduction of formal structure and musical notation',
+      'The complete removal of symmetry in compositions',
+      'The transition to entirely digital production'
+    ],
+    ans:1,  /* B */
+    ansLabel:'B — The introduction of formal structure and musical notation',
+    ex:'The passage states: "The Baroque and Classical eras introduced a formal structure to music, emphasizing balance, symmetry, and the rise of the virtuoso performer."'
+  },
+  {
+    id:2, section:'Reading', type:'mcq',
+    cat:'Reading — Multiple Choice',
+    label:'How has digital technology impacted modern music according to the text?',
+    hint:'Select the answer that matches what the passage says.',
+    opts:[
+      'It has made it harder for artists to distribute their work.',
+      'It has restricted music production to professional studios only.',
+      'It has democratized the creation and distribution of music.',
+      'It has changed the core emotional purpose of music.'
+    ],
+    ans:2, /* C */
+    ansLabel:'C — It has democratized the creation and distribution of music',
+    ex:'The passage says: "digital technology has democratized music production, enabling artists to record and distribute their work from any corner of the globe."'
+  },
+  {
+    id:3, section:'Reading', type:'gapfill',
+    cat:'Reading — Gap Fill',
+    label:'In ancient times, humans used primitive instruments made of _______ and wood to celebrate rituals.',
+    hint:'Type the missing word from the passage.',
+    ans:'bone',
+    ex:'The passage states: "primitive instruments crafted from bone and wood."'
+  },
+  {
+    id:4, section:'Reading', type:'truefalse',
+    cat:'Reading — True or False',
+    label:'According to the paragraph, the fundamental purpose of music has changed significantly due to modern technology.',
+    hint:'Select True or False based on what the passage states.',
+    ans:'False',
+    ex:'False. The text states: "Despite these technological changes, the core purpose of music remains the same: to evoke profound emotion and connect people."'
+  },
+  {
+    id:5, section:'Listening', type:'listening',
+    cat:'Listening — Form Fill',
+    label:'Happies Nursery — New Child Enrolment Form',
+    hint:'Fill in the 5 missing details from the nursery enrolment form.',
+    fields:[
+      { label:"Mother's Name", prefix:"", suffix:" Beckett", placeholder:"First name", ans:"Glorian", id:"lf1" },
+      { label:"Address (house number)", prefix:"", suffix:" Castle Crescent, Backley, BA3 7TR", placeholder:"Number", ans:"40", id:"lf2" },
+      { label:"Mother's Mobile (last digits)", prefix:"07743 812 ", suffix:"", placeholder:"digits", ans:"451", id:"lf3" },
+      { label:"Fees will be paid by", prefix:"", suffix:"", placeholder:"payment method", ans:"bank transfer", id:"lf4" },
+      { label:"Allergies", prefix:"", suffix:"", placeholder:"type of allergy", ans:"cats", id:"lf5" }
+    ]
+  }
 ];
 
-/* ── STATE ──────────────────────────────── */
-let cQ=0,answered=false,results=[],userData={};
+/* ── STATE ──────────────────────────── */
+let userData={}, answered=0, results=[];
+/* answered = bitmask / count across all 5 */
+let qAnswered={1:false,2:false,3:false,4:false,5:false};
 
-/* ── SCREEN NAV ─────────────────────────── */
-function show(id){
+/* ── NAV ────────────────────────────── */
+function G(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
-function goBack(id){show(id);}
-function goToForm(){show('form-screen');}
 
-/* ── FORM ───────────────────────────────── */
+/* ── FORM ───────────────────────────── */
 function submitForm(){
   const n=document.getElementById('u-name').value.trim();
   const e=document.getElementById('u-email').value.trim();
@@ -839,140 +802,346 @@ function submitForm(){
   if(!n||!e||!p||!c||!b){alert('Please fill in all fields to continue.');return;}
   if(!e.includes('@')){alert('Please enter a valid email address.');return;}
   userData={n,e,p,c,b};
-  cQ=0;answered=false;results=[];
-  show('quiz-screen');
-  renderQ();
+  results=[];
+  Object.keys(qAnswered).forEach(k=>qAnswered[k]=false);
+  G('s-quiz');
+  renderQuiz();
 }
 
-/* ── QUIZ RENDER ────────────────────────── */
-function renderQ(){
-  answered=false;
-  const q=QS[cQ];
-  const pct=((cQ)/QS.length)*100;
-  const total=289;
-  const off=total-((cQ/QS.length)*total);
+/* ── RENDER QUIZ (all 5 at once) ────── */
+function renderQuiz(){
+  updateProgress(0);
 
-  // sidebar progress
-  document.getElementById('prog-arc').style.strokeDashoffset=off;
-  document.getElementById('prog-num').textContent=cQ;
-  document.getElementById('qi-section').textContent=q.cat;
-  document.getElementById('qi-title').textContent=q.q;
+  let html = '';
 
-  // top bar
-  document.getElementById('pb-fill').style.width=pct+'%';
-  document.getElementById('qr-counter').textContent=`Question ${cQ+1}`;
-  document.getElementById('qr-num').textContent=`${cQ+1} / ${QS.length}`;
-
-  const L=['A','B','C','D'];
-  const pass=q.pass?`<div class="q-passage">${q.pass}</div>`:'';
-
-  document.getElementById('q-area').innerHTML=`
-    <div class="q-card fade-up">
-      <div class="q-cat-tag">${q.cat}</div>
-      <div class="q-text">${q.q}</div>
-      <p class="q-hint">${q.hint}</p>
-      ${pass}
-      <div class="opts">${q.opts.map((o,i)=>`
-        <button class="opt" id="opt${i}" onclick="pick(${i})">
-          <span class="opt-k">${L[i]}</span>${o}
-        </button>`).join('')}
-      </div>
-      <div class="q-fb" id="qfb"></div>
-      <div class="q-nav">
-        <button class="next-btn" id="nxt" onclick="nextQ()">
-          ${cQ<QS.length-1?'Next Question →':'See My Results →'}
-        </button>
-      </div>
+  /* ── READING PASSAGE ── */
+  html += `
+    <div class="passage-box fu">
+      <div class="passage-label">Reading Passage</div>
+      <div class="passage-title">The Evolution of Musical Expression</div>
+      ${PASSAGE}
     </div>
+    <div class="q-section-head">📖 Reading <div class="divider"></div></div>
   `;
+
+  /* Q1 — MCQ */
+  html += renderMCQ(QS[0]);
+  /* Q2 — MCQ */
+  html += renderMCQ(QS[1]);
+  /* Q3 — Gap Fill */
+  html += renderGapFill(QS[2]);
+  /* Q4 — True/False */
+  html += renderTrueFalse(QS[3]);
+
+  /* ── LISTENING ── */
+  html += `<div class="q-section-head" style="margin-top:1.5rem">🎧 Listening <div class="divider"></div></div>`;
+  html += renderListening(QS[4]);
+
+  /* Submit button */
+  html += `<button class="submit-quiz-btn" id="sub-btn" onclick="submitQuiz()">See My Results →</button>`;
+
+  document.getElementById('q-wrap').innerHTML = html;
+  updateSidebar(QS[0]);
+
+  /* scroll listener to update sidebar */
+  document.querySelector('.rp').addEventListener('scroll', onScroll);
 }
 
-function pick(i){
-  if(answered)return;
-  answered=true;
-  const q=QS[cQ];
-  const ok=i===q.ans;
-  results.push({qi:cQ,sel:i,ok});
-  document.querySelectorAll('.opt').forEach((el,j)=>{
+function renderMCQ(q){
+  const L=['A','B','C','D'];
+  return `
+    <div class="q-block fu" data-qid="${q.id}">
+      <div class="q-cat-pill">${q.cat}</div>
+      <div class="q-label">Q${q.id}. ${q.label}</div>
+      <div class="q-hint">${q.hint}</div>
+      <div class="opts" id="opts-${q.id}">
+        ${q.opts.map((o,i)=>`
+          <button class="opt" id="opt-${q.id}-${i}" onclick="pickMCQ(${q.id},${i})">
+            <span class="opt-k">${L[i]}</span>${o}
+          </button>`).join('')}
+      </div>
+      <div class="q-fb" id="fb-${q.id}"></div>
+    </div>`;
+}
+
+function renderGapFill(q){
+  const parts = q.label.split('_______');
+  return `
+    <div class="q-block fu" data-qid="${q.id}">
+      <div class="q-cat-pill">${q.cat}</div>
+      <div class="q-label">Q${q.id}.</div>
+      <div class="q-hint">${q.hint}</div>
+      <div class="gapfill-row">
+        <span>${parts[0]}</span>
+        <input class="gap-input" id="gi-${q.id}" placeholder="type answer" autocomplete="off"/>
+        <span>${parts[1]||''}</span>
+      </div>
+      <div style="margin-top:0.6rem">
+        <button onclick="checkGap(${q.id})" style="background:var(--blue);color:#fff;border:none;padding:0.4rem 1rem;border-radius:6px;font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;cursor:pointer;" id="gap-btn-${q.id}">Check Answer</button>
+      </div>
+      <div class="q-fb" id="fb-${q.id}"></div>
+    </div>`;
+}
+
+function renderTrueFalse(q){
+  return `
+    <div class="q-block fu" data-qid="${q.id}">
+      <div class="q-cat-pill">${q.cat}</div>
+      <div class="q-label">Q${q.id}. ${q.label}</div>
+      <div class="q-hint">${q.hint}</div>
+      <div class="tf-opts" id="tf-${q.id}">
+        <button class="tf-btn" id="tf-${q.id}-T" onclick="pickTF(${q.id},'True')">True</button>
+        <button class="tf-btn" id="tf-${q.id}-F" onclick="pickTF(${q.id},'False')">False</button>
+      </div>
+      <div class="q-fb" id="fb-${q.id}"></div>
+    </div>`;
+}
+
+function renderListening(q){
+  const rows = q.fields.map((f,i)=>`
+    <tr>
+      ${i===0?`<td rowspan="1"><span class="lf-example">Example: Child's age = 2</span></td>`:
+      `<td>${f.label}</td>`}
+      ${i===0?`<td>${f.label}: ${f.prefix}<input class="lf-inp" id="${f.id}" placeholder="${f.placeholder}" autocomplete="off"/>${f.suffix}</td>`:
+      `<td>${f.prefix}<input class="lf-inp" id="${f.id}" placeholder="${f.placeholder}" autocomplete="off"/>${f.suffix}</td>`}
+    </tr>`).join('');
+
+  /* simplified: just show all fields cleanly */
+  const cleanRows = q.fields.map(f=>`
+    <tr>
+      <td>${f.label}</td>
+      <td>${f.prefix}<input class="lf-inp" id="${f.id}" placeholder="${f.placeholder}" autocomplete="off"/>${f.suffix}</td>
+    </tr>`).join('');
+
+  return `
+    <div class="q-block fu" data-qid="${q.id}">
+      <div class="q-cat-pill">${q.cat}</div>
+      <div class="q-label">Q${q.id}. ${q.label}</div>
+      <div class="q-hint">${q.hint}</div>
+      <div class="listen-form">
+        <div class="lf-title">Happies Nursery — New Child Enrolment Form</div>
+        <table class="lf-table">
+          <tr><td><em>Example: Child's age</em></td><td><strong>2</strong></td></tr>
+          ${cleanRows}
+        </table>
+      </div>
+      <div class="q-fb" id="fb-${q.id}"></div>
+    </div>`;
+}
+
+/* ── ANSWER HANDLERS ──────────────────── */
+function pickMCQ(qid, idx){
+  const q = QS.find(x=>x.id===qid);
+  if(qAnswered[qid]) return;
+  qAnswered[qid]=true;
+  markAnswered();
+
+  const ok = idx===q.ans;
+  results.push({qid,ok,type:'mcq',userAns:['A','B','C','D'][idx]+' — '+q.opts[idx],correctAns:q.ansLabel});
+
+  document.querySelectorAll(`#opts-${qid} .opt`).forEach((el,i)=>{
     el.disabled=true;
-    if(j===q.ans)el.classList.add('correct');
-    else if(j===i&&!ok)el.classList.add('wrong');
+    if(i===q.ans) el.classList.add('correct');
+    else if(i===idx&&!ok) el.classList.add('wrong');
   });
-  const fb=document.getElementById('qfb');
+  showFb(qid, ok, q.ex);
+  tryShowSubmit();
+}
+
+function checkGap(qid){
+  const q = QS.find(x=>x.id===qid);
+  if(qAnswered[qid]) return;
+  const inp = document.getElementById(`gi-${qid}`);
+  const val = inp.value.trim().toLowerCase();
+  const ok = val === q.ans.toLowerCase();
+  qAnswered[qid]=true;
+  markAnswered();
+
+  inp.disabled=true;
+  inp.classList.add(ok?'correct':'wrong');
+  document.getElementById(`gap-btn-${qid}`).disabled=true;
+  document.getElementById(`gap-btn-${qid}`).style.opacity='0.4';
+
+  results.push({qid,ok,type:'gap',userAns:`"${inp.value.trim()||'(blank)'}"`,correctAns:`"${q.ans}"`});
+  showFb(qid, ok, `Correct answer: "${q.ans}". ${q.ex}`);
+  tryShowSubmit();
+}
+
+function pickTF(qid, val){
+  const q = QS.find(x=>x.id===qid);
+  if(qAnswered[qid]) return;
+  qAnswered[qid]=true;
+  markAnswered();
+
+  const ok = val===q.ans;
+  results.push({qid,ok,type:'tf',userAns:val,correctAns:q.ans});
+
+  ['T','F'].forEach(t=>{
+    const btn=document.getElementById(`tf-${qid}-${t}`);
+    btn.disabled=true;
+    const bval = t==='T'?'True':'False';
+    if(bval===q.ans) btn.classList.add('correct');
+    else if(bval===val&&!ok) btn.classList.add('wrong');
+  });
+  showFb(qid, ok, q.ex);
+  tryShowSubmit();
+}
+
+function showFb(qid, ok, msg){
+  const fb=document.getElementById(`fb-${qid}`);
   fb.className=`q-fb show ${ok?'ok':'no'}`;
-  fb.textContent=ok?`✓ Correct. ${q.ex}`:`✗ Incorrect — correct answer is ${['A','B','C','D'][q.ans]}. ${q.ex}`;
-  document.getElementById('nxt').classList.add('show');
+  fb.textContent=(ok?'✓ Correct. ':'✗ Incorrect. ')+msg;
 }
 
-function nextQ(){
-  if(cQ<QS.length-1){cQ++;renderQ();}
-  else{buildResults();}
+function markAnswered(){
+  const done = Object.values(qAnswered).filter(Boolean).length;
+  updateProgress(done);
 }
 
-/* ── RESULTS ────────────────────────────── */
+function tryShowSubmit(){
+  /* Check listening fields + all others answered */
+  const listeningDone = QS[4].fields.every(f=>document.getElementById(f.id)&&document.getElementById(f.id).value.trim()!=='');
+  const readingDone = [1,2,3,4].every(id=>qAnswered[id]);
+  if(readingDone){
+    document.getElementById('sub-btn').classList.add('show');
+  }
+}
+
+function updateProgress(done){
+  const C=251, off=C-((done/5)*C);
+  document.getElementById('pr-arc').style.strokeDashoffset=off;
+  document.getElementById('pr-n').textContent=done;
+  document.getElementById('qr-fill').style.width=((done/5)*100)+'%';
+  document.getElementById('qr-cnt').textContent=`${done} / 5`;
+}
+
+function updateSidebar(q){
+  document.getElementById('lp-qcat').textContent=q.cat;
+  document.getElementById('lp-qtxt').textContent=q.label;
+}
+
+function onScroll(){
+  /* update sidebar with currently visible question */
+  const blocks=document.querySelectorAll('.q-block');
+  const rp=document.querySelector('#s-quiz .rp');
+  const scrollTop=rp.scrollTop+200;
+  blocks.forEach(b=>{
+    if(b.offsetTop<=scrollTop){
+      const qid=parseInt(b.dataset.qid);
+      const q=QS.find(x=>x.id===qid);
+      if(q){
+        document.getElementById('lp-qcat').textContent=q.cat;
+        document.getElementById('lp-qtxt').textContent=q.label.substring(0,90)+(q.label.length>90?'…':'');
+      }
+    }
+  });
+}
+
+/* ── SUBMIT QUIZ ─────────────────────── */
+function submitQuiz(){
+  /* Grade listening */
+  const lq=QS[4];
+  let listenScore=0;
+  const listenDetails=lq.fields.map(f=>{
+    const inp=document.getElementById(f.id);
+    const val=inp?inp.value.trim().toLowerCase():'';
+    const ok=val===f.ans.toLowerCase();
+    if(ok)listenScore++;
+    if(inp){inp.disabled=true;inp.classList.add(ok?'correct':'wrong');}
+    return{id:f.id,label:f.label,ok,userAns:inp?inp.value.trim():'',correctAns:f.ans};
+  });
+  const listenOk=listenScore>=3; /* 3+/5 = pass for listening section */
+  results.push({qid:5,ok:listenOk,type:'listening',listenScore,listenDetails,userAns:`${listenScore}/5 fields correct`,correctAns:`${lq.fields.length}/5`});
+
+  /* update progress to 5 */
+  updateProgress(5);
+  buildResults();
+}
+
+/* ── RESULTS ─────────────────────────── */
 function buildResults(){
-  show('results-screen');
+  G('s-results');
+
   const score=results.filter(r=>r.ok).length;
   const total=QS.length;
   const pct=Math.round((score/total)*100);
 
   let band,verdict,color,tips;
-  if(score===5){band='8.0–9.0';verdict='Outstanding! 🏆';color='#059669';tips=['Focus on maintaining consistency','Explore advanced vocabulary','Practice Writing Task 2 arguments at Band 9 level'];}
-  else if(score===4){band='7.0–7.5';verdict='Proficient 🎯';color='#2563eb';tips=['Work on complex sentence structures','Improve vocabulary precision','Practise Reading skimming under time pressure'];}
-  else if(score===3){band='6.0–6.5';verdict='Good Foundation 📈';color='#f59e0b';tips=['Build grammar accuracy (subject-verb agreement)','Increase academic vocabulary range','Practice inference-type Reading questions'];}
-  else if(score===2){band='5.0–5.5';verdict='Developing 💪';color='#f97316';tips=['Focus on grammar fundamentals','Daily vocabulary building (10 words/day)','Timed practice with full-length mock tests'];}
-  else{band='Below 5.0';verdict='Keep Going 🔄';color='#dc2626';tips=['Start with grammar foundations','Build reading habits daily','Book a free session with our IDP trainer'];}
+  if(score===5){band='8.0–9.0';verdict='Outstanding! 🏆';color='#059669';
+    tips=['Maintain consistency across all 4 modules','Practise Band 9 Writing Task 2 structure','Focus on advanced vocabulary precision'];}
+  else if(score===4){band='7.0–7.5';verdict='Proficient 🎯';color=`#0255cc`;
+    tips=['Improve complex sentence variety','Sharpen vocabulary precision in Reading','Practise Listening form-fill accuracy'];}
+  else if(score===3){band='6.0–6.5';verdict='Good Foundation 📈';color='#f59e0b';
+    tips=['Build Reading comprehension strategies','Focus on gap fill with exact vocabulary','Review Listening question types daily'];}
+  else if(score===2){band='5.0–5.5';verdict='Developing 💪';color:'#f97316';
+    tips=['Strengthen grammar fundamentals','Daily vocabulary building — 10 words/day','Timed practice with full AI mock tests'];}
+  else{band='Below 5.0';verdict='Keep Going 🔄';color='#dc2626';
+    tips=['Start with grammar foundations','Build daily reading habits','Book a free session with our IDP trainer'];}
 
-  // ring animation
-  const R=64,C=2*Math.PI*R,off=C-(pct/100)*C;
-  document.getElementById('sr-fill').style.stroke=color;
-  document.getElementById('sr-fill').style.strokeDashoffset=C;
+  /* ring: 352 = 2π×56 */
+  const C=352,off=C-(pct/100)*C;
+  const fill=document.getElementById('sr-fill');
+  fill.style.stroke=color;fill.style.strokeDashoffset=C;
   document.getElementById('sr-n').textContent=score;
   document.getElementById('sr-n').style.color=color;
   document.getElementById('rl-verdict').textContent=verdict;
-  document.getElementById('rl-band-chip').innerHTML=`Estimated Band &nbsp;<strong>${band}</strong>`;
-  document.getElementById('rl-cta-title').textContent=
-    score>=4
-    ?`Great score, ${userData.n||'there'}! Ready to push to Band 8+? Book your free expert session.`
-    :`Good start, ${userData.n||'there'}! Our IDP trainers can get you to Band 8+ in 30 days. Book your free session.`;
+  document.getElementById('rl-band').innerHTML=`Estimated Band &nbsp;<strong>${band}</strong>`;
+  document.getElementById('rl-copy').textContent=score>=4
+    ?`Strong result, ${userData.n||'there'}! One free session with our IDP trainer and Band 8+ is within reach.`
+    :`Good start, ${userData.n||'there'}! Our IDP-certified trainers can get you to Band 8+ in 30 days.`;
+  document.getElementById('rr-chip').textContent=`${score} / ${total} Correct`;
 
-  requestAnimationFrame(()=>setTimeout(()=>{
-    document.getElementById('sr-fill').style.strokeDashoffset=off;
-  },150));
+  requestAnimationFrame(()=>setTimeout(()=>{fill.style.strokeDashoffset=off;},150));
 
-  // sidebar donut update
-  const finalPct=(score/total)*289;
-  document.getElementById('prog-arc').style.strokeDashoffset=289-finalPct;
-  document.getElementById('prog-num').textContent=score;
+  /* breakdown */
+  let bkHTML='';
 
-  // breakdown
-  document.getElementById('bk-list').innerHTML=results.map((r,i)=>{
-    const q=QS[r.qi];
-    return`<div class="bk-row">
-      <div class="bk-num">Q${i+1}</div>
+  /* Reading section */
+  bkHTML+=`<div class="bk-section"><div class="bk-sec-label">📖 Reading</div>`;
+  results.filter(r=>r.qid<=4).forEach(r=>{
+    const q=QS.find(x=>x.id===r.qid);
+    bkHTML+=`<div class="bk-row">
+      <div class="bk-num">Q${r.qid}</div>
       <div class="bk-info">
-        <div class="bk-cat">${q.cat}</div>
-        <div class="bk-q">${q.q}</div>
+        <div class="bk-q">${q.label.substring(0,70)}${q.label.length>70?'…':''}</div>
+        <div class="bk-ans">Your answer: <strong>${r.userAns}</strong> · Correct: <strong>${r.correctAns}</strong></div>
       </div>
-      <div class="bk-badge ${r.ok?'ok':'no'}">${r.ok?'✓ Correct':'✗ Wrong'}</div>
+      <div class="bk-badge ${r.ok?'ok':'no'}">${r.ok?'✓':'✗'}</div>
     </div>`;
-  }).join('');
+  });
+  bkHTML+=`</div>`;
 
-  // improve box
-  const weakCats=[...new Set(results.filter(r=>!r.ok).map(r=>QS[r.qi].cat))];
-  document.getElementById('improve-box').innerHTML=`
-    <div class="ib-title">📌 Your Action Plan</div>
-    <div class="ib-desc">${score>=4?`Strong performance! To reach Band 8+, focus on precision and consistency across all four IELTS modules.`:`Based on your results, here's what to focus on next:`}</div>
-    <div class="ib-tags">
-      ${tips.map(t=>`<span class="ib-tag">${t}</span>`).join('')}
-      ${weakCats.length?weakCats.map(c=>`<span class="ib-tag" style="background:#fef3c7;border-color:#fcd34d;color:#92400e">Weak: ${c}</span>`).join(''):''}
-    </div>
-  `;
+  /* Listening section */
+  const lr=results.find(r=>r.qid===5);
+  if(lr){
+    bkHTML+=`<div class="bk-section"><div class="bk-sec-label">🎧 Listening (${lr.listenScore}/5 fields correct)</div>`;
+    lr.listenDetails.forEach(d=>{
+      bkHTML+=`<div class="bk-row">
+        <div class="bk-num" style="font-size:0.6rem">${d.id.replace('lf','')}</div>
+        <div class="bk-info">
+          <div class="bk-q">${d.label}</div>
+          <div class="bk-ans">Your answer: <strong>"${d.userAns||'blank'}"</strong> · Correct: <strong>"${d.correctAns}"</strong></div>
+        </div>
+        <div class="bk-badge ${d.ok?'ok':'no'}">${d.ok?'✓':'✗'}</div>
+      </div>`;
+    });
+    bkHTML+=`</div>`;
+  }
+
+  document.getElementById('bk-list').innerHTML=bkHTML;
+
+  document.getElementById('improve-card').innerHTML=`
+    <div class="ic-head">📌 Your Action Plan</div>
+    <div class="ic-desc">${score>=4?'Strong performance! To reach Band 8+, focus on precision and consistency across all four IELTS modules.':'Based on your results, here\'s what to work on next:'}</div>
+    <div class="ic-tags">
+      ${tips.map(t=>`<span class="ic-tag">${t}</span>`).join('')}
+    </div>`;
 }
 
 function retake(){
-  cQ=0;answered=false;results=[];
-  show('quiz-screen');renderQ();
+  results=[];
+  Object.keys(qAnswered).forEach(k=>qAnswered[k]=false);
+  G('s-quiz');renderQuiz();
 }
 </script>
 </body>
