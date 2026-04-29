@@ -461,10 +461,165 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 /* mobile */
 @media(max-width:800px){
   .shell{grid-template-columns:1fr;}
-  .lp{height:auto;position:relative;}
+
+  /* Left panel: compact strip, never full screen */
+  .lp{
+    height:auto !important;
+    min-height:auto !important;
+    position:relative;
+    padding:1.1rem 1.25rem;
+  }
+
+  /* Hide logo image on mobile — too big */
+  .lp-logo{display:none !important;}
+
+  /* Hide all expanded body content on quiz/form screens */
+  .lp-body{display:none !important;}
+
+  /* Show a single compact header bar instead */
+  .lp::after{
+    display:none; /* remove glow */
+  }
+  .lp-grid{display:none;}
+
+  /* Keep footer phone visible */
+  .lp-foot{
+    padding-top:0;
+    border-top:none;
+    justify-content:center;
+  }
+  .lp-foot span:first-child{display:none;} /* hide copyright on mobile */
+
+  /* Right panel full width */
   .rp{height:auto;position:relative;}
-  .frow{grid-template-columns:1fr!important;}
+
+  /* On LANDING screen only — show a minimal brand strip in left panel */
+  #s-land .lp{
+    background:var(--navy);
+    padding:1rem 1.5rem;
+  }
+  #s-land .lp-body{
+    display:flex !important;
+    padding:0.5rem 0 0;
+  }
+  /* On landing: hide chips, timer, quote — keep just headline + eyebrow */
+  #s-land .lp-chips,
+  #s-land .lp-timer,
+  #s-land .lp-quote{display:none !important;}
+  #s-land .lp-h{font-size:1.4rem;margin-bottom:0.4rem;}
+  #s-land .lp-kicker{margin-bottom:0.3rem;}
+  #s-land .lp-eyebrow{margin-bottom:0.6rem;}
+  #s-land .lp-foot{margin-top:0.5rem;}
+  #s-land .lp-logo{display:flex !important;}
+  #s-land .lp-logo img{width:90px !important;}
+
+  /* Reading/Listening/Grammar left panels — just a tiny colored top bar */
+  #s-reading .lp,
+  #s-listening .lp,
+  #s-grammar .lp,
+  #s-form .lp,
+  #s-results .lp{
+    padding:0.75rem 1.25rem;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:0.75rem;
+  }
+
+  /* Show section badge inline instead of full body */
+  #s-reading .lp .lp-section-badge,
+  #s-listening .lp .lp-section-badge,
+  #s-grammar .lp .lp-section-badge{
+    display:inline-flex !important;
+    margin-bottom:0;
+  }
+  #s-reading .lp-body,
+  #s-listening .lp-body,
+  #s-grammar .lp-body{
+    display:flex !important;
+    flex-direction:row;
+    align-items:center;
+    padding:0;
+    gap:0.6rem;
+    flex:1;
+  }
+  /* Hide everything in body except badge and timer */
+  #s-reading .lp-section-title,
+  #s-reading .lp-section-desc,
+  #s-reading .lp-steps,
+  #s-listening .lp-section-title,
+  #s-listening .lp-section-desc,
+  #s-listening .lp-steps,
+  #s-grammar .lp-section-title,
+  #s-grammar .lp-section-desc,
+  #s-grammar .lp-steps{display:none !important;}
+
+  /* Timer stays visible inline */
+  .lp-timer-display{
+    margin-top:0;
+    padding:0.3rem 0.65rem;
+    text-align:left;
+  }
+  .ltd-label{display:none;}
+  .ltd-time{font-size:1rem;}
+
+  /* Form left panel */
+  #s-form .lp-body{
+    display:none !important;
+  }
+  #s-form .lp{
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Results left panel — keep score ring, hide steps */
+  #s-results .lp{
+    flex-direction:column;
+    padding:1.5rem 1.25rem;
+  }
+  #s-results .lp-body{display:flex !important;padding:0;}
+  .rl-ring-cont{width:110px;height:110px;margin:0 auto 0.75rem;}
+  .rl-svg{width:110px;height:110px;}
+  .rl-n{font-size:2rem;}
+  .rl-verdict{font-size:0.9rem;}
+  .rl-copy{font-size:0.72rem;}
+  .rl-call{font-size:0.82rem;padding:0.7rem;}
+  .rl-retake{font-size:0.75rem;padding:0.6rem;}
+
+  /* Right panel content padding */
+  .rp-content{padding:1.25rem 1.1rem;}
+  .rp-bar{padding:0.85rem 1.1rem;}
+
+  /* Form rows single column */
+  .frow{grid-template-columns:1fr !important;}
+
+  /* Passage card compact */
+  .passage-card{padding:0.9rem 1rem;}
+  .passage-text{font-size:0.78rem;line-height:1.72;}
+
+  /* Section labels */
+  .qs-section-label{font-size:0.58rem;}
+
+  /* Options compact */
+  .opt{padding:0.6rem 0.8rem;font-size:0.78rem;}
+  .opt-k{width:24px;height:24px;font-size:0.6rem;}
+
+  /* Enrolment table */
+  .enrol-table td{font-size:0.74rem;padding:0.5rem 0.7rem;}
+  .et-inp{width:100px !important;}
+
+  /* Audio player compact */
+  .audio-player{padding:0.7rem 0.85rem;gap:0.7rem;}
+  .ap-play-btn{width:38px;height:38px;font-size:0.88rem;}
+
+  /* Section submit */
+  .section-submit-btn{font-size:0.85rem;padding:0.8rem;}
+
+  /* Results right */
+  .rr-body,.rr-head{padding-left:1.1rem;padding-right:1.1rem;}
+  .rr-section{padding:1.25rem 1.1rem;}
 }
+
 </style>
 </head>
 <body>
