@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IELTS Mini Quiz — TerraTern Learn</title>
+<title>IELTS Mini Quiz | TerraTern Learn</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -39,7 +39,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 }
 
 /* ══════════════════════════════════════
-   LEFT PANEL — dark, sticky
+   LEFT PANEL - dark, sticky
 ══════════════════════════════════════ */
 .lp{
   background:var(--navy);
@@ -167,7 +167,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 .lp-phone{font-weight:700;color:var(--yellow);font-size:0.66rem;}
 
 /* ══════════════════════════════════════
-   RIGHT PANEL — light, scrollable
+   RIGHT PANEL - light, scrollable
 ══════════════════════════════════════ */
 .rp{
   background:var(--white);
@@ -478,7 +478,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
     <div class="lp-body">
       <div class="lp-eyebrow"><span class="lp-dot"></span>🕐 Just 3 Minutes</div>
       <div class="lp-kicker">The IELTS Mini Quiz</div>
-      <h1 class="lp-h">Challenge yourself —<br>in just <span class="yl">3 minutes!</span></h1>
+      <h1 class="lp-h">Challenge yourself,<br>in just <span class="yl">3 minutes!</span></h1>
       <div class="lp-quote">"Check your real IELTS score before booking your test."</div>
       <div class="lp-chips">
         <div class="lchip">🏅 IDP-Certified Trainers</div>
@@ -507,14 +507,14 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
           <div class="ls-lhs"><div class="ls-num">1</div><div class="ls-line"></div></div>
           <div class="ls-body">
             <div class="ls-title">🔲 Get Started</div>
-            <div class="ls-desc">Fill in your details, then take a real IELTS-format mini quiz — Reading comprehension passage with MCQ, gap fill & true/false questions, followed by a Listening form-fill section.</div>
+            <div class="ls-desc">Fill in your details, then take a real IELTS-format mini quiz: Reading comprehension passage with MCQ, gap fill & true/false questions, followed by a Listening form-fill section.</div>
           </div>
         </div>
         <div class="land-step fu d2">
           <div class="ls-lhs"><div class="ls-num">2</div><div class="ls-line"></div></div>
           <div class="ls-body">
             <div class="ls-title">📊 See Your Results</div>
-            <div class="ls-desc">Instantly see your estimated band score with a full question-by-question breakdown — what you got right, what you missed, and why.</div>
+            <div class="ls-desc">Instantly see your estimated band score with a full question-by-question breakdown of what you got right, what you missed, and why.</div>
           </div>
         </div>
         <div class="land-step fu d3">
@@ -580,7 +580,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
           <option value="">Select your current level</option>
           <option>Below 5.0</option><option>5.0 – 5.5</option>
           <option>6.0 – 6.5</option><option>7.0 – 7.5</option>
-          <option>First Attempt — Not Sure</option>
+          <option>First Attempt / Not Sure</option>
         </select>
       </div>
       <button class="f-submit" onclick="submitForm()">Begin Quiz →</button>
@@ -601,13 +601,14 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
     <div class="lp-grid"></div>
     <div class="lp-logo"><img src="logo.png" alt="TerraTern Learn" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-fallback"><div class="fb-mark">TT</div><div class="fb-name">Terra<span>Tern</span> Learn</div></div></div>
     <div class="lp-body">
-      <div class="lp-section-badge">📖 Section 1 of 2</div>
+      <div class="lp-section-badge">📖 Section 1 of 3</div>
       <div class="lp-section-title">Reading<br><span class="yl">Comprehension</span></div>
-      <div class="lp-section-desc">Read the passage carefully on the right, then answer all 4 questions below it. Submit when you're done.</div>
+      <div class="lp-section-desc">Read the passage on the right, then answer all 4 questions below it. Submit when you're done.</div>
       <div class="lp-steps">
         <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Your details</div></div>
-        <div class="lp-step active"><div class="lp-step-dot">📖</div><div class="lp-step-txt">Reading (4 questions)</div></div>
-        <div class="lp-step upcoming"><div class="lp-step-dot">🎧</div><div class="lp-step-txt">Listening (1 form)</div></div>
+        <div class="lp-step active"><div class="lp-step-dot">📖</div><div class="lp-step-txt">Reading (4 Qs)</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">🎧</div><div class="lp-step-txt">Listening (4 fields)</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">✏️</div><div class="lp-step-txt">Grammar (2 Qs)</div></div>
         <div class="lp-step upcoming"><div class="lp-step-dot">★</div><div class="lp-step-txt">Results</div></div>
       </div>
       <div class="lp-timer-display">
@@ -633,65 +634,57 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
       <!-- Passage -->
       <div class="sec-header">
         <div class="sec-type-badge">📖 Reading</div>
-        <div class="sec-title">The Evolution of Musical Expression</div>
-        <div class="sec-instructions">Read the passage, then answer all 4 questions below. You can refer back to the passage at any time.</div>
+        <div class="sec-title">The Digital Shift in Music</div>
+        <div class="sec-instructions">Read the passage carefully, then answer all 4 questions below. You may refer back to the passage at any time.</div>
       </div>
 
       <div class="passage-card">
         <div class="passage-label">Passage</div>
-        <div class="passage-heading">The Evolution of Musical Expression</div>
-        <div class="passage-text">Music has served as a universal language across cultures and centuries, evolving from simple rhythmic pulses to complex orchestral arrangements. In the early days of human history, primitive instruments crafted from <strong>bone</strong> and wood were used to communicate stories and celebrate communal rituals. As societies became more sophisticated, the development of musical notation allowed composers to preserve their intricate melodies for future generations.
-        <br><br>
-        The Baroque and Classical eras introduced a formal structure to music, emphasizing balance, symmetry, and the rise of the virtuoso performer. However, the dawn of the twentieth century brought a radical shift with the emergence of jazz, blues, and electronic genres that <strong>defied</strong> traditional rules. Today, digital technology has democratized music production, enabling artists to record and distribute their work from any corner of the globe.
-        <br><br>
-        Despite these technological changes, the core purpose of music remains the same: to evoke profound emotion and connect people through shared auditory experiences. Whether it is a solo piano piece or a high-energy rock anthem, music continues to shape the cultural identity of civilizations worldwide.</div>
+        <div class="passage-heading">The Digital Shift in Music</div>
+        <div class="passage-text">In the past, music was primarily a communal experience enjoyed through live performances or shared recordings. However, the rise of digital streaming has transformed music into a highly personal and portable activity. While this provides unprecedented access to global libraries, some experts argue that modern "shuffle" habits have reduced our appreciation for complete albums. Regardless of these technological shifts, music's primary role in expressing human emotion remains unchanged.</div>
       </div>
 
-      <!-- Q1 MCQ -->
-      <div class="qs-section-label">Part I — Multiple Choice Questions</div>
+      <!-- Q1 Q2 MCQ -->
+      <div class="qs-section-label">Part 1: Multiple Choice Questions</div>
       <div class="q-block">
         <div class="q-num">Question 1</div>
-        <div class="q-txt">What was a major contribution of the Baroque and Classical eras to music?</div>
+        <div class="q-txt">How has music consumption changed according to the text?</div>
         <div class="opts" id="opts-1">
-          <button class="opt" onclick="pickMCQ(1,0)"><span class="opt-k">A</span>The invention of the first bone flute</button>
-          <button class="opt" onclick="pickMCQ(1,1)"><span class="opt-k">B</span>The introduction of formal structure and musical notation</button>
-          <button class="opt" onclick="pickMCQ(1,2)"><span class="opt-k">C</span>The complete removal of symmetry in compositions</button>
-          <button class="opt" onclick="pickMCQ(1,3)"><span class="opt-k">D</span>The transition to entirely digital production</button>
+          <button class="opt" onclick="pickMCQ(1,0)"><span class="opt-k">A</span>It has become more expensive.</button>
+          <button class="opt" onclick="pickMCQ(1,1)"><span class="opt-k">B</span>It has shifted from a shared activity to a more personal one.</button>
+          <button class="opt" onclick="pickMCQ(1,2)"><span class="opt-k">C</span>Live performances have been completely replaced by streaming.</button>
         </div>
       </div>
 
-      <!-- Q2 MCQ -->
       <div class="q-block">
         <div class="q-num">Question 2</div>
-        <div class="q-txt">How has digital technology impacted modern music according to the text?</div>
+        <div class="q-txt">What is a potential downside of modern listening habits?</div>
         <div class="opts" id="opts-2">
-          <button class="opt" onclick="pickMCQ(2,0)"><span class="opt-k">A</span>It has made it harder for artists to distribute their work.</button>
-          <button class="opt" onclick="pickMCQ(2,1)"><span class="opt-k">B</span>It has restricted music production to professional studios only.</button>
-          <button class="opt" onclick="pickMCQ(2,2)"><span class="opt-k">C</span>It has democratized the creation and distribution of music.</button>
-          <button class="opt" onclick="pickMCQ(2,3)"><span class="opt-k">D</span>It has changed the core emotional purpose of music.</button>
+          <button class="opt" onclick="pickMCQ(2,0)"><span class="opt-k">A</span>People no longer enjoy listening to music.</button>
+          <button class="opt" onclick="pickMCQ(2,1)"><span class="opt-k">B</span>There are too many genres to choose from.</button>
+          <button class="opt" onclick="pickMCQ(2,2)"><span class="opt-k">C</span>Listeners may value full albums less than they used to.</button>
         </div>
       </div>
 
-      <!-- Q3 Gap fill -->
-      <div class="qs-section-label">Part II — Gap Fill</div>
+      <!-- Q3 Q4 True/False/Not Given -->
+      <div class="qs-section-label">Part 2: True / False / Not Given</div>
       <div class="q-block">
         <div class="q-num">Question 3</div>
-        <div class="q-txt">Complete the sentence using a word from the passage.</div>
-        <div class="gap-sentence">
-          In ancient times, humans used primitive instruments made of
-          <input class="gap-inp" id="gi-3" placeholder="________" autocomplete="off"/>
-          and wood to celebrate rituals.
+        <div class="q-txt">Digital streaming allows people to listen to music while traveling.</div>
+        <div class="tf-row" id="tf-3">
+          <button class="tf-btn" onclick="pickTFNG(3,'True')">True</button>
+          <button class="tf-btn" onclick="pickTFNG(3,'False')">False</button>
+          <button class="tf-btn" onclick="pickTFNG(3,'Not Given')">Not Given</button>
         </div>
       </div>
 
-      <!-- Q4 True/False -->
-      <div class="qs-section-label">Part III — True or False</div>
       <div class="q-block" style="border-bottom:none;padding-bottom:0;">
         <div class="q-num">Question 4</div>
-        <div class="q-txt">According to the paragraph, the fundamental purpose of music has changed significantly due to modern technology.</div>
+        <div class="q-txt">Most music experts believe that "shuffle" mode is better than listening to albums.</div>
         <div class="tf-row" id="tf-4">
-          <button class="tf-btn" onclick="pickTF('True')">True</button>
-          <button class="tf-btn" onclick="pickTF('False')">False</button>
+          <button class="tf-btn" onclick="pickTFNG(4,'True')">True</button>
+          <button class="tf-btn" onclick="pickTFNG(4,'False')">False</button>
+          <button class="tf-btn" onclick="pickTFNG(4,'Not Given')">Not Given</button>
         </div>
       </div>
 
@@ -714,13 +707,14 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
     <div class="lp-grid"></div>
     <div class="lp-logo"><img src="logo.png" alt="TerraTern Learn" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-fallback"><div class="fb-mark">TT</div><div class="fb-name">Terra<span>Tern</span> Learn</div></div></div>
     <div class="lp-body">
-      <div class="lp-section-badge">🎧 Section 2 of 2</div>
+      <div class="lp-section-badge">🎧 Section 2 of 3</div>
       <div class="lp-section-title">Listening<br><span class="yl">Form Fill</span></div>
-      <div class="lp-section-desc">Read the conversation transcript, then fill in the 5 missing details in the enrolment form on the right.</div>
+      <div class="lp-section-desc">Listen to the audio once and fill in the 4 missing details in the enrolment form on the right.</div>
       <div class="lp-steps">
         <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Your details</div></div>
         <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Reading (4 Qs)</div></div>
-        <div class="lp-step active"><div class="lp-step-dot">🎧</div><div class="lp-step-txt">Listening (form fill)</div></div>
+        <div class="lp-step active"><div class="lp-step-dot">🎧</div><div class="lp-step-txt">Listening (4 fields)</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">✏️</div><div class="lp-step-txt">Grammar (2 Qs)</div></div>
         <div class="lp-step upcoming"><div class="lp-step-dot">★</div><div class="lp-step-txt">Results</div></div>
       </div>
       <div class="lp-timer-display">
@@ -742,10 +736,10 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
     <div class="rp-content">
       <div class="sec-header">
         <div class="sec-type-badge">🎧 Listening</div>
-        <div class="sec-title">Happies Nursery — Enrolment Form</div>
+        <div class="sec-title">Happies Nursery: Enrolment Form</div>
         <div class="sec-instructions">
           <strong>Instructions:</strong> You will hear a conversation between a nursery receptionist and a parent. Listen carefully and fill in the 5 missing details in the form below.<br>
-          <span style="color:#dc2626;font-weight:600">⚠ The audio plays once only — just like the real IELTS exam. Fill in answers as you listen.</span>
+          <span style="color:#dc2626;font-weight:600">⚠ The audio plays once only - just like the real IELTS exam. Fill in answers as you listen.</span>
         </div>
       </div>
 
@@ -754,7 +748,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
         <div class="li-head">
           <div class="li-icon">🎧</div>
           <div class="li-head-txt">
-            <div class="li-head-title">Happies Nursery — Enrolment Conversation</div>
+            <div class="li-head-title">Happies Nursery: Enrolment Conversation</div>
             <div class="li-head-sub">Press Play when ready. Fill in the form as you listen.</div>
           </div>
         </div>
@@ -775,7 +769,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
             </div>
             <div class="ap-times">
               <span id="ap-current">0:00</span>
-              <span id="ap-duration">—</span>
+              <span id="ap-duration">0:00</span>
             </div>
           </div>
           <div class="ap-right">
@@ -796,7 +790,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
       </div>
 
       <!-- Form -->
-      <div class="qs-section-label">Fill in the 5 missing details (Questions 1–5)</div>
+      <div class="qs-section-label">Fill in the 4 missing details (Questions 1–4)</div>
       <table class="enrol-table">
         <tr><th>Field</th><th>Answer</th></tr>
         <tr>
@@ -804,30 +798,100 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
           <td><span class="et-example">2 (given)</span></td>
         </tr>
         <tr>
-          <td>Mother's name</td>
+          <td>1. Mother's name</td>
           <td><input class="et-inp" id="lf1" placeholder="First name" style="width:130px" autocomplete="off"/> <span class="et-suffix">Beckett</span></td>
         </tr>
         <tr>
-          <td>Address (house number)</td>
-          <td><input class="et-inp" id="lf2" placeholder="Number" style="width:60px" autocomplete="off"/> <span class="et-suffix">Castle Crescent, Backley, BA3 7TR</span></td>
+          <td>2. Address (house number)</td>
+          <td><input class="et-inp" id="lf2" placeholder="Number" style="width:60px" autocomplete="off"/> <span class="et-suffix">Castle Crescent, Backley</span></td>
         </tr>
         <tr>
-          <td>Mother's mobile</td>
-          <td><span class="et-prefix">07743 812 </span><input class="et-inp" id="lf3" placeholder="___" style="width:55px" autocomplete="off"/></td>
+          <td>3. Fees will be paid by</td>
+          <td><input class="et-inp" id="lf3" placeholder="payment method" style="width:150px" autocomplete="off"/></td>
         </tr>
         <tr>
-          <td>Fees paid by</td>
-          <td><input class="et-inp" id="lf4" placeholder="payment method" style="width:150px" autocomplete="off"/></td>
-        </tr>
-        <tr>
-          <td>Allergies</td>
-          <td><input class="et-inp" id="lf5" placeholder="type here" style="width:130px" autocomplete="off"/></td>
+          <td>4. Allergies</td>
+          <td><input class="et-inp" id="lf4" placeholder="type here" style="width:130px" autocomplete="off"/></td>
         </tr>
       </table>
 
       <div class="section-submit-area">
-        <button class="section-submit-btn" onclick="submitListening()">Submit &amp; See My Results →</button>
-        <div class="submit-note">Fill in all 5 fields, then submit to see your score</div>
+        <button class="section-submit-btn" onclick="submitListening()">Submit &amp; Continue to Grammar →</button>
+        <div class="submit-note">Fill in all 4 fields, then submit to continue</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ═══════════ S4b: GRAMMAR ═══════════ -->
+<div id="s-grammar" class="screen">
+<div class="shell">
+  <div class="lp">
+    <div class="lp-grid"></div>
+    <div class="lp-logo"><img src="logo.png" alt="TerraTern Learn" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="logo-fallback"><div class="fb-mark">TT</div><div class="fb-name">Terra<span>Tern</span> Learn</div></div></div>
+    <div class="lp-body">
+      <div class="lp-section-badge">✏️ Section 3 of 3</div>
+      <div class="lp-section-title">Grammar &amp;<br><span class="yl">Vocabulary</span></div>
+      <div class="lp-section-desc">Answer both questions below, then submit to see your full results.</div>
+      <div class="lp-steps">
+        <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Your details</div></div>
+        <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Reading (4 Qs)</div></div>
+        <div class="lp-step done"><div class="lp-step-dot">✓</div><div class="lp-step-txt">Listening (4 fields)</div></div>
+        <div class="lp-step active"><div class="lp-step-dot">✏️</div><div class="lp-step-txt">Grammar (2 Qs)</div></div>
+        <div class="lp-step upcoming"><div class="lp-step-dot">★</div><div class="lp-step-txt">Results</div></div>
+      </div>
+      <div class="lp-timer-display">
+        <div class="ltd-label">Time remaining</div>
+        <div class="ltd-time" id="gram-timer">04:00</div>
+      </div>
+    </div>
+    <div class="lp-foot"><span>TerraTern Learn</span><span class="lp-phone">📞 0806 235 8632</span></div>
+  </div>
+  <div class="rp">
+    <div class="rp-bar">
+      <div class="rp-bar-right">
+        <div class="rp-prog-wrap">
+          <div class="rp-prog-track"><div class="rp-prog-fill" style="width:88%"></div></div>
+          <div class="rp-prog-txt">3 / 3 sections</div>
+        </div>
+      </div>
+    </div>
+    <div class="rp-content">
+      <div class="sec-header">
+        <div class="sec-type-badge">✏️ Grammar &amp; Vocabulary</div>
+        <div class="sec-title">Grammar and Vocabulary</div>
+        <div class="sec-instructions">Choose the best answer for each question.</div>
+      </div>
+
+      <div class="qs-section-label">Questions 5–6</div>
+
+      <div class="q-block">
+        <div class="q-num">Question 5: Idiom</div>
+        <div class="q-txt">John decided to <strong>bite the bullet</strong> and start preparing for the exam seriously.<br><br>What does the idiom <em>"bite the bullet"</em> mean?</div>
+        <div class="opts" id="opts-5">
+          <button class="opt" onclick="pickGramMCQ(5,0)"><span class="opt-k">A</span>Avoid a difficult situation</button>
+          <button class="opt" onclick="pickGramMCQ(5,1)"><span class="opt-k">B</span>Face a difficult situation bravely</button>
+          <button class="opt" onclick="pickGramMCQ(5,2)"><span class="opt-k">C</span>Celebrate success early</button>
+          <button class="opt" onclick="pickGramMCQ(5,3)"><span class="opt-k">D</span>Ignore a problem completely</button>
+        </div>
+      </div>
+
+      <div class="q-block" style="border-bottom:none;padding-bottom:0;">
+        <div class="q-num">Question 6: Conditional Grammar</div>
+        <div class="q-txt">Choose the correct option to complete the sentence:<br><br>If I ______ more time, I would learn another language.</div>
+        <div class="opts" id="opts-6">
+          <button class="opt" onclick="pickGramMCQ(6,0)"><span class="opt-k">A</span>have</button>
+          <button class="opt" onclick="pickGramMCQ(6,1)"><span class="opt-k">B</span>had</button>
+          <button class="opt" onclick="pickGramMCQ(6,2)"><span class="opt-k">C</span>will have</button>
+          <button class="opt" onclick="pickGramMCQ(6,3)"><span class="opt-k">D</span>am having</button>
+        </div>
+      </div>
+
+      <div class="section-submit-area">
+        <button class="section-submit-btn" onclick="submitGrammar()">Submit &amp; See My Results →</button>
+        <div class="submit-note">Answer both questions before submitting</div>
       </div>
     </div>
   </div>
@@ -846,13 +910,13 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
           <circle class="rl-bg" cx="65" cy="65" r="52"/>
           <circle class="rl-fill" cx="65" cy="65" r="52" id="rl-fill"/>
         </svg>
-        <div class="rl-center"><div class="rl-n" id="rl-n">0</div><div class="rl-d">out of 9</div></div>
+        <div class="rl-center"><div class="rl-n" id="rl-n">0</div><div class="rl-d">out of 10</div></div>
       </div>
-      <div class="rl-verdict" id="rl-verdict">—</div>
+      <div class="rl-verdict" id="rl-verdict"></div>
       <div style="display:flex;justify-content:center;margin-bottom:0.75rem;">
-        <div class="rl-band" id="rl-band">Estimated Band <strong>—</strong></div>
+        <div class="rl-band" id="rl-band">Estimated Band <strong>-</strong></div>
       </div>
-      <div class="rl-copy" id="rl-copy">—</div>
+      <div class="rl-copy" id="rl-copy"></div>
       <a href="tel:08062358632" class="rl-call">📞 Call 0806 235 8632</a>
       <button class="rl-retake" onclick="retake()">↺ Retake Quiz</button>
     </div>
@@ -868,7 +932,7 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
       </div>
     </div>
     <div class="rp-content">
-      <div class="rr-head">Your Detailed Results <div class="rr-score-chip" id="rr-chip">— / 9</div></div>
+      <div class="rr-head">Your Detailed Results <div class="rr-score-chip" id="rr-chip">- / 9</div></div>
       <div id="bk-list"></div>
       <div class="improve-card" id="improve-card"></div>
     </div>
@@ -879,30 +943,59 @@ html,body{height:100%;font-family:'Poppins',sans-serif;background:#fff;-webkit-f
 <script>
 /* ── STATE ──────────────────────────────────── */
 let user={};
-let readingAnswers={1:null, 2:null, 3:null, 4:null}; /* q → user value */
-let listeningAnswers={lf1:null,lf2:null,lf3:null,lf4:null,lf5:null};
-let readTimer=null, listTimer=null;
+let readingAnswers={1:null,2:null,3:null,4:null};
+let listeningAnswers={lf1:null,lf2:null,lf3:null,lf4:null};
+let grammarAnswers={5:null,6:null};
+let readTimer=null, listTimer=null, gramTimer=null;
 
 /* ANSWER KEYS */
 const READ_KEY={
-  1:{ans:1, correct:'B — The introduction of formal structure and musical notation',
-     ex:'The passage states the Baroque and Classical eras "introduced a formal structure to music, emphasizing balance, symmetry."'},
-  2:{ans:2, correct:'C — It has democratized the creation and distribution of music',
-     ex:'The passage says "digital technology has democratized music production, enabling artists to record and distribute their work."'},
-  3:{ans:'bone',
-     ex:'The passage states "primitive instruments crafted from bone and wood."'},
+  1:{ans:1, opts:['It has become more expensive.','It has shifted from a shared activity to a more personal one.','Live performances have been completely replaced by streaming.'],
+     correct:'B: It has shifted from a shared activity to a more personal one.',
+     ex:'The passage says: "the rise of digital streaming has transformed music into a highly personal and portable activity."'},
+  2:{ans:2, opts:['People no longer enjoy listening to music.','There are too many genres to choose from.','Listeners may value full albums less than they used to.'],
+     correct:'C: Listeners may value full albums less than they used to.',
+     ex:'The passage says: "modern 'shuffle' habits have reduced our appreciation for complete albums."'},
+  3:{ans:'True',
+     ex:'The passage states streaming makes music "highly personal and portable" - portable implies listening while traveling.'},
   4:{ans:'False',
-     ex:'The passage clearly states "the core purpose of music remains the same: to evoke profound emotion and connect people."'}
+     ex:'The passage says "some experts argue" shuffle reduces appreciation, not that most experts prefer it.'}
 };
 const LISTEN_KEY={
-  lf1:{ans:'Glorian', label:"Mother's name"},
-  lf2:{ans:'40',      label:'Address (house number)'},
-  lf3:{ans:'451',     label:"Mother's mobile (last digits)"},
-  lf4:{ans:'bank transfer', label:'Fees paid by'},
-  lf5:{ans:'cats',    label:'Allergies'}
+  lf1:{ans:'Glorian',       label:"1. Mother's name"},
+  lf2:{ans:'40',            label:'2. Address (house number)'},
+  lf3:{ans:'bank transfer', label:'3. Fees paid by'},
+  lf4:{ans:'cats',          label:'4. Allergies'}
+};
+const GRAM_KEY={
+  5:{ans:1, opts:['Avoid a difficult situation','Face a difficult situation bravely','Celebrate success early','Ignore a problem completely'],
+     correct:'B: Face a difficult situation bravely',
+     ex:'"Bite the bullet" means to endure a painful or difficult situation that is unavoidable.'},
+  6:{ans:1, opts:['have','had','will have','am having'],
+     correct:'B: had',
+     ex:'This is a second conditional sentence (unreal/hypothetical present). The correct form is "If I had..." + "would".'}
 };
 
 /* ── NAVIGATION ─────────────────────────────── */
+
+/* -- FUZZY MATCH: accept close answers (e.g. "cat" for "cats") */
+function fuzzyMatch(input, answer){
+  const u = (input||'').toLowerCase().trim();
+  const a = answer.toLowerCase().trim();
+  if(!u) return false;
+  if(u === a) return true;
+  if(a.includes(u) || u.includes(a)) return true;
+  if(editDist(u, a) <= 1) return true;
+  return false;
+}
+function editDist(s, t){
+  const m=s.length, n=t.length;
+  const dp=Array.from({length:m+1},(_,i)=>Array.from({length:n+1},(_,j)=>i===0?j:j===0?i:0));
+  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++)
+    dp[i][j]=s[i-1]===t[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+  return dp[m][n];
+}
+
 function G(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -927,46 +1020,56 @@ function submitForm(){
 
 /* ── READING INTERACTIONS ───────────────────── */
 function pickMCQ(qNum, idx){
-  /* Clear prev */
   document.querySelectorAll(`#opts-${qNum} .opt`).forEach(o=>o.classList.remove('picked'));
-  /* Mark picked */
   document.querySelectorAll(`#opts-${qNum} .opt`)[idx].classList.add('picked');
   readingAnswers[qNum]=idx;
 }
 
-function pickTF(val){
-  document.querySelectorAll('#tf-4 .tf-btn').forEach(b=>b.classList.remove('picked'));
-  const t=val==='True'?0:1;
-  document.querySelectorAll('#tf-4 .tf-btn')[t].classList.add('picked');
-  readingAnswers[4]=val;
+function pickTFNG(qNum, val){
+  document.querySelectorAll(`#tf-${qNum} .tf-btn`).forEach(b=>b.classList.remove('picked'));
+  const btns=document.querySelectorAll(`#tf-${qNum} .tf-btn`);
+  const map={'True':0,'False':1,'Not Given':2};
+  if(btns[map[val]]) btns[map[val]].classList.add('picked');
+  readingAnswers[qNum]=val;
 }
 
 /* ── SUBMIT READING ─────────────────────────── */
 function submitReading(){
-  /* Validate all 4 answered */
-  const gapVal=document.getElementById('gi-3').value.trim();
-  readingAnswers[3]=gapVal;
-
   if(readingAnswers[1]===null){alert('Please answer Question 1.');return;}
   if(readingAnswers[2]===null){alert('Please answer Question 2.');return;}
-  if(!gapVal){alert('Please fill in the gap for Question 3.');return;}
-  if(readingAnswers[4]===null){alert('Please answer True or False for Question 4.');return;}
-
+  if(readingAnswers[3]===null){alert('Please answer Question 3 (True/False/Not Given).');return;}
+  if(readingAnswers[4]===null){alert('Please answer Question 4 (True/False/Not Given).');return;}
   clearInterval(readTimer);
   G('s-listening');
   startTimer('list-timer',6*60);
+}
+
+/* ── GRAMMAR INTERACTIONS ───────────────────── */
+function pickGramMCQ(qNum, idx){
+  document.querySelectorAll(`#opts-${qNum} .opt`).forEach(o=>o.classList.remove('picked'));
+  document.querySelectorAll(`#opts-${qNum} .opt`)[idx].classList.add('picked');
+  grammarAnswers[qNum]=idx;
+}
+
+/* ── SUBMIT GRAMMAR ─────────────────────────── */
+function submitGrammar(){
+  if(grammarAnswers[5]===null){alert('Please answer Question 5.');return;}
+  if(grammarAnswers[6]===null){alert('Please answer Question 6.');return;}
+  clearInterval(gramTimer);
+  buildResults();
 }
 
 
 
 /* ── SUBMIT LISTENING ───────────────────────── */
 function submitListening(){
-  const fields=['lf1','lf2','lf3','lf4','lf5'];
+  const fields=['lf1','lf2','lf3','lf4'];
   const missing=fields.filter(id=>!document.getElementById(id).value.trim());
-  if(missing.length>0){alert(`Please fill in all 5 fields before submitting.`);return;}
+  if(missing.length>0){alert('Please fill in all 4 fields before submitting.');return;}
   fields.forEach(id=>listeningAnswers[id]=document.getElementById(id).value.trim());
   clearInterval(listTimer);
-  buildResults();
+  G('s-grammar');
+  startTimer('gram-timer',4*60);
 }
 
 /* ── AUDIO PLAYER ───────────────────────────── */
@@ -978,7 +1081,7 @@ function initAudio(){
   const audio = document.getElementById('ielts-audio');
   if(!audio) return;
 
-  /* Error — file not found */
+  /* Error - file not found */
   audio.addEventListener('error', () => {
     document.getElementById('ap-error').style.display = 'block';
     document.getElementById('ap-play').disabled = true;
@@ -989,7 +1092,7 @@ function initAudio(){
     document.getElementById('ap-duration').textContent = formatTime(audio.duration);
   });
 
-  /* Time update — move progress bar */
+  /* Time update - move progress bar */
   audio.addEventListener('timeupdate', () => {
     if(!audio.duration) return;
     const pct = (audio.currentTime / audio.duration) * 100;
@@ -1002,7 +1105,7 @@ function initAudio(){
   audio.addEventListener('ended', () => {
     document.getElementById('ap-play-icon').textContent = '▶';
     document.getElementById('ap-played-notice').style.display = 'block';
-    /* lock — no more plays */
+    /* lock - no more plays */
     document.getElementById('ap-play').disabled = true;
     const pill = document.getElementById('ap-plays-left');
     pill.textContent = 'Played (1/1)';
@@ -1018,7 +1121,7 @@ function togglePlay(){
   if(!audio) return;
 
   if(audioPlayCount >= MAX_PLAYS && audio.paused){
-    /* Already used up plays — do nothing (button should be disabled) */
+    /* Already used up plays - do nothing (button should be disabled) */
     return;
   }
 
@@ -1063,7 +1166,7 @@ function onEnterListening(){
   const pf = document.getElementById('ap-prog-fill'); if(pf) pf.style.width='0%';
   const pt = document.getElementById('ap-thumb'); if(pt) pt.style.left='0%';
   const ac = document.getElementById('ap-current'); if(ac) ac.textContent='0:00';
-  const ad = document.getElementById('ap-duration'); if(ad) ad.textContent='—';
+  const ad = document.getElementById('ap-duration'); if(ad) ad.textContent='-';
   const pb = document.getElementById('ap-play'); if(pb) pb.disabled=false;
   const pl = document.getElementById('ap-plays-left');
   if(pl){ pl.classList.remove('used'); pl.innerHTML='<span id="plays-count">1</span> play remaining'; }
@@ -1086,7 +1189,8 @@ function startTimer(elId, secs){
   update();
   const tid=setInterval(update,1000);
   if(elId==='read-timer') readTimer=tid;
-  else listTimer=tid;
+  else if(elId==='list-timer') listTimer=tid;
+  else gramTimer=tid;
 }
 
 /* ── BUILD RESULTS ──────────────────────────── */
@@ -1102,7 +1206,7 @@ function buildResults(){
   /* Grade listening */
   const lGrades={};
   Object.keys(LISTEN_KEY).forEach(id=>{
-    lGrades[id]=listeningAnswers[id].toLowerCase().trim()===LISTEN_KEY[id].ans.toLowerCase();
+    lGrades[id]=fuzzyMatch(listeningAnswers[id], LISTEN_KEY[id].ans);
   });
   const lScore=Object.values(lGrades).filter(Boolean).length;
 
@@ -1121,7 +1225,7 @@ function buildResults(){
   else if(score>=4){band='6.0–6.5';verdict='Good Foundation 📈';color='#f59e0b';
     tips=['Build Reading comprehension strategies','Focus on Listening form-fill accuracy','Review grammar for True/False precision'];}
   else{band='Below 6.0';verdict='Developing 💪';color='#dc2626';
-    tips=['Grammar fundamentals first','Daily vocabulary — 10 new words/day','Book a free session with our IDP trainer'];}
+    tips=['Grammar fundamentals first','Daily vocabulary: 10 new words/day','Book a free session with our IDP trainer'];}
 
   /* Ring: 327 = 2π×52 */
   const C=327,off=C-(pct/100)*C;
@@ -1150,13 +1254,13 @@ function buildResults(){
   /* Q1 */
   bk+=bkRow(1,'MCQ','What was a major contribution of the Baroque and Classical eras?',
     r1ok,
-    r1ok?'B — Correct':'Your choice: '+(readingAnswers[1]!==null?['A','B','C','D'][readingAnswers[1]]+' — '+rOpts[0][readingAnswers[1]]:'No answer'),
+    r1ok?'B - Correct':'Your choice: '+(readingAnswers[1]!==null?['A','B','C','D'][readingAnswers[1]]+' - '+rOpts[0][readingAnswers[1]]:'No answer'),
     READ_KEY[1].correct, READ_KEY[1].ex);
 
   /* Q2 */
   bk+=bkRow(2,'MCQ','How has digital technology impacted modern music?',
     r2ok,
-    r2ok?'C — Correct':'Your choice: '+(readingAnswers[2]!==null?['A','B','C','D'][readingAnswers[2]]+' — '+rOpts[1][readingAnswers[2]]:'No answer'),
+    r2ok?'C - Correct':'Your choice: '+(readingAnswers[2]!==null?['A','B','C','D'][readingAnswers[2]]+' - '+rOpts[1][readingAnswers[2]]:'No answer'),
     READ_KEY[2].correct, READ_KEY[2].ex);
 
   /* Q3 */
@@ -1201,13 +1305,12 @@ function bkRow(num,type,q,ok,userAns,correctAns,ex){
 
 function retake(){
   readingAnswers={1:null,2:null,3:null,4:null};
-  listeningAnswers={lf1:null,lf2:null,lf3:null,lf4:null,lf5:null};
-  clearInterval(readTimer);clearInterval(listTimer);
-  /* reset reading UI */
-  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('picked','correct-final','wrong-final'));
-  document.querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('picked','correct-final','wrong-final'));
-  if(document.getElementById('gi-3')) document.getElementById('gi-3').value='';
-  ['lf1','lf2','lf3','lf4','lf5'].forEach(id=>{
+  listeningAnswers={lf1:null,lf2:null,lf3:null,lf4:null};
+  grammarAnswers={5:null,6:null};
+  clearInterval(readTimer);clearInterval(listTimer);clearInterval(gramTimer);
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('picked'));
+  document.querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('picked'));
+  ['lf1','lf2','lf3','lf4'].forEach(id=>{
     const el=document.getElementById(id);if(el)el.value='';
   });
   G('s-form');
